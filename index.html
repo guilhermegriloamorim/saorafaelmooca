@@ -80,6 +80,43 @@
             margin-bottom: 20px;
         }
 
+        .tabs-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tab-btn {
+            border: 2px solid var(--wood-dark);
+            background: #fff4e6;
+            color: var(--wood-dark);
+            font-family: 'Special Elite', cursive;
+            font-size: 0.9rem;
+            padding: 10px 8px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: transform 0.15s ease, background 0.15s ease;
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-1px);
+            background: #ffe8cc;
+        }
+
+        .tab-btn.active {
+            background: var(--pastel-green);
+            box-shadow: inset 0 0 0 2px #9eb480;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
         .clause {
             background: #fffcf2;
             border: 2px solid var(--wood-dark);
@@ -102,6 +139,314 @@
             margin: 8px 0;
             line-height: 1.4;
             text-align: justify;
+        }
+
+        .calculator {
+            border-style: dashed;
+        }
+
+        .calculator h3 {
+            color: #2a9d8f;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr auto;
+            gap: 10px;
+            margin-bottom: 12px;
+            align-items: end;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 10px;
+            margin: 12px 0;
+        }
+
+        .search-wrap {
+            margin: 10px 0 6px;
+        }
+
+        .search-wrap label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+
+        .search-wrap input {
+            width: 100%;
+            box-sizing: border-box;
+            border: 2px solid var(--wood-dark);
+            border-radius: 4px;
+            padding: 8px;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1rem;
+            background: #fff;
+        }
+
+        .search-empty {
+            display: none;
+            margin: 6px 0;
+            font-style: italic;
+            color: #7a5c4f;
+        }
+
+        .search-empty.active {
+            display: block;
+        }
+
+        .product-card {
+            border: 2px solid var(--wood-dark);
+            background: #fff;
+            border-radius: 6px;
+            padding: 10px;
+        }
+
+        .product-name {
+            font-family: 'Special Elite', cursive;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .product-price {
+            margin-bottom: 8px;
+            color: #6b422f;
+            font-weight: bold;
+        }
+
+        .qty-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .qty-display {
+            min-width: 26px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .btn-mini {
+            padding: 5px 10px;
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        .calc-field label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+
+        .calc-field select,
+        .calc-field input {
+            width: 100%;
+            box-sizing: border-box;
+            border: 2px solid var(--wood-dark);
+            background: #fff;
+            padding: 8px;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1rem;
+            border-radius: 4px;
+        }
+
+        .calc-actions {
+            display: flex;
+            gap: 10px;
+            margin: 8px 0 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border: 2px solid var(--wood-dark);
+            background: var(--pastel-orange);
+            color: #2a1a12;
+            font-family: 'Special Elite', cursive;
+            padding: 10px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            filter: brightness(0.95);
+        }
+
+        .btn-danger {
+            background: var(--pastel-red);
+            color: #fff;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background: #fff;
+        }
+
+        .cart-table th,
+        .cart-table td {
+            border: 1px solid #d9c8b8;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .cart-table th {
+            font-family: 'Special Elite', cursive;
+            background: #fdf2e6;
+            font-size: 0.95rem;
+        }
+
+        .cart-empty {
+            text-align: center;
+            font-style: italic;
+            color: #7a5c4f;
+        }
+
+        .total-box {
+            margin-top: 12px;
+            font-size: 1.25rem;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .info-card {
+            background: #fff;
+            border: 2px solid #d6bfa8;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+
+        .barracas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 10px;
+        }
+
+        .barraca-item {
+            border: 2px dashed var(--wood-dark);
+            border-radius: 6px;
+            padding: 10px;
+            background: #fff;
+        }
+
+        .barraca-item h4 {
+            margin: 0 0 6px;
+            font-family: 'Special Elite', cursive;
+            color: #6f4518;
+            font-size: 0.95rem;
+        }
+
+        .barraca-item p {
+            margin: 0;
+            font-size: 1rem;
+            text-align: left;
+        }
+
+        .map-wrap {
+            background: #fff;
+            border: 2px solid var(--wood-dark);
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .map-layout {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .map-box {
+            border: 2px solid #b08b6a;
+            background: #fff8ee;
+            border-radius: 6px;
+            min-height: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6px;
+            font-size: 0.95rem;
+            font-weight: bold;
+        }
+
+        .map-box.center {
+            background: #e9f5db;
+            border-color: #8fb571;
+        }
+
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .sponsor-logo-box {
+            background: #fff;
+            border: 2px solid #d9c8b8;
+            border-radius: 6px;
+            height: 90px;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sponsor-card {
+            text-align: center;
+        }
+
+        .sponsor-name {
+            margin-top: 6px;
+            font-size: 0.85rem;
+            color: #5d3a29;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .sponsor-logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            display: block;
+        }
+
+        .footer-sponsors {
+            margin-top: 12px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--wood-dark);
+        }
+
+        .footer-sponsors-title {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 700px) {
+            .calc-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .btn-mini {
+                width: auto;
+            }
+
+            .map-layout {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         .list-items {
@@ -127,6 +472,10 @@
             border-top: 2px dashed var(--wood-dark);
             padding-top: 15px;
             font-size: 0.9rem;
+        }
+
+        .hide-footer footer {
+            display: none;
         }
 
         .stamp {
@@ -159,66 +508,401 @@
 
         <header>
             <span>Paróquia São Rafael Mooca</span>
-            <h1>Termos e Condições</h1>
-            <div style="font-weight: bold;">FESTA JUNINA 2026</div>
+            <h1>FESTA JUNINA 2026</h1>
+            <div style="font-weight: bold;">Apoio - Comunidade de São Rafael Mooca</div>
         </header>
 
         <div class="divider">🔥 🏮 🌽</div>
 
-        <div class="clause">
-            <h3>CLÁUSULA PRIMEIRA – DO OBJETO</h3>
-            <p>1.1. O presente termo estabelece as normas para aquisição, utilização e validade do sistema de cartões de aproximação (RFID) para o consumo de produtos e serviços nas barracas oficiais da Festa Junina 2026.</p>
-        </div>
+        <nav class="tabs-nav" aria-label="Navegação por abas">
+            <button class="tab-btn active" type="button" data-tab="calculadora">Calculadora Preços</button>
+            <button class="tab-btn" type="button" data-tab="termos">Termos de Uso Cartão</button>
+            <button class="tab-btn" type="button" data-tab="sobre">Sobre a Festa</button>
+            <button class="tab-btn" type="button" data-tab="mapa">Mapa da Festa</button>
+            <button class="tab-btn" type="button" data-tab="barracas">Nossas Barracas</button>
+            <button class="tab-btn" type="button" data-tab="patrocinadores">Patrocinadores</button>
+        </nav>
 
-        <div class="clause">
-            <h3>CLÁUSULA SEGUNDA – DA AQUISIÇÃO E CUSTO DE ATIVAÇÃO</h3>
-            <p>2.1. O usuário deverá adquirir o cartão físico mediante o pagamento da taxa de ativação no valor de R$ 5,00 (cinco reais).</p>
-            <p>2.2. DA TROCA FINAL: Ao término do evento ou após o consumo total dos créditos, a devolução do cartão físico íntegro nos caixas autorizados dará ao portador o direito à troca por 01 (uma) garrafa de água mineral, não havendo devolução do valor de ativação em moeda corrente.</p>
-        </div>
+        <section id="tab-calculadora" class="tab-panel active" role="tabpanel">
+            <div class="clause calculator">
+                <h3>CALCULADORA DE PREÇOS</h3>
+                <p>Clique no produto, ajuste a quantidade e adicione ao carrinho.</p>
 
-        <div class="clause">
-            <h3>CLÁUSULA TERCEIRA – DA VALIDADE DOS CRÉDITOS</h3>
-            <p>3.1. Os créditos inseridos no cartão são válidos exclusivamente para o período de realização da Festa Junina 2026.</p>
-            <p>3.2. DA EXPIRAÇÃO: Saldos remanescentes expiram automaticamente ao encerramento da festividade, não sendo permitida a transferência de valores para edições futuras ou outros eventos.</p>
-        </div>
+                <div class="search-wrap">
+                    <label for="buscaProduto">Pesquisar item</label>
+                    <input id="buscaProduto" type="text" placeholder="Digite o nome do produto..." autocomplete="off">
+                </div>
 
-        <div class="clause">
-            <h3>CLÁUSULA QUARTA – DA POLÍTICA DE NÃO REEMBOLSO</h3>
-            <p>4.1. CONVERSÃO EM CONSUMO: Ao carregar o cartão, o usuário converte o valor em créditos para uso exclusivo na festa. Por essa razão, não haverá devolução de valores, estorno ou reembolso de saldos não utilizados, independentemente do motivo.</p>
-            <p>4.2. Recomendamos que o carregamento seja feito de acordo com a intenção de consumo, uma vez que a carga é definitiva e o saldo remanescente não é restituível.</p>
-        </div>
+                <div id="produtosGrid" class="products-grid" aria-label="Lista de produtos"></div>
+                <p id="semResultadoBusca" class="search-empty">Nenhum produto encontrado para essa pesquisa.</p>
 
-        <div class="clause">
-            <h3>CLÁUSULA QUINTA – DA RESPONSABILIDADE E PRIVACIDADE</h3>
-            <p>5.1. DO ANONIMATO: O cartão de consumo é ao portador e não armazena dados pessoais, tais como CPF, nome ou correio eletrônico.</p>
-            <p>5.2. DA GUARDA E POSSE: A responsabilidade pela segurança e conservação do cartão é inteiramente do usuário.</p>
-            <p>5.3. DA PERDA OU ROUBO: Por ser um cartão sem identificação nominal:</p>
-            <ul class="list-items">
-                <li>Não é possível realizar o bloqueio do dispositivo;</li>
-                <li>Não haverá recuperação de saldo ou emissão de segunda via;</li>
-                <li>O crédito contido no cartão será de livre uso de quem o detiver.</li>
-            </ul>
-        </div>
+                <table class="cart-table" aria-label="Itens selecionados">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Quantidade</th>
+                            <th>Valor unitário</th>
+                            <th>Subtotal</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itensCarrinho">
+                        <tr>
+                            <td class="cart-empty" colspan="5">Nenhum item adicionado.</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-        <div class="clause">
-            <h3>CLÁUSULA SEXTA – DAS REGRAS DE UTILIZAÇÃO</h3>
-            <p>6.1. O cartão é a única forma de pagamento aceita nas barracas oficiais identificadas.</p>
-            <p>6.2. É responsabilidade do usuário conferir o valor debitado e o saldo restante em cada transação.</p>
-            <p>6.3. Cartões danificados (dobrados, perfurados ou molhados) que impeçam a leitura do chip não serão substituídos ou reembolsados.</p>
-        </div>
+                <div class="total-box">Total: <span id="total">R$ 0,00</span></div>
 
-        <div class="clause">
-            <h3>CLÁUSULA SÉTIMA – DAS DISPOSIÇÕES GERAIS</h3>
-            <p>7.1. A aquisição e o carregamento do cartão implicam na aceitação automática e integral deste regulamento.</p>
-            <p>7.2. Eventuais casos omissos serão resolvidos pela Comissão Organizadora no local do evento.</p>
-        </div>
+                <div class="calc-actions">
+                    <button id="btnLimpar" class="btn btn-danger" type="button">Limpar tudo</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-termos" class="tab-panel" role="tabpanel">
+            <div class="clause">
+                <h3>CLÁUSULA PRIMEIRA – DO OBJETO</h3>
+                <p>1.1. O presente termo estabelece as normas para aquisição, utilização e validade do sistema de cartões de aproximação (RFID) para o consumo de produtos e serviços nas barracas oficiais da Festa Junina 2026.</p>
+            </div>
+
+            <div class="clause">
+                <h3>CLÁUSULA SEGUNDA – DA AQUISIÇÃO E CUSTO DE ATIVAÇÃO</h3>
+                <p>2.1. O usuário deverá adquirir o cartão físico mediante o pagamento da taxa de ativação no valor de R$ 5,00 (cinco reais).</p>
+                <p>2.2. DA TROCA FINAL: Ao término do evento ou após o consumo total dos créditos, a devolução do cartão físico íntegro nos caixas autorizados dará ao portador o direito à troca por 01 (uma) garrafa de água mineral, não havendo devolução do valor de ativação em moeda corrente.</p>
+            </div>
+
+            <div class="clause">
+                <h3>CLÁUSULA TERCEIRA – DA VALIDADE DOS CRÉDITOS</h3>
+                <p>3.1. Os créditos inseridos no cartão são válidos exclusivamente para o período de realização da Festa Junina 2026.</p>
+                <p>3.2. DA EXPIRAÇÃO: Saldos remanescentes expiram automaticamente ao encerramento da festividade, não sendo permitida a transferência de valores para edições futuras ou outros eventos.</p>
+            </div>
+
+            <div class="clause">
+                <h3>CLÁUSULA QUARTA – DA POLÍTICA DE NÃO REEMBOLSO</h3>
+                <p>4.1. CONVERSÃO EM CONSUMO: Ao carregar o cartão, o usuário converte o valor em créditos para uso exclusivo na festa. Por essa razão, não haverá devolução de valores, estorno ou reembolso de saldos não utilizados, independentemente do motivo.</p>
+                <p>4.2. Recomendamos que o carregamento seja feito de acordo com a intenção de consumo, uma vez que a carga é definitiva e o saldo remanescente não é restituível.</p>
+            </div>
+
+            <div class="clause">
+                <h3>CLÁUSULA QUINTA – DA RESPONSABILIDADE E PRIVACIDADE</h3>
+                <p>5.1. DO ANONIMATO: O cartão de consumo é ao portador e não armazena dados pessoais, tais como CPF, nome ou correio eletrônico.</p>
+                <p>5.2. DA GUARDA E POSSE: A responsabilidade pela segurança e conservação do cartão é inteiramente do usuário.</p>
+                <p>5.3. DA PERDA OU ROUBO: Por ser um cartão sem identificação nominal:</p>
+                <ul class="list-items">
+                    <li>Não é possível realizar o bloqueio do dispositivo;</li>
+                    <li>Não haverá recuperação de saldo ou emissão de segunda via;</li>
+                    <li>O crédito contido no cartão será de livre uso de quem o detiver.</li>
+                </ul>
+            </div>
+
+            <div class="clause">
+                <h3>CLÁUSULA SEXTA – DAS REGRAS DE UTILIZAÇÃO</h3>
+                <p>6.1. O cartão é a única forma de pagamento aceita nas barracas oficiais identificadas.</p>
+                <p>6.2. É responsabilidade do usuário conferir o valor debitado e o saldo restante em cada transação.</p>
+                <p>6.3. Cartões danificados (dobrados, perfurados ou molhados) que impeçam a leitura do chip não serão substituídos ou reembolsados.</p>
+            </div>
+
+            <div class="clause">
+                <h3>CLÁUSULA SÉTIMA – DAS DISPOSIÇÕES GERAIS</h3>
+                <p>7.1. A aquisição e o carregamento do cartão implicam na aceitação automática e integral deste regulamento.</p>
+                <p>7.2. Eventuais casos omissos serão resolvidos pela Comissão Organizadora no local do evento.</p>
+            </div>
+        </section>
+
+        <section id="tab-sobre" class="tab-panel" role="tabpanel">
+            <div class="clause">
+                <h3>SOBRE A FESTA</h3>
+                <div class="info-card">
+                    <p>A Festa Junina da Paróquia São Rafael Mooca é um evento familiar com comidas típicas, música, brincadeiras e ações comunitárias.</p>
+                </div>
+                <div class="info-card">
+                    <p><strong>Horários:</strong> Sextas, sábados e domingos durante o período oficial da festa.</p>
+                </div>
+                <div class="info-card">
+                    <p><strong>Objetivo:</strong> Celebrar a cultura junina e apoiar as iniciativas pastorais e sociais da paróquia.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-mapa" class="tab-panel" role="tabpanel">
+            <div class="clause">
+                <h3>MAPA DA FESTA</h3>
+                <p>Mapa simplificado para orientação rápida dos visitantes.</p>
+                <div class="map-wrap">
+                    <div class="map-layout">
+                        <div class="map-box">Entrada</div>
+                        <div class="map-box">Bilheteria</div>
+                        <div class="map-box">Saída</div>
+                        <div class="map-box">Bebidas</div>
+                        <div class="map-box center">Praça Central</div>
+                        <div class="map-box">Doces</div>
+                        <div class="map-box">Brincadeiras</div>
+                        <div class="map-box">Palco</div>
+                        <div class="map-box">Banheiros</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-barracas" class="tab-panel" role="tabpanel">
+            <div class="clause">
+                <h3>BARRACAS</h3>
+                <div class="barracas-grid">
+                    <div class="barraca-item">
+                        <h4>Milho e Derivados</h4>
+                        <p>Milho, pamonha e canjica.</p>
+                    </div>
+                    <div class="barraca-item">
+                        <h4>Salgados</h4>
+                        <p>Pastel, lanche e porções.</p>
+                    </div>
+                    <div class="barraca-item">
+                        <h4>Bebidas Quentes</h4>
+                        <p>Quentão e vinho quente.</p>
+                    </div>
+                    <div class="barraca-item">
+                        <h4>Doces</h4>
+                        <p>Bolo, paçoca e arroz doce.</p>
+                    </div>
+                    <div class="barraca-item">
+                        <h4>Infantil</h4>
+                        <p>Pescaria e brincadeiras.</p>
+                    </div>
+                    <div class="barraca-item">
+                        <h4>Caixa / Recarga</h4>
+                        <p>Compra e recarga de cartão.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-patrocinadores" class="tab-panel" role="tabpanel">
+            <div class="clause">
+                <h3>PATROCINADORES</h3>
+                <p>Empresas e apoiadores que colaboram com a realização da festa.</p>
+                <div id="patrocinadoresAba" class="sponsors-grid" aria-label="Logos de patrocinadores"></div>
+            </div>
+        </section>
 
         <footer>
             <p>Paróquia São Rafael - Mooca<br>Viva São Rafael!</p>
+            <div class="footer-sponsors">
+                <div class="footer-sponsors-title">Patrocinadores</div>
+                <div id="patrocinadoresRodape" class="sponsors-grid" aria-label="Logos dos patrocinadores no rodapé"></div>
+            </div>
         </footer>
 
         <div class="stamp">ORIGINAL<br>MOOCA</div>
     </div>
+
+    <script>
+        const produtos = [
+            { nome: 'Milho Cozido', preco: 8.0 },
+            { nome: 'Pamonha', preco: 12.0 },
+            { nome: 'Canjica', preco: 10.0 },
+            { nome: 'Quentão', preco: 14.0 },
+            { nome: 'Vinho Quente', preco: 15.0 },
+            { nome: 'Pastel', preco: 13.0 }
+        ];
+
+        const produtosGrid = document.getElementById('produtosGrid');
+        const buscaProdutoEl = document.getElementById('buscaProduto');
+        const semResultadoBuscaEl = document.getElementById('semResultadoBusca');
+        const containerEl = document.querySelector('.container');
+        const btnLimpar = document.getElementById('btnLimpar');
+        const tabelaItens = document.getElementById('itensCarrinho');
+        const totalEl = document.getElementById('total');
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+        const patrocinadoresAbaEl = document.getElementById('patrocinadoresAba');
+        const patrocinadoresRodapeEl = document.getElementById('patrocinadoresRodape');
+
+        const itens = [];
+        const patrocinadores = [
+            { nome: 'Barnabitas', arquivo: 'patrocinadores/barnabitas.png' },
+            { nome: 'Policia Militar', arquivo: 'patrocinadores/policialmilitar.png' },
+            { nome: 'Prefeitura de Sao Paulo', arquivo: 'patrocinadores/prefeiturasaopaulo.png' }
+        ];
+
+        function formatarBRL(valor) {
+            return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        function normalizarTexto(texto) {
+            return texto
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '');
+        }
+
+        function renderizarPatrocinadores(destino) {
+            destino.innerHTML = '';
+            patrocinadores.forEach((patrocinador) => {
+                const card = document.createElement('div');
+                card.className = 'sponsor-card';
+
+                const box = document.createElement('div');
+                box.className = 'sponsor-logo-box';
+
+                const img = document.createElement('img');
+                img.src = patrocinador.arquivo;
+                img.alt = `Logo ${patrocinador.nome}`;
+
+                const nome = document.createElement('div');
+                nome.className = 'sponsor-name';
+                nome.textContent = patrocinador.nome;
+
+                box.appendChild(img);
+                card.appendChild(box);
+                card.appendChild(nome);
+                destino.appendChild(card);
+            });
+        }
+
+        function montarProdutos() {
+            produtos.forEach((produto, index) => {
+                const card = document.createElement('article');
+                card.className = 'product-card';
+                card.setAttribute('data-nome', normalizarTexto(produto.nome));
+                card.innerHTML = `
+                    <div class="product-name">${produto.nome}</div>
+                    <div class="product-price">${formatarBRL(produto.preco)}</div>
+                    <div class="qty-row">
+                        <button class="btn btn-mini" type="button" data-action="decrease" data-index="${index}">-</button>
+                        <span class="qty-display" id="qty-${index}">1</span>
+                        <button class="btn btn-mini" type="button" data-action="increase" data-index="${index}">+</button>
+                    </div>
+                    <button class="btn" type="button" data-action="add" data-index="${index}">Adicionar</button>
+                `;
+                produtosGrid.appendChild(card);
+            });
+        }
+
+        function filtrarProdutos() {
+            const termoBusca = normalizarTexto(buscaProdutoEl.value.trim());
+            const cards = produtosGrid.querySelectorAll('.product-card');
+            let visiveis = 0;
+
+            cards.forEach((card) => {
+                const nome = card.getAttribute('data-nome') || '';
+                const mostrar = termoBusca === '' || nome.includes(termoBusca);
+                card.style.display = mostrar ? '' : 'none';
+
+                if (mostrar) {
+                    visiveis += 1;
+                }
+            });
+
+            semResultadoBuscaEl.classList.toggle('active', visiveis === 0);
+        }
+
+        function renderizar() {
+            if (itens.length === 0) {
+                tabelaItens.innerHTML = '<tr><td class="cart-empty" colspan="5">Nenhum item adicionado.</td></tr>';
+                totalEl.textContent = formatarBRL(0);
+                return;
+            }
+
+            tabelaItens.innerHTML = '';
+            let total = 0;
+
+            itens.forEach((item, index) => {
+                const subtotal = item.preco * item.quantidade;
+                total += subtotal;
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${item.nome}</td>
+                    <td>${item.quantidade}</td>
+                    <td>${formatarBRL(item.preco)}</td>
+                    <td>${formatarBRL(subtotal)}</td>
+                    <td><button class="btn btn-danger" data-remove="${index}" type="button">Remover</button></td>
+                `;
+                tabelaItens.appendChild(tr);
+            });
+
+            totalEl.textContent = formatarBRL(total);
+        }
+
+        function adicionarItem(indice, quantidade) {
+            const produto = produtos[indice];
+            itens.push({
+                nome: produto.nome,
+                preco: produto.preco,
+                quantidade
+            });
+            renderizar();
+        }
+
+        produtosGrid.addEventListener('click', (event) => {
+            const botao = event.target.closest('[data-action]');
+            if (!botao) {
+                return;
+            }
+
+            const indice = Number(botao.getAttribute('data-index'));
+            const acao = botao.getAttribute('data-action');
+            const qtdEl = document.getElementById(`qty-${indice}`);
+            let quantidadeAtual = Number(qtdEl.textContent);
+
+            if (acao === 'increase') {
+                quantidadeAtual += 1;
+                qtdEl.textContent = quantidadeAtual;
+                return;
+            }
+
+            if (acao === 'decrease') {
+                quantidadeAtual = Math.max(1, quantidadeAtual - 1);
+                qtdEl.textContent = quantidadeAtual;
+                return;
+            }
+
+            if (acao === 'add') {
+                adicionarItem(indice, quantidadeAtual);
+                qtdEl.textContent = '1';
+            }
+        });
+
+        buscaProdutoEl.addEventListener('input', filtrarProdutos);
+
+        tabButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const tabName = button.getAttribute('data-tab');
+
+                tabButtons.forEach((btn) => btn.classList.remove('active'));
+                tabPanels.forEach((panel) => panel.classList.remove('active'));
+
+                button.classList.add('active');
+                document.getElementById(`tab-${tabName}`).classList.add('active');
+
+                containerEl.classList.toggle('hide-footer', tabName === 'patrocinadores');
+            });
+        });
+
+        btnLimpar.addEventListener('click', () => {
+            itens.length = 0;
+            renderizar();
+        });
+
+        tabelaItens.addEventListener('click', (event) => {
+            const botao = event.target.closest('[data-remove]');
+            if (!botao) {
+                return;
+            }
+
+            const indice = Number(botao.getAttribute('data-remove'));
+            itens.splice(indice, 1);
+            renderizar();
+        });
+
+        montarProdutos();
+        renderizarPatrocinadores(patrocinadoresAbaEl);
+        renderizarPatrocinadores(patrocinadoresRodapeEl);
+        filtrarProdutos();
+        renderizar();
+    </script>
 
 </body>
 </html>
