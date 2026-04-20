@@ -383,6 +383,34 @@
             padding: 12px;
         }
 
+        .map-preview-btn {
+            display: block;
+            width: 100%;
+            border: 0;
+            padding: 0;
+            background: transparent;
+            cursor: zoom-in;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .map-preview {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: 2px solid #d9c8b8;
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        .map-hint {
+            margin: 8px 0 0;
+            font-size: 0.95rem;
+            color: #7a5c4f;
+            font-style: italic;
+            text-align: center;
+        }
+
         .map-layout {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -407,6 +435,79 @@
         .map-box.center {
             background: #e9f5db;
             border-color: #8fb571;
+        }
+
+        .map-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.82);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 14px;
+            box-sizing: border-box;
+        }
+
+        .map-modal.active {
+            display: flex;
+        }
+
+        .map-modal-content {
+            position: relative;
+            width: min(1100px, 100%);
+            max-height: 100%;
+            overflow: auto;
+            border: 3px solid #f4e2d1;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+            padding: 10px;
+        }
+
+        .map-modal-close {
+            position: sticky;
+            top: 0;
+            float: right;
+            border: 2px solid var(--wood-dark);
+            border-radius: 999px;
+            width: 34px;
+            height: 34px;
+            line-height: 1;
+            font-size: 1.3rem;
+            cursor: pointer;
+            background: #fff;
+            color: #4b2c20;
+            z-index: 2;
+        }
+
+        .map-modal-image-wrap {
+            clear: both;
+            overflow: auto;
+            border-radius: 8px;
+            background: #fff;
+            touch-action: pan-x pan-y;
+        }
+
+        .map-modal-image {
+            display: block;
+            width: 100%;
+            height: auto;
+            transform-origin: center;
+            transition: transform 0.2s ease;
+            cursor: zoom-in;
+        }
+
+        .map-modal-image.zoomed {
+            transform: scale(1.8);
+            cursor: zoom-out;
+        }
+
+        .map-modal-tip {
+            margin: 8px 0 0;
+            font-size: 0.92rem;
+            text-align: center;
+            color: #6f4b3a;
         }
 
         .sponsors-grid {
@@ -495,6 +596,14 @@
 
             .product-stall {
                 font-size: 1rem;
+            }
+
+            .map-modal-content {
+                padding: 8px;
+            }
+
+            .map-modal-image.zoomed {
+                transform: scale(2.15);
             }
         }
 
@@ -709,17 +818,10 @@
                 <h3>MAPA DA FESTA</h3>
                 <p>Mapa simplificado para orientação rápida dos visitantes.</p>
                 <div class="map-wrap">
-                    <div class="map-layout">
-                        <div class="map-box">Entrada</div>
-                        <div class="map-box">Bilheteria</div>
-                        <div class="map-box">Saída</div>
-                        <div class="map-box">Bebidas</div>
-                        <div class="map-box center">Praça Central</div>
-                        <div class="map-box">Doces</div>
-                        <div class="map-box">Brincadeiras</div>
-                        <div class="map-box">Palco</div>
-                        <div class="map-box">Banheiros</div>
-                    </div>
+                    <button id="btnAbrirMapa" class="map-preview-btn" type="button" aria-label="Abrir mapa da festa em tela cheia">
+                        <img class="map-preview" src="mapa/mapadafaesta.png" alt="Mapa da Festa Junina" loading="lazy">
+                    </button>
+                    <p class="map-hint">Toque na imagem para abrir em tela cheia e ampliar os detalhes.</p>
                 </div>
             </div>
         </section>
@@ -801,6 +903,16 @@
         <div class="stamp">ORIGINAL<br>MOOCA</div>
     </div>
 
+    <div id="mapModal" class="map-modal" aria-hidden="true">
+        <div class="map-modal-content" role="dialog" aria-modal="true" aria-label="Mapa da festa ampliado">
+            <button id="btnFecharMapa" class="map-modal-close" type="button" aria-label="Fechar mapa ampliado">×</button>
+            <div class="map-modal-image-wrap">
+                <img id="mapModalImage" class="map-modal-image" src="mapa/mapadafaesta.png" alt="Mapa da Festa Junina ampliado">
+            </div>
+            <p class="map-modal-tip">Clique na imagem para alternar entre zoom e tamanho original.</p>
+        </div>
+    </div>
+
     <script>
         const produtos = [
             { nome: 'Milho Cozido', preco: 10.0, barraca: 'Mineira' },
@@ -825,6 +937,10 @@
         const tabPanels = document.querySelectorAll('.tab-panel');
         const patrocinadoresAbaEl = document.getElementById('patrocinadoresAba');
         const patrocinadoresRodapeEl = document.getElementById('patrocinadoresRodape');
+        const btnAbrirMapa = document.getElementById('btnAbrirMapa');
+        const mapModal = document.getElementById('mapModal');
+        const btnFecharMapa = document.getElementById('btnFecharMapa');
+        const mapModalImage = document.getElementById('mapModalImage');
 
         const itens = [];
         const patrocinadores = [
@@ -1002,6 +1118,38 @@
             const indice = Number(botao.getAttribute('data-remove'));
             itens.splice(indice, 1);
             renderizar();
+        });
+
+        function abrirMapa() {
+            mapModal.classList.add('active');
+            mapModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function fecharMapa() {
+            mapModal.classList.remove('active');
+            mapModal.setAttribute('aria-hidden', 'true');
+            mapModalImage.classList.remove('zoomed');
+            document.body.style.overflow = '';
+        }
+
+        btnAbrirMapa.addEventListener('click', abrirMapa);
+        btnFecharMapa.addEventListener('click', fecharMapa);
+
+        mapModal.addEventListener('click', (event) => {
+            if (event.target === mapModal) {
+                fecharMapa();
+            }
+        });
+
+        mapModalImage.addEventListener('click', () => {
+            mapModalImage.classList.toggle('zoomed');
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && mapModal.classList.contains('active')) {
+                fecharMapa();
+            }
         });
 
         montarProdutos();
