@@ -301,6 +301,12 @@
             background: #fff;
         }
 
+        .cart-table-wrap {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
         .cart-table th,
         .cart-table td {
             border: 1px solid #d9c8b8;
@@ -465,6 +471,10 @@
             .map-layout {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .cart-table {
+                min-width: 620px;
+            }
         }
 
         .list-items {
@@ -562,22 +572,24 @@
                 <div id="produtosGrid" class="products-grid" aria-label="Lista de produtos"></div>
                 <p id="semResultadoBusca" class="search-empty">Nenhum produto encontrado para essa pesquisa.</p>
 
-                <table class="cart-table" aria-label="Itens selecionados">
-                    <thead>
-                        <tr>
-                            <th>Produto</th>
-                            <th>Quantidade</th>
-                            <th>Valor unitário</th>
-                            <th>Subtotal</th>
-                            <th>Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody id="itensCarrinho">
-                        <tr>
-                            <td class="cart-empty" colspan="5">Nenhum item adicionado.</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="cart-table-wrap">
+                    <table class="cart-table" aria-label="Itens selecionados">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Quantidade</th>
+                                <th>Valor unitário</th>
+                                <th>Subtotal</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="itensCarrinho">
+                            <tr>
+                                <td class="cart-empty" colspan="5">Nenhum item adicionado.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <div class="total-box">Total: <span id="total">R$ 0,00</span></div>
 
