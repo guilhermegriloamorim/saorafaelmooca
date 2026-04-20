@@ -219,13 +219,22 @@
 
         .product-name {
             font-family: 'Special Elite', cursive;
-            font-size: 0.95rem;
+            font-size: 1.15rem;
+            line-height: 1.2;
             margin-bottom: 4px;
         }
 
         .product-price {
             margin-bottom: 8px;
             color: #6b422f;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .product-stall {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: #7a5c4f;
             font-weight: bold;
         }
 
@@ -475,6 +484,18 @@
             .cart-table {
                 min-width: 620px;
             }
+
+            .product-name {
+                font-size: 1.25rem;
+            }
+
+            .product-price {
+                font-size: 1.35rem;
+            }
+
+            .product-stall {
+                font-size: 1rem;
+            }
         }
 
         .list-items {
@@ -671,15 +692,13 @@
                 <h3>SOBRE A FESTA</h3>
                 <div class="info-card">
                     <p>A Festa Junina da Paróquia São Rafael Mooca é um evento familiar com comidas típicas, música,
-                        brincadeiras e ações comunitárias.</p>
+                        brincadeiras e ações comunitárias.<strong> O trabalho é realizado por voluntários da paroquia</strong>, com o objetivo de celebrar a cultura junina e apoiar as iniciativas pastorais e sociais da comunidade.
+                    </p>
                 </div>
                 <div class="info-card">
-                    <p><strong>Horários:</strong> Sextas, sábados e domingos durante o período oficial da festa.</p>
-                </div>
-                <div class="info-card">
-                    <p><strong>Objetivo:</strong> Celebrar a cultura junina e apoiar as iniciativas pastorais e sociais
-                        da paróquia.</p>
-                </div>
+                    <p><strong>Horários:</strong> Aos sábados das 18h às 23h e aos domingos das 18h às 22h.</p>
+                    <p><strong>Dias:</strong> 6 e 7 de junho, 13 e 14 de junho, 20 e 21 de junho, 27 e 28 de junho, 4 e 5 de julho.</p>
+                </div>    
             </div>
         </section>
 
@@ -784,12 +803,16 @@
 
     <script>
         const produtos = [
-            { nome: 'Milho Cozido', preco: 8.0 },
-            { nome: 'Pamonha', preco: 12.0 },
-            { nome: 'Canjica', preco: 10.0 },
-            { nome: 'Quentão', preco: 14.0 },
-            { nome: 'Vinho Quente', preco: 15.0 },
-            { nome: 'Pastel', preco: 13.0 }
+            { nome: 'Milho Cozido', preco: 10.0, barraca: 'Mineira' },
+            { nome: 'Pizza', preco: 13.0, barraca: 'Pizza' },
+            { nome: 'Crepe', preco: 15.0, barraca: 'Crepe' },
+            { nome: 'Pamonha', preco: 12.0, barraca: 'Mineira' },
+            { nome: 'Canjica', preco: 10.0, barraca: 'Caipira' },
+            { nome: 'Quentão', preco: 14.0, barraca: 'Caipira' },
+            { nome: 'Vinho Quente', preco: 15.0, barraca: 'Caipira' },
+            { nome: 'Fogazza', preco: 13.0, barraca: 'Fogazza' },
+            { nome: 'Refrigerante', preco: 10.0, barraca: 'Bar' },
+            { nome: 'Alheira', preco: 10.0, barraca: 'Portuguesa' }
         ];
 
         const produtosGrid = document.getElementById('produtosGrid');
@@ -805,7 +828,7 @@
 
         const itens = [];
         const patrocinadores = [
-            { nome: 'Barnabitas', arquivo: 'patrocinadores/barnabitas.png' },
+            { nome: 'Padres Barnabitas', arquivo: 'patrocinadores/barnabitas.png' },
             { nome: 'Policia Militar', arquivo: 'patrocinadores/policialmilitar.png' },
             { nome: 'Prefeitura de Sao Paulo', arquivo: 'patrocinadores/prefeiturasaopaulo.png' }
         ];
@@ -849,14 +872,15 @@
             produtos.forEach((produto, index) => {
                 const card = document.createElement('article');
                 card.className = 'product-card';
-                card.setAttribute('data-nome', normalizarTexto(produto.nome));
+                card.setAttribute('data-nome', normalizarTexto(`${produto.nome} ${produto.barraca}`));
                 card.innerHTML = `
-                    <div class="product-name">${produto.nome}</div>
-                    <div class="product-price">${formatarBRL(produto.preco)}</div>
-                    <div class="qty-row">
-                        <button class="btn btn-mini" type="button" data-action="decrease" data-index="${index}">-</button>
-                        <span class="qty-display" id="qty-${index}">1</span>
-                        <button class="btn btn-mini" type="button" data-action="increase" data-index="${index}">+</button>
+                <div class="product-name">${produto.nome}</div>
+                <div class="product-stall">Barraca  ${produto.barraca}</div>
+                <div class="product-price">${formatarBRL(produto.preco)}</div>
+                <div class="qty-row">
+                    <button class="btn btn-mini" type="button" data-action="decrease" data-index="${index}">-</button>
+                    <span class="qty-display" id="qty-${index}">1</span>
+                    <button class="btn btn-mini" type="button" data-action="increase" data-index="${index}">+</button>
                     </div>
                     <button class="btn" type="button" data-action="add" data-index="${index}">Adicionar</button>
                 `;
@@ -898,7 +922,7 @@
 
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td>${item.nome}</td>
+                    <td>${item.nome}<br><small>Barraca: ${item.barraca}</small></td>
                     <td>${item.quantidade}</td>
                     <td>${formatarBRL(item.preco)}</td>
                     <td>${formatarBRL(subtotal)}</td>
@@ -914,6 +938,7 @@
             const produto = produtos[indice];
             itens.push({
                 nome: produto.nome,
+                barraca: produto.barraca,
                 preco: produto.preco,
                 quantidade
             });
