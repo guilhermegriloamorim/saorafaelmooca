@@ -353,7 +353,7 @@
 
         .barracas-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            /* grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); */
             gap: 10px;
         }
 
@@ -613,6 +613,14 @@
             padding-left: 15px;
         }
 
+        .list-items ul li {
+            list-style: none;
+            margin: 2px;
+            padding-left: 15px;
+            font-size: 0.90rem;
+            font-style: italic;
+        }
+
         .list-items li {
             font-size: 1.1rem;
             margin-bottom: 5px;
@@ -622,6 +630,15 @@
             content: "• ";
             color: var(--pastel-red);
             font-weight: bold;
+        }
+
+        .barraca-item p.aviso,
+        p.aviso {
+            color: #6f2f2f;
+            font-size: 0.90rem;
+            margin-top: 5px;
+            opacity: 0.8;
+            font-style: italic;
         }
 
         footer {
@@ -679,7 +696,8 @@
             <span>Paróquia São Rafael Mooca</span>
             <h1>FESTA JUNINA 2026</h1>
             <div style="font-weight: bold;">
-                <p><strong>Dias:</strong> 6 e 7 de junho, 13 e 14 de junho, 20 e 21 de junho, 27 e 28 de junho, 4 e 5 de julho.</p>
+                <p><strong>Dias:</strong> 6 e 7 de junho, 13 e 14 de junho, 20 e 21 de junho, 27 e 28 de junho, 4 e 5 de
+                    julho.</p>
                 <p><strong>Horários:</strong> Aos sábados das 18h às 22h e aos domingos das 18h às 22h.</p>
             </div>
             <div style="font-weight: bold;"> 🔥 🏮 🌽 </div>
@@ -852,55 +870,136 @@
         <!-- Barracas -->
         <section id="tab-barracas" class="tab-panel" role="tabpanel">
             <div class="clause">
-                <h3>BARRACAS</h3>
-                <div class="barracas-grid">
-                    <div class="barraca-item">
-                        <h4>Caipira</h4>
-                        <p>Pinhão, canjica, vinho quente, quentão, bolo, cuzcuz, paçoca e arroz doce.</p>
+                <div style="margin-top:12px;">
+                    <h3>BARRACAS</h3>
+                    <div class="barracas-grid">
+                        <div class="barraca-item">
+                            <h4>Brinquedos</h4>
+                            <p>Brincadeiras e atrações para crianças.</p>
+                        </div>
+                        <div class="barraca-item">
+                            <h4>Pescaria</h4>
+                            <p>Pescaria com prêmios e diversão.</p>
+                        </div>
+                        <div class="barraca-item">
+                            <h4>Caipira</h4>
+                            <p>Pinhão, canjica, vinho quente, quentão, bolo, cuzcuz, paçoca e arroz doce.</p>
+                        </div>
+                        <div class="barraca-item">
+                            <h4>Pizza</h4>
+                            <p>Fatias de pizza variadas.</p>
+                        </div>
+                        <div class="barraca-item">
+                            <h4>Doces</h4>
+                            <p>Bolos, doces e sobremesas.</p>
+                        </div>
+                        <div class="barraca-item">
+                            <h4>Crepe</h4>
+                            <p>Crepes doces e salgados preparados na hora.</p>
+                        </div>
+                        <div class="barraca-item">
+                            <h4>Alagadão Doce</h4>
+                            <p>Doces e guloseimas especiais.</p>
+                        </div>
+                        <div class="barraca-item">
+                            <h4>Fogazza</h4>
+                            <p>Tradicional fogazza Mussarela e Calabresa.</p>
+                        </div>
+                        <div class="barraca-item">
+                            <h4>Bingo</h4>
+                            <p>Bingo e prêmios para os participantes.</p>
+                        </div>
+                        <div class="barraca-item">
+                            <h4>Churrasco</h4>
+                            <p>Espetinhos de carne e linguiça, com a opção de pão e vinagrete.</p>
+                            <p class="aviso">(*) O pão do churrasco é uma opção do cardápio e é cobrado à parte.</p>
+                        </div>
+                        <div class="barraca-item">
+                            <h4>Portuguesa</h4>
+                            <p>Bolinho de bacalhau, porção de linguiça tipo portuguesa, porção de linguiça tipo alheira,
+                                caldo verde, pastel de nata, vinho tinto seco e suave.</p>
+                            <p class="aviso">(*) As porções de linguiça e caldo verde, acompanham uma porção pequena de
+                                pão.</p>
+                        </div>
+                        <div class="barraca-item">
+                            <h4>Fruta</h4>
+                            <ul class="list-items">
+                                <li>Frutas no palito com chocolate</li>
+                                <li>Maçã do amor</li>
+                                <li>Saladas de frutas</li>
+                                <li>Suco natural de laranja</li>
+                            </ul>
+                        </div>
+                        <div class="barraca-item">
+                            <h4>Bar</h4>
+                            <ul class="list-items">
+                                <li>Refrigerantes de 350 ml:
+                                    <ul class="list-items">
+                                        <li>Coca-Cola</li>
+                                        <li>Coca-Cola Zero</li>
+                                        <li>Guaraná Antartica</li>
+                                        <li>Guaraná Antartica Zero</li>
+                                    </ul>
+                                </li>
+                                <li>Cervejas de 350 ml:
+                                    <ul class="list-items">
+                                        <li>Heineken</li>
+                                        <li>Amastel</li>
+                                    </ul>
+                                </li>
+                                <li>H2O</li>
+                                <li>Sucos</li>
+                                <li>Vinho Tinto</li>
+                                <li>Água Mineral
+                                    <ul class="list-items">
+                                        <li>Sem Gás</li>
+                                        <li>Com Gás</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p class="aviso">(*) A venda de bebidas alcoólicas é permitida apenas para maiores de 18
+                                anos.</p>
+                        </div>
+                        <div class="barraca-item">
+                            <h4>Mineira</h4>
+                            <p>Comidas típicas da culinária mineira como: </p>
+                            <ul class="list-items">
+                                <li>Lanche de Pernil</li>
+                                <li>Lanche de Pernil com Vinagrete</li>
+                                <li>Caldinho de Feijão</li>
+                                <li>Caldinho de Mandioca</li>
+                                <li>Milho Verde</li>
+                                <li>Pamonha</li>
+                                <li>Cural</li>
+                            </ul>
+                            <p class="aviso">(*) Os caldos acompanham uma porção pequena de pão.</p>
+                        </div>
+                        <div class="barraca-item">
+                            <h4>Cantina</h4>
+                            <p>Macarrão</p>
+                            <ul class="list-items">
+                                <li>Sugo</li>
+                                <li>Bolonhesa</li>
+                                <li>Carbonara</li>
+                                <li>Pesto</li>
+                            </ul>
+                            <p class="aviso">(*) O prato de macarrão acompanha uma porção pequena de pão e um pacote de
+                                queijo ralado 10g.</p>
+                        </div>
                     </div>
-                    <div class="barraca-item">
-                        <h4>Fogazza</h4>
-                        <p>Tradicional fogazza Mussarela e Calabresa.</p>
-                    </div>
-                    <div class="barraca-item">
-                        <h4>Bar</h4>
-                        <p>Bebidas como água, refrigerante e cerveja.</p>
-                    </div>
-                    <div class="barraca-item">
-                        <h4>Doces</h4>
-                        <p>Bolos, doces variados e sobremesas.</p>
-                    </div>
-                    <div class="barraca-item">
-                        <h4>Pescaria</h4>
-                        <p>Pescaria e brincadeiras.</p>
-                    </div>
-                    <div class="barraca-item">
-                        <h4>Churrasco</h4>
-                        <p>Churrasco e espetinhos variados.</p>
-                    </div>
-                    <div class="barraca-item">
-                        <h4>Bingo</h4>
-                        <p>Bingo e prêmios.</p>
-                    </div>
-                    <div class="barraca-item">
-                        <h4>Crepe</h4>
-                        <p>Variedades de crepes doces e salgados.</p>
-                    </div>
-                    <div class="barraca-item">
-                        <h4>Portuguesa</h4>
-                        <p>Tradicional prato de festa.</p>
-                    </div>
-                    <div class="barraca-item">
-                        <h4>Mineira</h4>
-                        <p>Comidas típicas da culinária mineira.</p>
-                    </div>
-                    <div class="barraca-item">
-                        <h4>Cantina Macarrão</h4>
-                        <p>Macarrão molho vermelho, pesto e branco.</p>
-                    </div>
-                    <div class="barraca-item">
-                        <h4>Caixa / Recarga</h4>
-                        <p>Compra e recarga de cartão.</p>
+                </div>
+                <div style="margin-top:20px;">
+                    <h3>EQUIPES</h3>
+                    <div class="info-card">
+                        <p>Equipes responsáveis pelo apoio e operação da festa:</p>
+                        <ul class="list-items">
+                            <li>Comissão de Festa</li>
+                            <li>Montagem</li>
+                            <li>Caixas</li>
+                            <li>Compras</li>
+                            <li>Almoxarifado</li>
+                            <li>Comunicação e Som</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -923,6 +1022,7 @@
                 <p>Paróquia São Rafael - Mooca<br>Viva São Rafael!</p>
             </div>
         </footer>
+
         <div class="stamp">ORIGINAL<br>MOOCA</div>
     </div>
 
