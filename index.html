@@ -730,6 +730,54 @@
             text-transform: uppercase;
         }
 
+        .social-cta {
+            margin-top: 12px;
+            padding: 6px 0;
+            font-family: 'Patrick Hand', cursive;
+        }
+
+        .social-title {
+            margin: 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .social-line {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .social-hashtag {
+            margin: 0;
+            line-height: 1.35;
+            font-size: 1rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid #d9c8b8;
+            border-radius: 999px;
+            padding: 4px 10px;
+            background: #550707;
+            color: hsl(0, 0%, 100%);
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .social-link:hover {
+            background: #fff4e6;
+        }
+
+        .social-icon {
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+        }
+
         @media (max-width: 700px) {
             .container {
                 margin: 14px auto;
@@ -990,7 +1038,7 @@
         .stamp {
             position: absolute;
             bottom: 10px;
-            right: 20px;
+            right: 5px;
             width: 70px;
             height: 70px;
             border: 3px double var(--wood-dark);
@@ -1419,8 +1467,21 @@
             <div id="patrocinadoresRodape" class="sponsors-grid" aria-label="Logos dos patrocinadores no rodapé"></div>
             <div class="footer-sponsors-title">Apoio</div>
             <div id="apoioRodape" class="sponsors-grid" aria-label="Logos dos apoiadores no rodapé"></div>
+            
             <div class="footer-sponsors">
                 <p>Paróquia São Rafael - Mooca<br>Viva São Rafael!</p>
+                
+                <div class="social-cta" data-track-section="rodape" data-track-item="Instagram Festa">
+                    <div class="social-line">
+                        <a class="social-link" href="https://www.instagram.com/paroquiasaorafaelmoocasp/" target="_blank" rel="noopener noreferrer"
+                        aria-label="Abrir Instagram da Paróquia São Rafael Mooca">
+                        <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path fill="currentColor"
+                            d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 1.8A3.7 3.7 0 0 0 3.8 7.5v9A3.7 3.7 0 0 0 7.5 20.2h9a3.7 3.7 0 0 0 3.7-3.7v-9a3.7 3.7 0 0 0-3.7-3.7h-9Zm9.6 1.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Z" />
+                        </svg>@paroquiasaorafaelmoocasp</a>
+                    </div>
+                </div>
+                <p><strong>#arraiasaorafaelmooca</strong></p>
             </div>
         </footer>
 
