@@ -324,6 +324,7 @@
             border-collapse: collapse;
             margin-top: 10px;
             background: #fff;
+            table-layout: fixed;
         }
 
         .cart-table-wrap {
@@ -337,12 +338,42 @@
             border: 1px solid #d9c8b8;
             padding: 8px;
             text-align: left;
+            vertical-align: top;
+            word-break: break-word;
         }
 
         .cart-table th {
             font-family: 'Special Elite', cursive;
             background: #fdf2e6;
             font-size: 0.95rem;
+        }
+
+        .cart-table th:last-child,
+        .cart-table td:last-child {
+            width: 92px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .cart-table td:last-child {
+            vertical-align: middle;
+        }
+
+        .cart-table td:last-child .btn {
+            display: inline-block;
+            margin: 0 auto;
+        }
+
+        .cart-item-title {
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .cart-item-meta {
+            display: block;
+            font-size: 0.92rem;
+            line-height: 1.25;
+            color: #5c4133;
         }
 
         .cart-empty {
@@ -599,7 +630,23 @@
             }
 
             .cart-table {
-                min-width: 620px;
+                min-width: 0;
+            }
+
+            .cart-table th,
+            .cart-table td {
+                padding: 6px;
+            }
+
+            .cart-item-meta {
+                font-size: 0.83rem;
+            }
+
+            .cart-table td:last-child .btn {
+                width: auto;
+                min-width: 78px;
+                padding: 8px 6px;
+                font-size: 0.82rem;
             }
 
             .product-name {
@@ -1325,9 +1372,10 @@
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td>
-                        <strong>${item.nome}</strong><br>
-                        <small>Barraca: ${item.barraca}</small><br>
-                        <small>Quantidade: ${item.quantidade} | Valor unitário: ${formatarBRL(item.preco)} | Subtotal: ${formatarBRL(subtotal)}</small>
+                        <strong class="cart-item-title">${item.nome}</strong>
+                        <small class="cart-item-meta">Barraca: ${item.barraca}</small>
+                        <small class="cart-item-meta">Qtd: ${item.quantidade} | Unit: ${formatarBRL(item.preco)}</small>
+                        <small class="cart-item-meta">Subtotal: ${formatarBRL(subtotal)}</small>
                     </td>
                     <td><button class="btn btn-danger" data-remove="${index}" type="button">Remover</button></td>
                 `;
