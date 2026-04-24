@@ -1402,6 +1402,28 @@
             setTimeout(dispararEvento, 0);
         }
 
+        function registrarNavegacaoSecao(tabName, rotuloAba) {
+            const hashSecao = `#tab-${tabName}`;
+            const pagePath = `${window.location.pathname}${hashSecao}`;
+            const pageLocation = `${window.location.origin}${pagePath}`;
+
+            if (window.history && typeof window.history.replaceState === 'function') {
+                window.history.replaceState(null, '', hashSecao);
+            }
+
+            enviarEventoGA('page_view', {
+                page_title: `${document.title} - ${rotuloAba}`,
+                page_location: pageLocation,
+                page_path: pagePath
+            });
+
+            enviarEventoGA('section_view', {
+                section_name: tabName,
+                item_name: rotuloAba,
+                action: 'visualizacao_secao'
+            });
+        }
+
         function renderizarPatrocinadores(destino) {
            
             if (!destino) {
@@ -1616,6 +1638,7 @@
             button.addEventListener('click', () => {
                 const tabName = button.getAttribute('data-tab');
                 const painelAtivo = document.getElementById(`tab-${tabName}`);
+                const rotuloAba = button.textContent.trim();
 
                 tabButtons.forEach((btn) => btn.classList.remove('active'));
                 tabPanels.forEach((panel) => panel.classList.remove('active'));
@@ -1633,9 +1656,11 @@
 
                 enviarEventoGA('section_click', {
                     section_name: tabName,
-                    item_name: button.textContent.trim(),
+                    item_name: rotuloAba,
                     action: 'troca_aba'
                 });
+
+                registrarNavegacaoSecao(tabName, rotuloAba);
             });
         });
 
