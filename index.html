@@ -179,12 +179,62 @@
             margin: 0;
         }
 
+        .products-scroll-wrapper {
+            position: relative;
+        }
+
+        .products-scroll-wrapper::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 4px;
+            bottom: 28px;
+            height: 44px;
+            pointer-events: none;
+            background: linear-gradient(to bottom, rgba(254, 250, 224, 0), rgba(254, 250, 224, 0.98));
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .products-scroll-wrapper.is-scrollable:not(.at-bottom)::after {
+            opacity: 1;
+        }
+
         .products-scroll-box {
             margin: 12px 0;
             max-height: 560px;
             overflow-y: auto;
             padding-right: 4px;
             -webkit-overflow-scrolling: touch;
+        }
+
+        .products-scroll-hint {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            min-height: 20px;
+            margin-top: -4px;
+            margin-bottom: 8px;
+            font-size: 0.84rem;
+            color: #6f4b3a;
+            font-weight: bold;
+            letter-spacing: 0.02em;
+        }
+
+        .products-scroll-hint.active {
+            display: flex;
+            animation: scrollHintPulse 1.4s ease-in-out infinite;
+        }
+
+        @keyframes scrollHintPulse {
+            0%,
+            100% {
+                opacity: 0.55;
+            }
+
+            50% {
+                opacity: 1;
+            }
         }
 
         .search-wrap {
@@ -884,8 +934,11 @@
                     <input id="buscaProduto" type="text" placeholder="Digite o nome do produto..." autocomplete="off">
                 </div>
 
-                <div class="products-scroll-box" aria-label="Lista de produtos com rolagem">
-                    <div id="produtosGrid" class="products-grid" aria-label="Lista de produtos"></div>
+                <div id="produtosScrollWrapper" class="products-scroll-wrapper">
+                    <div id="produtosScrollBox" class="products-scroll-box" aria-label="Lista de produtos com rolagem">
+                        <div id="produtosGrid" class="products-grid" aria-label="Lista de produtos"></div>
+                    </div>
+                    <p id="produtosScrollHint" class="products-scroll-hint" aria-live="polite"></p>
                 </div>
                 <p id="semResultadoBusca" class="search-empty">Nenhum produto encontrado para essa pesquisa.</p>
 
@@ -1263,6 +1316,9 @@
         ];
 
         const produtosGrid = document.getElementById('produtosGrid');
+        const produtosScrollWrapperEl = document.getElementById('produtosScrollWrapper');
+        const produtosScrollBoxEl = document.getElementById('produtosScrollBox');
+        const produtosScrollHintEl = document.getElementById('produtosScrollHint');
         const buscaProdutoEl = document.getElementById('buscaProduto');
         const semResultadoBuscaEl = document.getElementById('semResultadoBusca');
         const btnLimpar = document.getElementById('btnLimpar');
@@ -1419,6 +1475,28 @@
             });
 
             semResultadoBuscaEl.classList.toggle('active', totalFiltrados === 0);
+            atualizarIndicadoresScrollProdutos();
+        }
+
+        function atualizarIndicadoresScrollProdutos() {
+            if (!produtosScrollWrapperEl || !produtosScrollBoxEl || !produtosScrollHintEl) {
+                return;
+            }
+
+            const temOverflow = (produtosScrollBoxEl.scrollHeight - produtosScrollBoxEl.clientHeight) > 8;
+            const chegouNoFim = (produtosScrollBoxEl.scrollTop + produtosScrollBoxEl.clientHeight) >= (produtosScrollBoxEl.scrollHeight - 8);
+
+            produtosScrollWrapperEl.classList.toggle('is-scrollable', temOverflow);
+            produtosScrollWrapperEl.classList.toggle('at-bottom', chegouNoFim);
+
+            if (!temOverflow) {
+                produtosScrollHintEl.classList.remove('active');
+                produtosScrollHintEl.textContent = '';
+                return;
+            }
+
+            produtosScrollHintEl.classList.add('active');
+            produtosScrollHintEl.textContent = chegouNoFim ? 'Fim da lista de itens' : 'Deslize para ver mais itens';
         }
 
         function renderizar() {
@@ -1502,6 +1580,12 @@
         buscaProdutoEl.addEventListener('input', () => {
             filtrarProdutos();
         });
+
+        if (produtosScrollBoxEl) {
+            produtosScrollBoxEl.addEventListener('scroll', atualizarIndicadoresScrollProdutos);
+        }
+
+        window.addEventListener('resize', atualizarIndicadoresScrollProdutos);
 
         tabButtons.forEach((button) => {
             button.addEventListener('click', () => {
@@ -1607,6 +1691,7 @@
         });
 
         montarProdutos();
+        atualizarIndicadoresScrollProdutos();
         renderizarPatrocinadores(patrocinadoresAbaEl);
         renderizarPatrocinadores(patrocinadoresRodapeEl);
         renderizarApoio(apoioRodapeEl);
