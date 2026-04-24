@@ -758,16 +758,13 @@
                     <table class="cart-table" aria-label="Itens selecionados">
                         <thead>
                             <tr>
-                                <th>Produto</th>
-                                <th>Quantidade</th>
-                                <th>Valor unitário</th>
-                                <th>Subtotal</th>
+                                <th>Item</th>
                                 <th>Ação</th>
                             </tr>
                         </thead>
                         <tbody id="itensCarrinho">
                             <tr>
-                                <td class="cart-empty" colspan="5">Nenhum item adicionado.</td>
+                                <td class="cart-empty" colspan="2">Nenhum item adicionado.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1313,7 +1310,7 @@
 
         function renderizar() {
             if (itens.length === 0) {
-                tabelaItens.innerHTML = '<tr><td class="cart-empty" colspan="5">Nenhum item adicionado.</td></tr>';
+                tabelaItens.innerHTML = '<tr><td class="cart-empty" colspan="2">Nenhum item adicionado.</td></tr>';
                 totalEl.textContent = formatarBRL(0);
                 return;
             }
@@ -1327,10 +1324,11 @@
 
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td>${item.nome}<br><small>Barraca: ${item.barraca}</small></td>
-                    <td>${item.quantidade}</td>
-                    <td>${formatarBRL(item.preco)}</td>
-                    <td>${formatarBRL(subtotal)}</td>
+                    <td>
+                        <strong>${item.nome}</strong><br>
+                        <small>Barraca: ${item.barraca}</small><br>
+                        <small>Quantidade: ${item.quantidade} | Valor unitário: ${formatarBRL(item.preco)} | Subtotal: ${formatarBRL(subtotal)}</small>
+                    </td>
                     <td><button class="btn btn-danger" data-remove="${index}" type="button">Remover</button></td>
                 `;
                 tabelaItens.appendChild(tr);
