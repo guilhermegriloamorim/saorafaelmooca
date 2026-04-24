@@ -1310,7 +1310,7 @@
             { nome: 'Macarrão à Bolonhesa', barraca: 'Cantina Macarrão', preco: 25.00 },
             { nome: 'Macarrão à Carbonara', barraca: 'Cantina Macarrão', preco: 27.00 },
             { nome: 'Macarrão ao Pesto', barraca: 'Cantina Macarrão', preco: 22.00 },
-             { nome: 'Espetinho de Carne', barraca: 'Churrasco', preco: 12.00 },
+            { nome: 'Espetinho de Carne', barraca: 'Churrasco', preco: 12.00 },
             { nome: 'Espetinho de Linguiça', barraca: 'Churrasco', preco: 12.00 },
             { nome: 'Churrasco no Pão com Vinagrete', barraca: 'Churrasco', preco: 18.00 },
             { nome: 'Linguiça no Pão com Vinagrete', barraca: 'Churrasco', preco: 18.00 },
@@ -1336,8 +1336,7 @@
             { nome: 'Suco', barraca: 'Bar', preco: 6.00 },
             { nome: 'Vinho Tinto', barraca: 'Bar', preco: 12.00 },
             { nome: 'Água Mineral Sem Gás', barraca: 'Bar', preco: 5.00 },
-            { nome: 'Água Mineral Com Gás', barraca: 'Bar', preco: 5.00 }
-            
+            { nome: 'Água Mineral Com Gás', barraca: 'Bar', preco: 5.00 },
         ];
 
         const produtosGrid = document.getElementById('produtosGrid');
@@ -1361,6 +1360,7 @@
         const mapModalImage = document.getElementById('mapModalImage');
         let debounceBuscaTimer = null;
         let ultimoTermoBuscaEnviado = '';
+        let ultimaListaProdutosEnviada = '';
 
         const itens = [];
         const patrocinadores = [
@@ -1493,6 +1493,7 @@
                 const card = document.createElement('article');
                 card.className = 'product-card';
                 card.setAttribute('data-nome', normalizarTexto(`${produto.nome} ${produto.barraca}`));
+                card.setAttribute('data-index', String(index));
                 card.innerHTML = `
                 <div class="product-name">${produto.nome}</div>
                 <div class="product-stall">Barraca  ${produto.barraca}</div>
@@ -1512,6 +1513,7 @@
             const termoBusca = normalizarTexto(buscaProdutoEl.value.trim());
             const cards = Array.from(produtosGrid.querySelectorAll('.product-card'));
             let totalFiltrados = 0;
+            const indicesVisiveis = [];
 
             cards.forEach((card) => {
                 const nome = card.getAttribute('data-nome') || '';
@@ -1520,11 +1522,13 @@
 
                 if (mostrar) {
                     totalFiltrados += 1;
+                    indicesVisiveis.push(Number(card.getAttribute('data-index')));
                 }
             });
 
             semResultadoBuscaEl.classList.toggle('active', totalFiltrados === 0);
             atualizarIndicadoresScrollProdutos();
+            rastrearVisualizacaoLista(indicesVisiveis);
             return totalFiltrados;
         }
 
@@ -1550,6 +1554,34 @@
                 search_term: termoDigitado,
                 results_count: totalResultados,
                 section_name: 'calculadora'
+            });
+        }
+
+        function rastrearVisualizacaoLista(indicesVisiveis) {
+            const indicesValidos = indicesVisiveis.filter((indice) => Number.isInteger(indice) && indice >= 0);
+            if (indicesValidos.length === 0) {
+                ultimaListaProdutosEnviada = '';
+                return;
+            }
+
+            const assinaturaLista = indicesValidos.join(',');
+            if (assinaturaLista === ultimaListaProdutosEnviada) {
+                return;
+            }
+
+            ultimaListaProdutosEnviada = assinaturaLista;
+
+            const itensVisiveis = indicesValidos.slice(0, 25).map((indice) => ({
+                item_name: produtos[indice].nome,
+                item_category: produtos[indice].barraca,
+                price: produtos[indice].preco,
+                index: indice
+            }));
+
+            enviarEventoGA('view_item_list', {
+                item_list_name: 'Produtos da Calculadora',
+                item_list_id: 'calculadora_produtos',
+                items: itensVisiveis
             });
         }
 
