@@ -359,6 +359,10 @@
             font-size: 1.1rem;
         }
 
+        .btn-add {
+            width: 100%;
+        }
+
         .btn-mini {
             padding: 5px 10px;
             min-height: 44px;
@@ -1813,7 +1817,7 @@
                     <span class="qty-display" id="qty-${index}">1</span>
                     <button class="btn btn-mini" type="button" data-action="increase" data-index="${index}">+</button>
                     </div>
-                    <button class="btn" type="button" data-action="add" data-index="${index}">Adicionar</button>
+                    <button class="btn btn-add" type="button" data-action="add" data-index="${index}">Adicionar</button>
                 `;
                 produtosGrid.appendChild(card);
             });
