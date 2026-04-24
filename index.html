@@ -173,9 +173,16 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            grid-template-columns: 1fr;
             gap: 10px;
+            margin: 0;
+        }
+
+        .products-scroll-box {
             margin: 12px 0;
+            max-height: 560px;
+            overflow-y: auto;
+            padding-right: 4px;
         }
 
         .search-wrap {
@@ -208,21 +215,6 @@
 
         .search-empty.active {
             display: block;
-        }
-
-        .products-pagination {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin: 10px 0 4px;
-            flex-wrap: wrap;
-        }
-
-        .products-pagination-info {
-            min-width: 120px;
-            text-align: center;
-            font-weight: bold;
         }
 
         .product-card {
@@ -653,6 +645,10 @@
                 font-size: 1.25rem;
             }
 
+            .products-scroll-box {
+                max-height: 500px;
+            }
+
             .product-price {
                 font-size: 1.35rem;
             }
@@ -793,11 +789,8 @@
                     <input id="buscaProduto" type="text" placeholder="Digite o nome do produto..." autocomplete="off">
                 </div>
 
-                <div id="produtosGrid" class="products-grid" aria-label="Lista de produtos"></div>
-                <div id="paginacaoProdutos" class="products-pagination" aria-label="Paginação dos produtos">
-                    <button id="paginaAnterior" class="btn btn-mini" type="button" aria-label="Página anterior">Anterior</button>
-                    <span id="paginaAtualInfo" class="products-pagination-info">Página 1 de 1</span>
-                    <button id="proximaPagina" class="btn btn-mini" type="button" aria-label="Próxima página">Próxima</button>
+                <div class="products-scroll-box" aria-label="Lista de produtos com rolagem">
+                    <div id="produtosGrid" class="products-grid" aria-label="Lista de produtos"></div>
                 </div>
                 <p id="semResultadoBusca" class="search-empty">Nenhum produto encontrado para essa pesquisa.</p>
 
@@ -1175,10 +1168,6 @@
         ];
 
         const produtosGrid = document.getElementById('produtosGrid');
-        const paginacaoProdutosEl = document.getElementById('paginacaoProdutos');
-        const paginaAnteriorEl = document.getElementById('paginaAnterior');
-        const proximaPaginaEl = document.getElementById('proximaPagina');
-        const paginaAtualInfoEl = document.getElementById('paginaAtualInfo');
         const buscaProdutoEl = document.getElementById('buscaProduto');
         const semResultadoBuscaEl = document.getElementById('semResultadoBusca');
         const btnLimpar = document.getElementById('btnLimpar');
@@ -1194,8 +1183,6 @@
         const mapModal = document.getElementById('mapModal');
         const btnFecharMapa = document.getElementById('btnFecharMapa');
         const mapModalImage = document.getElementById('mapModalImage');
-        const itensPorPagina = 3;
-        let paginaAtualProdutos = 1;
 
         const itens = [];
         const patrocinadores = [
@@ -1324,46 +1311,19 @@
         function filtrarProdutos() {
             const termoBusca = normalizarTexto(buscaProdutoEl.value.trim());
             const cards = Array.from(produtosGrid.querySelectorAll('.product-card'));
-            const cardsFiltrados = cards.filter((card) => {
-                const nome = card.getAttribute('data-nome') || '';
-                return termoBusca === '' || nome.includes(termoBusca);
-            });
-
-            const totalFiltrados = cardsFiltrados.length;
-            const totalPaginas = Math.max(1, Math.ceil(totalFiltrados / itensPorPagina));
-
-            if (paginaAtualProdutos > totalPaginas) {
-                paginaAtualProdutos = totalPaginas;
-            }
-
-            const inicio = (paginaAtualProdutos - 1) * itensPorPagina;
-            const fim = inicio + itensPorPagina;
+            let totalFiltrados = 0;
 
             cards.forEach((card) => {
-                card.style.display = 'none';
-            });
+                const nome = card.getAttribute('data-nome') || '';
+                const mostrar = termoBusca === '' || nome.includes(termoBusca);
+                card.style.display = mostrar ? '' : 'none';
 
-            cardsFiltrados.slice(inicio, fim).forEach((card) => {
-                card.style.display = '';
+                if (mostrar) {
+                    totalFiltrados += 1;
+                }
             });
 
             semResultadoBuscaEl.classList.toggle('active', totalFiltrados === 0);
-
-            if (paginaAtualInfoEl) {
-                paginaAtualInfoEl.textContent = `Página ${paginaAtualProdutos} de ${totalPaginas}`;
-            }
-
-            if (paginaAnteriorEl) {
-                paginaAnteriorEl.disabled = paginaAtualProdutos <= 1 || totalFiltrados === 0;
-            }
-
-            if (proximaPaginaEl) {
-                proximaPaginaEl.disabled = paginaAtualProdutos >= totalPaginas || totalFiltrados === 0;
-            }
-
-            if (paginacaoProdutosEl) {
-                paginacaoProdutosEl.style.display = totalFiltrados > itensPorPagina ? 'flex' : 'none';
-            }
         }
 
         function renderizar() {
@@ -1445,27 +1405,8 @@
         });
 
         buscaProdutoEl.addEventListener('input', () => {
-            paginaAtualProdutos = 1;
             filtrarProdutos();
         });
-
-        if (paginaAnteriorEl) {
-            paginaAnteriorEl.addEventListener('click', () => {
-                if (paginaAtualProdutos <= 1) {
-                    return;
-                }
-
-                paginaAtualProdutos -= 1;
-                filtrarProdutos();
-            });
-        }
-
-        if (proximaPaginaEl) {
-            proximaPaginaEl.addEventListener('click', () => {
-                paginaAtualProdutos += 1;
-                filtrarProdutos();
-            });
-        }
 
         tabButtons.forEach((button) => {
             button.addEventListener('click', () => {
