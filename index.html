@@ -1221,11 +1221,22 @@
         }
 
         function enviarEventoGA(nomeEvento, parametros) {
-            if (typeof window.gtag !== 'function') {
+            const parametrosEvento = { ...parametros };
+
+            const dispararEvento = () => {
+                if (typeof window.gtag !== 'function') {
+                    return;
+                }
+
+                window.gtag('event', nomeEvento, parametrosEvento);
+            };
+
+            if ('requestIdleCallback' in window) {
+                window.requestIdleCallback(dispararEvento, { timeout: 800 });
                 return;
             }
 
-            window.gtag('event', nomeEvento, parametros);
+            setTimeout(dispararEvento, 0);
         }
 
         function renderizarPatrocinadores(destino) {
