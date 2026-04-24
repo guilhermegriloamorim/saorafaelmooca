@@ -473,6 +473,52 @@
             margin-bottom: 10px;
         }
 
+        .location-cta {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+        }
+
+        .location-map {
+            width: 100%;
+            height: 280px;
+            border: 2px solid #d9c8b8;
+            border-radius: 8px;
+        }
+
+        .location-cta .btn {
+            width: auto;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+            text-align: center;
+            min-height: 38px;
+            padding: 8px 12px;
+            font-size: 0.82rem;
+        }
+
+        .payment-list {
+            list-style: none;
+            margin: 8px 0 0;
+            padding: 0;
+            display: grid;
+            gap: 8px;
+        }
+
+        .payment-item {
+            display: flex;
+            align-items: flex-start;
+            background: #fff8ee;
+            border: 1px solid #e5d3c2;
+            border-radius: 6px;
+            padding: 8px 10px;
+            font-size: 1rem;
+        }
+
         .barracas-grid {
             display: grid;
             /* grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); */
@@ -812,6 +858,25 @@
                 font-size: 0.78rem;
                 padding: 7px 4px;
             }
+
+            .cookie-banner {
+                left: 8px;
+                right: 8px;
+                bottom: 8px;
+                padding: 10px;
+            }
+
+            .cookie-banner p {
+                font-size: 0.86rem;
+            }
+
+            .cookie-actions {
+                justify-content: stretch;
+            }
+
+            .cookie-actions .btn {
+                flex: 1;
+            }
         }
 
         @media (max-width: 360px) {
@@ -878,6 +943,50 @@
             font-size: 0.9rem;
         }
 
+        .cookie-banner {
+            position: fixed;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            z-index: 10000;
+            background: #fff8ee;
+            border: 2px solid var(--wood-dark);
+            border-radius: 10px;
+            padding: 12px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+            display: none;
+        }
+
+        .cookie-banner.active {
+            display: block;
+        }
+
+        .cookie-banner p {
+            margin: 0 0 10px;
+            font-size: 0.95rem;
+            line-height: 1.35;
+            text-align: left;
+        }
+
+        .cookie-actions {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+        }
+
+        .cookie-actions .btn {
+            min-height: 36px;
+            font-size: 0.82rem;
+            padding: 6px 10px;
+            width: auto;
+        }
+
+        .btn-secondary {
+            background: #fff;
+            color: var(--wood-dark);
+        }
+
         .stamp {
             position: absolute;
             bottom: 10px;
@@ -897,14 +1006,6 @@
         }
     </style>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0E764T45YL"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-0E764T45YL');
-</script>
 <body>
 
     <div class="container">
@@ -1074,6 +1175,7 @@
             <div class="clause">
                 <h3>SOBRE A FESTA</h3>
                 <div class="info-card">
+                    <p><strong>História</strong> </p>
                     <p>A Festa Junina da Paróquia São Rafael Mooca é um evento familiar com comidas típicas, música,
                         brincadeiras e ações comunitárias.<strong> O trabalho é realizado por voluntários da
                             paroquia</strong>, com o objetivo de celebrar a cultura junina e apoiar as iniciativas
@@ -1081,9 +1183,49 @@
                     </p>
                 </div>
                 <div class="info-card">
-                    <p><strong>Horários:</strong> Aos sábados das 18h às 23h e aos domingos das 18h às 22h.</p>
+                    <p><strong>Programação</strong></p>
+                    <p><strong>Horários:</strong> Aos sábados das 18h às 22h e aos domingos das 18h às 22h.</p>
                     <p><strong>Dias:</strong> 6 e 7 de junho, 13 e 14 de junho, 20 e 21 de junho, 27 e 28 de junho, 4 e
                         5 de julho.</p>
+                </div>
+                <div class="info-card">
+                    <p><strong>Meios de pagamento aceitos</strong></p>
+                    <ul class="payment-list">
+                        <li class="payment-item">
+                            Cartão de Crédito e Débito (bandeiras Visa, Master e Elo)
+                        </li>
+                        <li class="payment-item">
+                            Pix
+                        </li>
+                        <li class="payment-item">
+                            Dinheiro
+                        </li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <p><strong>Como chegar</strong></p>
+                    <p>A Paróquia São Rafael Arcanjo na Mooca está localizada no Largo São Rafael, s/nº - Mooca, São Paulo - SP.</p>
+                    <div class="location-cta">
+                        <iframe
+                            class="location-map"
+                            src="https://www.google.com/maps?q=Par%C3%B3quia%20S%C3%A3o%20Rafael%20Arcanjo%20Mooca%2C%20Largo%20S%C3%A3o%20Rafael%2C%20s%2Fn%20-%20Mooca%2C%20S%C3%A3o%20Paulo%20-%20SP&output=embed"
+                            style="border:0;"
+                            loading="lazy"
+                            allowfullscreen
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Mapa da Paróquia São Rafael Arcanjo"
+                        ></iframe>
+                        <a
+                            id="btnComoChegar"
+                            class="btn"
+                            href="https://www.google.com/maps/search/?api=1&query=Par%C3%B3quia%20S%C3%A3o%20Rafael%20Arcanjo%20Mooca%2C%20Largo%20S%C3%A3o%20Rafael%2C%20s%2Fn%20-%20Mooca%2C%20S%C3%A3o%20Paulo%20-%20SP"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            data-track-section="sobre"
+                            data-track-item="Como chegar"
+                            aria-label="Abrir rota para a Paróquia São Rafael Arcanjo no aplicativo de mapas"
+                        >Abrir no app de mapas</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1297,7 +1439,19 @@
         </div>
     </div>
 
+    <div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Preferências de cookies">
+        <p>
+            Utilizamos cookies de análise para entender a navegação e melhorar sua experiência. Não coletamos dados pessoais de identificação direta (como nome, CPF e e-mail) neste site.
+        </p>
+        <div class="cookie-actions">
+            <button id="btnRecusarCookies" class="btn btn-secondary" type="button">Recusar analíticos</button>
+            <button id="btnAceitarCookies" class="btn" type="button">Aceitar analíticos</button>
+        </div>
+    </div>
+
     <script>
+        const GA_MEASUREMENT_ID = 'G-0E764T45YL';
+        const COOKIE_CONSENT_KEY = 'consentimento_cookies_analytics';
         const produtos = [
             { nome: 'Caldinho de Feijão', barraca: 'Mineira', preco: 10.00 },
             { nome: 'Caldinho de Mandioca', barraca: 'Mineira', preco: 10.00 },
@@ -1358,9 +1512,14 @@
         const mapModal = document.getElementById('mapModal');
         const btnFecharMapa = document.getElementById('btnFecharMapa');
         const mapModalImage = document.getElementById('mapModalImage');
+        const cookieBannerEl = document.getElementById('cookieBanner');
+        const btnAceitarCookiesEl = document.getElementById('btnAceitarCookies');
+        const btnRecusarCookiesEl = document.getElementById('btnRecusarCookies');
         let debounceBuscaTimer = null;
         let ultimoTermoBuscaEnviado = '';
         let ultimaListaProdutosEnviada = '';
+        let analyticsPermitido = false;
+        let gtagInicializado = false;
 
         const itens = [];
         const patrocinadores = [
@@ -1385,7 +1544,75 @@
                 .replace(/[\u0300-\u036f]/g, '');
         }
 
+        function inicializarGoogleAnalyticsSeNecessario() {
+            if (gtagInicializado) {
+                return;
+            }
+
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = window.gtag || function() {
+                window.dataLayer.push(arguments);
+            };
+
+            const scriptGA = document.createElement('script');
+            scriptGA.async = true;
+            scriptGA.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+            document.head.appendChild(scriptGA);
+
+            window.gtag('js', new Date());
+            window.gtag('config', GA_MEASUREMENT_ID, {
+                anonymize_ip: true
+            });
+
+            gtagInicializado = true;
+        }
+
+        function atualizarConsentimentoCookies(status) {
+            localStorage.setItem(COOKIE_CONSENT_KEY, status);
+            analyticsPermitido = status === 'aceito';
+
+            if (analyticsPermitido) {
+                inicializarGoogleAnalyticsSeNecessario();
+            }
+
+            if (cookieBannerEl) {
+                cookieBannerEl.classList.remove('active');
+            }
+        }
+
+        function inicializarConsentimentoCookies() {
+            const consentimentoSalvo = localStorage.getItem(COOKIE_CONSENT_KEY);
+
+            if (btnAceitarCookiesEl) {
+                btnAceitarCookiesEl.addEventListener('click', () => {
+                    atualizarConsentimentoCookies('aceito');
+                });
+            }
+
+            if (btnRecusarCookiesEl) {
+                btnRecusarCookiesEl.addEventListener('click', () => {
+                    atualizarConsentimentoCookies('recusado');
+                });
+            }
+
+            if (consentimentoSalvo === 'aceito') {
+                analyticsPermitido = true;
+                inicializarGoogleAnalyticsSeNecessario();
+                return;
+            }
+
+            analyticsPermitido = false;
+
+            if (consentimentoSalvo !== 'recusado' && cookieBannerEl) {
+                cookieBannerEl.classList.add('active');
+            }
+        }
+
         function enviarEventoGA(nomeEvento, parametros) {
+            if (!analyticsPermitido || typeof window.gtag !== 'function') {
+                return;
+            }
+
             const parametrosEvento = { ...parametros };
 
             const dispararEvento = () => {
@@ -1829,6 +2056,7 @@
         });
 
         montarProdutos();
+        inicializarConsentimentoCookies();
         atualizarIndicadoresScrollProdutos();
         renderizarPatrocinadores(patrocinadoresAbaEl);
         renderizarPatrocinadores(patrocinadoresRodapeEl);
