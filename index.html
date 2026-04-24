@@ -212,6 +212,7 @@
             display: none;
             justify-content: center;
             align-items: center;
+            gap: 6px;
             min-height: 20px;
             margin-top: -4px;
             margin-bottom: 8px;
@@ -219,6 +220,18 @@
             color: #6f4b3a;
             font-weight: bold;
             letter-spacing: 0.02em;
+        }
+
+        .products-scroll-hint::before {
+            content: '↓';
+            display: inline-block;
+            font-size: 0.95rem;
+            animation: scrollHintArrow 1s ease-in-out infinite;
+        }
+
+        .products-scroll-wrapper.at-bottom .products-scroll-hint::before {
+            content: '✓';
+            animation: none;
         }
 
         .products-scroll-hint.active {
@@ -234,6 +247,17 @@
 
             50% {
                 opacity: 1;
+            }
+        }
+
+        @keyframes scrollHintArrow {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(3px);
             }
         }
 
