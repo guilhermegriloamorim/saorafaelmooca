@@ -1359,6 +1359,8 @@
         const mapModal = document.getElementById('mapModal');
         const btnFecharMapa = document.getElementById('btnFecharMapa');
         const mapModalImage = document.getElementById('mapModalImage');
+        let debounceBuscaTimer = null;
+        let ultimoTermoBuscaEnviado = '';
 
         const itens = [];
         const patrocinadores = [
@@ -1523,6 +1525,32 @@
 
             semResultadoBuscaEl.classList.toggle('active', totalFiltrados === 0);
             atualizarIndicadoresScrollProdutos();
+            return totalFiltrados;
+        }
+
+        function rastrearBuscaProdutos(totalResultados) {
+            const termoDigitado = buscaProdutoEl.value.trim();
+            const termoNormalizado = normalizarTexto(termoDigitado);
+
+            if (termoNormalizado.length < 2) {
+                if (termoNormalizado.length === 0) {
+                    ultimoTermoBuscaEnviado = '';
+                }
+
+                return;
+            }
+
+            if (termoNormalizado === ultimoTermoBuscaEnviado) {
+                return;
+            }
+
+            ultimoTermoBuscaEnviado = termoNormalizado;
+
+            enviarEventoGA('search', {
+                search_term: termoDigitado,
+                results_count: totalResultados,
+                section_name: 'calculadora'
+            });
         }
 
         function atualizarIndicadoresScrollProdutos() {
@@ -1615,17 +1643,39 @@
                 qtdEl.textContent = '1';
                 buscaProdutoEl.value = '';
                 filtrarProdutos();
+                ultimoTermoBuscaEnviado = '';
                 enviarEventoGA('item_click', {
                     section_name: 'calculadora',
                     item_name: produtos[indice].nome,
                     action: 'adicionar_carrinho',
                     quantity: quantidadeAtual
                 });
+
+                enviarEventoGA('add_to_cart', {
+                    currency: 'BRL',
+                    value: produtos[indice].preco * quantidadeAtual,
+                    items: [
+                        {
+                            item_name: produtos[indice].nome,
+                            item_category: produtos[indice].barraca,
+                            price: produtos[indice].preco,
+                            quantity: quantidadeAtual
+                        }
+                    ]
+                });
             }
         });
 
         buscaProdutoEl.addEventListener('input', () => {
-            filtrarProdutos();
+            const totalResultados = filtrarProdutos();
+
+            if (debounceBuscaTimer) {
+                clearTimeout(debounceBuscaTimer);
+            }
+
+            debounceBuscaTimer = setTimeout(() => {
+                rastrearBuscaProdutos(totalResultados);
+            }, 550);
         });
 
         if (produtosScrollBoxEl) {
