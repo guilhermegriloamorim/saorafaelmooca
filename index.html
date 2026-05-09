@@ -105,6 +105,31 @@
             margin: 8px 0;
         }
 
+        .volunteer-cta {
+            margin: 12px 0 6px 0;
+            text-align: center;
+        }
+
+        .volunteer-cta a {
+            display: inline-block;
+            padding: 10px 16px;
+            border: 2px solid var(--wood-dark);
+            border-radius: 6px;
+            background: var(--pastel-orange);
+            color: #2f2018;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-family: 'Special Elite', cursive;
+            font-size: 0.9rem;
+            font-weight: 700;
+            transition: transform 0.15s ease, filter 0.15s ease;
+        }
+
+        .volunteer-cta a:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.06);
+        }
+
         .divider {
             text-align: center;
             font-size: 1.8rem;
@@ -1110,8 +1135,17 @@
                     julho.</p>
                 <p><strong>Horários:</strong> Aos sábados e aos domingos das 18h às 22h</p>
             </div>
-            <!-- <div style="font-weight: bold;"> 🔥 🏮 🌽 </div> -->
+            <div style="font-weight: bold;"> 🔥 🏮 🌽 </div>
+            
+            <div style="font-weight: bold;">
+                <p class="volunteer-cta">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScPEe1v1xjMTd4sCJIMFFruDPJEm-FZjcQMO2quNcdljfJCpw/viewform"
+                    target="_blank" rel="noopener noreferrer">Inscrições para trabalho voluntário 2026</a>
+                </p>
+            </div>
         </header>
+
+
 
         <!-- Navegação por abas -->
         <nav class="tabs-nav" aria-label="Navegação por abas">
@@ -1122,6 +1156,9 @@
             <button class="tab-btn" type="button" data-tab="barracas">Nossas Barracas</button>
             <button class="tab-btn" type="button" data-tab="patrocinadores">Patrocinadores</button>
         </nav>
+
+
+         
 
         <!-- Calculadora de preços para ajudar os visitantes a planejarem seus gastos durante a festa.  -->
         <section id="tab-calculadora" class="tab-panel" role="tabpanel">
@@ -1491,6 +1528,7 @@
         <section id="tab-patrocinadores" class="tab-panel" role="tabpanel">
             <div class="clause">
                 <h3>PATROCINADORES</h3>
+                <p><strong>Caso seja de interesse em patrocinar a festa, entre em contato com a secretaria paroquial.</strong></p>
                 <p>Empresas e apoiadores que colaboram com a realização da festa.</p>
                 <div id="patrocinadoresAba" class="sponsors-grid" aria-label="Logos de patrocinadores">
                 </div>
@@ -1624,8 +1662,8 @@
 
         const itens = [];
         const patrocinadores = [
-            { nome: 'Arraia', arquivo: 'patrocinadores/image.png' },
-            { nome: 'Festa', arquivo: 'patrocinadores/novocartao.jpg' }
+            { nome: 'anuncie sua marca aqui', arquivo: 'patrocinadores/anuncie_aqui.png' },
+               { nome: 'anuncie sua marca aqui', arquivo: 'patrocinadores/anuncie_aqui.png' },
         ];
 
         const apoiadores = [
