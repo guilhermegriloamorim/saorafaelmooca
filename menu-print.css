@@ -21,14 +21,15 @@
     padding: 0 0 2px;
     font-family: 'Special Elite', cursive;
     font-size: 3.2rem;
-    color: #d35400;
+    color: #bc6c25;
+    font-weight: 400;
     border-bottom: 1px solid #d8c7b8;
     text-transform: uppercase;
 }
 
 .menu-print-page .menu-item-nome,
 .menu-print-page .menu-item-preco {
-    font-weight: 700;
+    font-weight: 400;
 }
 
 .print-actions {
@@ -290,8 +291,9 @@
         margin: 0 0 2px;
         padding: 0 0 1px;
         font-size: 1.08rem;
-        font-weight: 700;
-        color: #d35400;
+        font-family: 'Special Elite', cursive;
+        font-weight: 400;
+        color: #bc6c25;
         border-bottom: 1px solid #d8c7b8;
     }
 
@@ -333,6 +335,9 @@
         padding: 0 0 1px;
         font-size: 8.5pt;
         line-height: 1.04;
+        font-family: 'Special Elite', cursive;
+        font-weight: 400;
+        color: #6f4518;
         border-bottom: 1px dashed #d8c7b8;
     }
 
@@ -349,7 +354,9 @@
 
     .menu-print-page .menu-item-nome {
         font-size: 10pt;
-        font-weight: 700;
+        font-family: 'Patrick Hand', cursive;
+        font-weight: 400;
+        color: var(--wood-dark);
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -357,9 +364,10 @@
 
     .menu-print-page .menu-item-preco {
         font-size: 10pt;
-        font-weight: 700;
+        font-family: 'Special Elite', cursive;
+        font-weight: 400;
         white-space: nowrap;
-        color: #31170f;
+        color: #6f2f2f;
     }
 
     .menu-print-page .clause,

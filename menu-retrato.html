@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cardápio Completo | Paróquia São Rafael Mooca</title>
+    <title>Cardápio Completo A4 Retrato | Paróquia São Rafael Mooca</title>
     <link rel="icon" type="image/png" sizes="32x32" href="img/brasao_paroquia.png">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="menu-print.css">
+    <link rel="stylesheet" href="menu-print-retrato.css">
 </head>
 
-<body class="menu-print-page">
+<body class="menu-print-page menu-print-portrait-page">
     <div class="container">
         <ul class="header-decor" aria-hidden="true">
             <li class="flag f1"></li>
@@ -53,9 +54,10 @@
                     loading="lazy">
             </aside>
         </header>
+
         <main>
-            <section class="clause" aria-labelledby="titulo-cardapio-completo">
-                <h1 id="titulo-cardapio-completo">CARDÁPIO COMPLETO</h1>
+            <section class="clause" aria-labelledby="titulo-cardapio-completo-retrato">
+                <h1 id="titulo-cardapio-completo-retrato">CARDÁPIO COMPLETO</h1>
                 <div id="menuPorBarracaPrint" class="menu-grid" aria-label="Cardápio por barraca"></div>
                 <p class="menu-nota"><strong>Observação:</strong> itens e preços sujeitos à disponibilidade durante o
                     evento. Embalagens para viagem podem ser cobradas à parte.</p>
@@ -63,7 +65,7 @@
 
             <div class="print-actions" aria-label="Ações do cardápio">
                 <button id="btnImprimirMenu" class="btn" type="button">Imprimir / Salvar em PDF</button>
-                <a class="btn btn-secondary" href="menu-retrato.html">Modelo A4 Retrato</a>
+                <a class="btn btn-secondary" href="menu.html">Versão Paisagem</a>
             </div>
         </main>
 
