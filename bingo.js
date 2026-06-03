@@ -195,6 +195,22 @@
         saveState();
     }
 
+    function flashCurrentNumber() {
+        if (!elements.currentNumber) {
+            return;
+        }
+
+        elements.currentNumber.classList.remove('is-flashing');
+        void elements.currentNumber.offsetWidth;
+        elements.currentNumber.classList.add('is-flashing');
+
+        if (elements.currentLetter) {
+            elements.currentLetter.classList.remove('is-flashing');
+            void elements.currentLetter.offsetWidth;
+            elements.currentLetter.classList.add('is-flashing');
+        }
+    }
+
     let resetRoundConfirmUntil = 0;
 
     function clearResetRoundConfirmation() {
@@ -232,6 +248,7 @@
         elements.numberInput.value = '';
         elements.numberInput.focus();
         refreshUi();
+        flashCurrentNumber();
     }
 
     function undoLastCall() {
