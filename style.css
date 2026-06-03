@@ -1303,10 +1303,12 @@ footer {
     background: #ffffff;
     color: #2a1a12;
     font-family: 'Special Elite', cursive;
-    font-size: 1.25rem;
+    font-size: 2.75rem;
     cursor: default;
+    font-style: normal;
+    font-weight: bold;
 }
-
+    
 .bingo-number.is-marked {
     background: #ffd60a;
     color: #111;
@@ -1359,6 +1361,8 @@ footer {
 
     .bingo-row-letter {
         font-size: 2.6rem;
+        font-style: normal;
+        font-weight: bold;
     }
 
     .bingo-row-numbers {
@@ -1367,7 +1371,10 @@ footer {
 
     .bingo-number {
         min-height: 78px;
-        font-size: 1.5rem;
+        font-size: 2.75rem;
+        cursor: default;
+        font-style: normal;
+        font-weight: bold;
     }
 }
 
