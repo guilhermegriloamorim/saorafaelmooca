@@ -22,8 +22,8 @@ const produtos = [
     { nome: 'Milho', barraca: 'Mineira', preco: 13.00 },
     { nome: 'Pamonha', barraca: 'Mineira', preco: 16.00 },
     { nome: 'Lanche de Pernil no Pão Francês', barraca: 'Mineira', preco: 24.00 },
-    { nome: 'Fogazza', barraca: 'Fogazza', preco: 23.00 },
-    { nome: 'Pizza', barraca: 'Pizza', preco: 17.00 },
+    { nome: 'Fogazza Queijo ou Calabresa', barraca: 'Fogazza', preco: 23.00 },
+    { nome: 'Pizza Queijo ou Calabresa', barraca: 'Pizza', preco: 17.00 },
     { nome: 'Água Mineral c/ gás', barraca: 'Bar', preco: 7.00 },
     { nome: 'Água Mineral s/ gás', barraca: 'Bar', preco: 6.00 },
     { nome: 'Cerveja Heineken (lata)', barraca: 'Bar', preco: 10.00 },
@@ -67,9 +67,11 @@ const semResultadoBuscaEl = document.getElementById('semResultadoBusca');
 const btnLimpar = document.getElementById('btnLimpar');
 const tabelaItens = document.getElementById('itensCarrinho');
 const totalEl = document.getElementById('total');
+const calculadoraBtn = document.getElementById('calculadoraBtn');
 const tabButtons = document.querySelectorAll('.tab-btn');
 const tabPanels = document.querySelectorAll('.tab-panel');
 const footerEl = document.querySelector('footer');
+const menuPorBarracaEl = document.getElementById('menuPorBarraca');
 const patrocinadoresAbaEl = document.getElementById('patrocinadoresAba');
 const patrocinadoresRodapeEl = document.getElementById('patrocinadoresRodape');
 const apoioRodapeEl = document.getElementById('apoioRodape');
@@ -277,6 +279,60 @@ function renderizarApoio(destino) {
         card.appendChild(box);
         card.appendChild(nome);
         destino.appendChild(card);
+    });
+}
+
+function renderizarMenuPorBarraca() {
+    if (!menuPorBarracaEl) {
+        return;
+    }
+
+    const produtosAgrupados = produtos.reduce((acc, produto) => {
+        const barraca = produto.barraca;
+        if (!acc[barraca]) {
+            acc[barraca] = [];
+        }
+
+        acc[barraca].push(produto);
+        return acc;
+    }, {});
+
+    const ordemBarracas = Object.keys(produtosAgrupados).sort((a, b) => a.localeCompare(b, 'pt-BR'));
+    menuPorBarracaEl.innerHTML = '';
+
+    ordemBarracas.forEach((barraca) => {
+        const card = document.createElement('article');
+        card.className = 'menu-barraca-card';
+        card.setAttribute('data-track-section', 'menu_barracas');
+        card.setAttribute('data-track-item', barraca);
+
+        const titulo = document.createElement('h4');
+        titulo.textContent = barraca;
+        card.appendChild(titulo);
+
+        const lista = document.createElement('ul');
+        lista.className = 'menu-items';
+
+        produtosAgrupados[barraca]
+            .sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'))
+            .forEach((produto) => {
+                const item = document.createElement('li');
+
+                const nome = document.createElement('span');
+                nome.className = 'menu-item-nome';
+                nome.textContent = produto.nome;
+
+                const preco = document.createElement('span');
+                preco.className = 'menu-item-preco';
+                preco.textContent = formatarBRL(produto.preco);
+
+                item.appendChild(nome);
+                item.appendChild(preco);
+                lista.appendChild(item);
+            });
+
+        card.appendChild(lista);
+        menuPorBarracaEl.appendChild(card);
     });
 }
 
@@ -538,6 +594,15 @@ tabButtons.forEach((button) => {
     });
 });
 
+if (calculadoraBtn) {
+    calculadoraBtn.addEventListener('click', () => {
+        const botaoAbaCalculadora = document.querySelector('.tab-btn[data-tab="calculadora"]');
+        if (botaoAbaCalculadora) {
+            botaoAbaCalculadora.click();
+        }
+    });
+}
+
 btnLimpar.addEventListener('click', () => {
     itens.length = 0;
     renderizar();
@@ -626,6 +691,7 @@ atualizarIndicadoresScrollProdutos();
 renderizarPatrocinadores(patrocinadoresAbaEl);
 renderizarPatrocinadores(patrocinadoresRodapeEl);
 renderizarApoio(apoioRodapeEl);
+renderizarMenuPorBarraca();
 
 
 filtrarProdutos();

@@ -49,10 +49,10 @@
         <!-- Navegação por abas -->
         <nav class="tabs-nav" aria-label="Navegação por abas">
             <button class="tab-btn" type="button" data-tab="calculadora">Calculadora de Preços</button>
+            <button class="tab-btn" type="button" data-tab="barracas">Barracas / Cardápio</button>
+            <button class="tab-btn" type="button" data-tab="mapa">Mapa da Festa</button>
             <button class="tab-btn" type="button" data-tab="termos">Termos de Uso do Cartão</button>
             <button class="tab-btn" type="button" data-tab="sobre">Sobre a Festa</button>
-            <button class="tab-btn" type="button" data-tab="mapa">Mapa da Festa</button>
-            <button class="tab-btn" type="button" data-tab="barracas">Nossas Barracas</button>
             <button class="tab-btn" type="button" data-tab="patrocinadores">Patrocinadores</button>
         </nav>
 
@@ -276,7 +276,7 @@
         <!-- Barracas -->
         <section id="tab-barracas" class="tab-panel" role="tabpanel">
             <div class="clause">
-                <div style="margin-top:12px;">
+                <!-- <div style="margin-top:12px;">
                     <h3>BARRACAS</h3>
                     <div class="barracas-grid">
                         <div class="barraca-item" data-track-section="barracas" data-track-item="Brinquedos">
@@ -413,6 +413,12 @@
                                 queijo ralado 10g.</p>
                         </div>
                     </div>
+                </div> -->
+                <div style="margin-top:20px;">
+                    <h3>BARRACAS E CARDÁPIO</h3>
+                    <p>Use a calculadora para saber o valor total para efetuar sua recarga.</p>
+                    <div id="menuPorBarraca" class="menu-grid" aria-label="Menu de produtos por barraca"></div>
+                    <button id="calculadoraBtn" class="btn btn-danger" type="button" style="margin-top: 10px;">Calculadora de Preços</button>
                 </div>
                 <div style="margin-top:20px;">
                     <h3>EQUIPES DE APOIO</h3>
