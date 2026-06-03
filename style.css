@@ -1199,7 +1199,7 @@ footer {
 
 .bingo-current-number-wrap {
     min-width: 0;
-    width: 08%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1234,6 +1234,7 @@ footer {
     min-height: clamp(70px, 12vh, 120px);
     min-width: 0;
     width: 100%;
+    box-sizing: border-box;
     padding: 0 12px;
     border: 4px solid var(--wood-dark);
     border-radius: 24px;
