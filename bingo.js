@@ -311,11 +311,98 @@
 
     let celebrationTimeout = null;
     const CELEBRATION_DURATION_MS = 5000;
+    let audioContext = null;
+
+    function getAudioContext() {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) {
+            return null;
+        }
+
+        if (!audioContext) {
+            audioContext = new AudioCtx();
+        }
+
+        return audioContext;
+    }
+
+    function playBingoSound() {
+        const ctx = getAudioContext();
+        if (!ctx) {
+            return;
+        }
+
+        if (ctx.state === 'suspended') {
+            ctx.resume().catch(() => {
+                // Keep the animation running even if audio playback fails.
+            });
+        }
+
+        const startAt = ctx.currentTime + 0.02;
+
+        function scheduleTone(frequency, start, duration, gainLevel, waveType) {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+
+            osc.type = waveType;
+            osc.frequency.setValueAtTime(frequency, start);
+            gain.gain.setValueAtTime(0.0001, start);
+            gain.gain.exponentialRampToValueAtTime(gainLevel, start + 0.015);
+            gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            osc.start(start);
+            osc.stop(start + duration);
+        }
+
+        // Main melody + octave layer for a brighter "party" celebration.
+        const melody = [523.25, 659.25, 783.99, 880.0, 1046.5, 1318.51];
+        melody.forEach((frequency, index) => {
+            const noteStart = startAt + index * 0.115;
+            scheduleTone(frequency, noteStart, 0.13, 0.2, 'triangle');
+            scheduleTone(frequency * 2, noteStart, 0.1, 0.07, 'square');
+        });
+
+        // Quick low pulse accents to simulate a mini drum hit.
+        [0, 0.23, 0.46].forEach((offset) => {
+            scheduleTone(130.81, startAt + offset, 0.09, 0.09, 'sine');
+        });
+
+        // Tiny filtered noise burst for confetti-like sparkle at the end.
+        const noiseLength = Math.floor(ctx.sampleRate * 0.12);
+        const noiseBuffer = ctx.createBuffer(1, noiseLength, ctx.sampleRate);
+        const channel = noiseBuffer.getChannelData(0);
+        for (let i = 0; i < noiseLength; i += 1) {
+            channel[i] = (Math.random() * 2 - 1) * (1 - i / noiseLength);
+        }
+
+        const noiseSource = ctx.createBufferSource();
+        noiseSource.buffer = noiseBuffer;
+
+        const noiseFilter = ctx.createBiquadFilter();
+        noiseFilter.type = 'highpass';
+        noiseFilter.frequency.setValueAtTime(1600, startAt + 0.58);
+
+        const noiseGain = ctx.createGain();
+        noiseGain.gain.setValueAtTime(0.0001, startAt + 0.58);
+        noiseGain.gain.exponentialRampToValueAtTime(0.12, startAt + 0.6);
+        noiseGain.gain.exponentialRampToValueAtTime(0.0001, startAt + 0.7);
+
+        noiseSource.connect(noiseFilter);
+        noiseFilter.connect(noiseGain);
+        noiseGain.connect(ctx.destination);
+        noiseSource.start(startAt + 0.58);
+        noiseSource.stop(startAt + 0.72);
+    }
 
     function triggerBingoCelebration() {
         if (!elements.bingoCelebration) {
             return;
         }
+
+        playBingoSound();
 
         elements.bingoCelebration.classList.remove('is-active');
         void elements.bingoCelebration.offsetWidth;
