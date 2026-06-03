@@ -63,9 +63,8 @@ body {
 
 header {
     text-align: center;
-    border-bottom: 2px dashed var(--wood-dark);
-    margin-bottom: 25px;
-    padding-bottom: 15px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
 }
 
 header h1 {
@@ -131,7 +130,7 @@ header div {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 8px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
 .tab-btn {
@@ -752,10 +751,11 @@ header div {
 .footer-sponsors {
     margin-top: 12px;
     padding-top: 10px;
-    border-top: 1px dashed var(--wood-dark);
+    border-top: 1px solid var(--wood-dark);
 }
 
 .footer-sponsors-title {
+    margin-top: 24px;
     margin-bottom: 8px;
     font-size: 0.95rem;
     font-weight: bold;
@@ -1017,8 +1017,7 @@ p.aviso {
 footer {
     text-align: center;
     font-family: 'Special Elite', cursive;
-    border-top: 2px dashed var(--wood-dark);
-    padding-top: 15px;
+    padding-top: 25px;
     font-size: 0.9rem;
 }
 
