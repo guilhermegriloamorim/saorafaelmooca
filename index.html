@@ -43,16 +43,8 @@
                 <p><strong>Horários:</strong> Aos sábados e aos domingos das 18h às 22h</p>
             </div>
             <div style="font-weight: bold;"> 🔥 🏮 🌽 </div>
-            
-            <div style="font-weight: bold;">
-                <p class="volunteer-cta">
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScPEe1v1xjMTd4sCJIMFFruDPJEm-FZjcQMO2quNcdljfJCpw/viewform"
-                    target="_blank" rel="noopener noreferrer">Inscrições para trabalho voluntário 2026</a>
-                </p>
-            </div>
+
         </header>
-
-
 
         <!-- Navegação por abas -->
         <nav class="tabs-nav" aria-label="Navegação por abas">
@@ -64,20 +56,15 @@
             <button class="tab-btn" type="button" data-tab="patrocinadores">Patrocinadores</button>
         </nav>
 
-
-         
-
         <!-- Calculadora de preços para ajudar os visitantes a planejarem seus gastos durante a festa.  -->
         <section id="tab-calculadora" class="tab-panel" role="tabpanel">
             <div class="clause calculator">
                 <h3>CALCULADORA DE PREÇOS</h3>
-                <p>Clique no produto, ajuste a quantidade e adicione ao carrinho.</p>
-
                 <div class="search-wrap">
-                    <label for="buscaProduto">Pesquisar Produto ou nome da Barraca</label>
-                    <input id="buscaProduto" type="text" placeholder="Digite o nome do produto..." autocomplete="off">
+                    <input id="buscaProduto" type="text" placeholder="Digite o nome do produto ou barraca..."
+                        autocomplete="off">
                 </div>
-
+                <p>Selecione o produto na lista abaixo, ajuste a quantidade e clique em "Adicionar"</p>
                 <div id="produtosScrollWrapper" class="products-scroll-wrapper">
                     <div id="produtosScrollBox" class="products-scroll-box" aria-label="Lista de produtos com rolagem">
                         <div id="produtosGrid" class="products-grid" aria-label="Lista de produtos"></div>
@@ -85,7 +72,6 @@
                     <p id="produtosScrollHint" class="products-scroll-hint" aria-live="polite"></p>
                 </div>
                 <p id="semResultadoBusca" class="search-empty">Nenhum produto encontrado para essa pesquisa.</p>
-
                 <div class="cart-table-wrap">
                     <table class="cart-table" aria-label="Itens selecionados">
                         <thead>
@@ -101,9 +87,7 @@
                         </tbody>
                     </table>
                 </div>
-
                 <div class="total-box">Total: <span id="total">R$ 0,00</span></div>
-
                 <div class="calc-actions">
                     <button id="btnLimpar" class="btn btn-danger" type="button">Limpar tudo</button>
                 </div>
@@ -128,10 +112,11 @@
                     <img src="img/cartao_novo.png" alt="Cartão da Festa"
                         style="max-width:320px;height:auto;display:inline-block;" loading="lazy">
                 </div>
-            
-                
+
+
                 <div class="info-card">
-                    <p><strong>Atenção:</strong> Os cartões da edição anterior da festa poderão ser recolhidos e substituídos
+                    <p><strong>Atenção:</strong> Os cartões da edição anterior da festa poderão ser recolhidos e
+                        substituídos
                         sem necessidade de pagamento da taxa de ativação. Conforme a disponibilidade.</p>
                 </div>
 
@@ -211,13 +196,28 @@
             <div class="clause">
                 <h3>SOBRE A FESTA</h3>
                 <div class="info-card">
-                    <p><strong>História</strong> </p>
+                    <p><strong>História</strong></p>
                     <p>A Festa Junina da Paróquia São Rafael Mooca é um evento familiar com comidas típicas, música,
                         brincadeiras e ações comunitárias.<strong> O trabalho é realizado por voluntários da
-                            paroquia</strong>, com o objetivo de celebrar a cultura junina e apoiar as iniciativas
+                            paróquia</strong>, com o objetivo de celebrar a cultura junina e apoiar as iniciativas
                         pastorais e sociais da comunidade.
                     </p>
                 </div>
+
+                <div class="info-card">
+                    <p><strong>Voluntariado</strong></p>
+                    <p>O sucesso da festa depende do trabalho dedicado de voluntários. Se você deseja contribuir nessa
+                        edição ou em futuras edições, inscreva-se para fazer parte da equipe de voluntários da paróquia
+                        São Rafael Mooca.</p>
+                    <div style="font-weight: bold;">
+                        <p class="volunteer-cta">
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLScPEe1v1xjMTd4sCJIMFFruDPJEm-FZjcQMO2quNcdljfJCpw/viewform"
+                                target="_blank" rel="noopener noreferrer">Inscrições para trabalho voluntário clique
+                                aqui!</a>
+                        </p>
+                    </div>
+                </div>
+
                 <div class="info-card">
                     <p><strong>Programação</strong></p>
                     <p><strong>Horários:</strong> Aos sábados das 18h às 22h e aos domingos das 18h às 22h.</p>
@@ -435,7 +435,8 @@
         <section id="tab-patrocinadores" class="tab-panel" role="tabpanel">
             <div class="clause">
                 <h3>PATROCINADORES</h3>
-                <p><strong>Caso seja de interesse em patrocinar a festa, entre em contato com a secretaria paroquial.</strong></p>
+                <p><strong>Caso seja de interesse em patrocinar a festa, entre em contato com a secretaria
+                        paroquial.</strong></p>
                 <p>Empresas e apoiadores que colaboram com a realização da festa.</p>
                 <div id="patrocinadoresAba" class="sponsors-grid" aria-label="Logos de patrocinadores">
                 </div>
@@ -466,7 +467,6 @@
                 <p><strong>#arraiasaorafaelmooca</strong></p>
             </div>
         </footer>
-
         <div class="stamp">ORIGINAL<br>MOOCA</div>
     </div>
 
@@ -495,7 +495,6 @@
         </div>
     </div>
     <script src="app.js"></script>
-
 </body>
 
 </html>

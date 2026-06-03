@@ -61,24 +61,12 @@ body {
 }
 
 
-.header-bingo {
-    text-align: center;
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-      font-family: 'Special Elite', cursive;
-    font-weight: 700;
-    font-size: 1.5rem;
-    margin: 1px 0;
-    text-transform: uppercase;
-}
-
 header {
     text-align: center;
     border-bottom: 2px dashed var(--wood-dark);
     margin-bottom: 25px;
     padding-bottom: 15px;
 }
-
 
 header h1 {
     font-family: 'Special Elite', cursive;
@@ -165,8 +153,8 @@ header div {
 }
 
 .tab-btn.active {
-    background: var(--pastel-green);
-    box-shadow: inset 0 0 0 2px #9eb480;
+    background: var(--pastel-orange);
+    box-shadow: inset 0 0 0 2px #b49d80;
 }
 
 .tab-panel {
@@ -198,12 +186,8 @@ header div {
     text-align: justify;
 }
 
-.calculator {
-    border-style: dashed;
-}
-
 .calculator h3 {
-    color: #2a9d8f;
+    color: #bc6c25;
 }
 
 .calc-grid {
@@ -346,7 +330,7 @@ header div {
 
 .product-name {
     font-family: 'Special Elite', cursive;
-    font-size: 1.15rem;
+    font-size: 1.3rem;
     line-height: 1.2;
     margin-bottom: 4px;
 }
@@ -873,7 +857,7 @@ header div {
     }
 
     .product-name {
-        font-size: 1.25rem;
+        font-size: 1.3rem;
     }
 
     .products-scroll-box {
@@ -926,7 +910,7 @@ header div {
     }
 
     .product-name {
-        font-size: 1.06rem;
+        font-size: 1.3rem;
     }
 
     .product-price {
@@ -1363,6 +1347,19 @@ footer {
 #btnBingoCelebrate::before {
     content: '\2605';
 }
+
+
+.header-bingo {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    font-family: 'Special Elite', cursive;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 1px 0;
+    text-transform: uppercase;
+}
+
 
 .btn-bingo {
     background: linear-gradient(135deg, #ffd60a, #ff9f1c);
