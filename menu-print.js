@@ -77,7 +77,16 @@ function renderizarMenuPorBarraca() {
         return acc;
     }, {});
 
-    const ordemBarracas = Object.keys(produtosAgrupados).sort((a, b) => a.localeCompare(b, 'pt-BR'));
+    const ordemBarracas = Object.keys(produtosAgrupados).sort((a, b) => {
+        const totalA = produtosAgrupados[a].length;
+        const totalB = produtosAgrupados[b].length;
+
+        if (totalA !== totalB) {
+            return totalB - totalA;
+        }
+
+        return a.localeCompare(b, 'pt-BR');
+    });
     menuPorBarracaPrintEl.innerHTML = '';
 
     ordemBarracas.forEach((barraca) => {
