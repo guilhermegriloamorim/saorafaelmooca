@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio Completo | Paróquia São Rafael Mooca</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="img/brasao_paroquia.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="menu-print.css">
+</head>
+
+<body class="menu-print-page">
+    <div class="container">
+        <ul class="header-decor" aria-hidden="true">
+            <li class="flag f1"></li>
+            <li class="flag f2"></li>
+            <li class="flag f3"></li>
+            <li class="flag f4"></li>
+            <li class="flag f1"></li>
+            <li class="flag f2"></li>
+            <li class="flag f3"></li>
+            <li class="flag f4"></li>
+            <li class="flag f1"></li>
+            <li class="flag f2"></li>
+            <li class="flag f3"></li>
+            <li class="flag f4"></li>
+        </ul>
+
+        <header class="menu-header">
+            <div class="menu-header-main">
+                <div class="crest-wrap menu-crest-wrap">
+                    <img src="img/brasao_paroquia.png" alt="Brasão da Paróquia São Rafael Mooca"
+                        class="menu-crest-img" loading="lazy">
+                </div>
+                <h1>ARRAIÁ 2026</h1>
+                <h2>SÃO RAFAEL</h2>
+                <h3>gente que ama 🖤 festa junina</h3>
+                <div class="menu-meta">
+                    <p><strong>Nos Dias:</strong> 6 e 7 de junho, 13 e 14 de junho, 20 e 21 de junho, 27 e 28 de junho,
+                        4 e 5 de julho.</p>
+                    <p><strong>Horários:</strong> Aos sábados e aos domingos das 18h às 22h</p>
+                </div>
+            </div>
+
+            <aside class="digital-access-card" aria-label="Acesso digital">
+                <div class="digital-access-title">Cardápio Digital</div>
+                <p>Calculadora de preços disponível no site:</p>
+                <a href="https://www.paroquiasaorafaelmooca.com.br" target="_blank" rel="noopener noreferrer">
+                    www.paroquiasãorafaelmooca.com.br
+                </a>
+                <img src="img/qrcode.png" alt="QR Code para acessar o cardápio digital e a calculadora de preços"
+                    loading="lazy">
+            </aside>
+        </header>
+        <main>
+            <section class="clause" aria-labelledby="titulo-cardapio-completo">
+                <h3 id="titulo-cardapio-completo">CARDÁPIO COMPLETO</h3>
+                <div id="menuPorBarracaPrint" class="menu-grid" aria-label="Cardápio por barraca"></div>
+                <p class="menu-nota"><strong>Observação:</strong> itens e preços sujeitos à disponibilidade durante o
+                    evento.</p>
+            </section>
+
+            <div class="print-actions" aria-label="Ações do cardápio">
+                <button id="btnImprimirMenu" class="btn" type="button">Imprimir / Salvar em PDF</button>
+            </div>
+        </main>
+
+        <div class="stamp">ORIGINAL<br>MOOCA</div>
+    </div>
+
+    <script src="menu-print.js"></script>
+</body>
+
+</html>

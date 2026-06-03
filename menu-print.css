@@ -1,0 +1,344 @@
+.menu-print-page .container {
+    max-width: 1080px;
+}
+
+.menu-print-page .clause {
+    padding-top: 2px;
+}
+
+.menu-intro {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.menu-nota {
+    margin-top: 12px;
+    font-size: 0.95rem;
+}
+
+.print-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+
+.menu-print-page main {
+    padding-bottom: 0;
+}
+
+.menu-header {
+    display: block;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+.menu-header-main {
+    display: block;
+    text-align: center;
+}
+
+.menu-crest-wrap {
+    margin: 4px 0;
+}
+
+.menu-crest-img {
+    max-width: 84px;
+    height: auto;
+    display: inline-block;
+}
+
+.menu-header-main h1,
+.menu-header-main h2,
+.menu-header-main h3 {
+    margin: 0;
+}
+
+.menu-header-main h1 {
+    font-size: 1.38rem;
+}
+
+.menu-header-main h2 {
+    font-size: 1.6rem;
+}
+
+.menu-header-main h3 {
+    font-size: 0.92rem;
+}
+
+.menu-meta {
+    font-weight: bold;
+}
+
+.menu-meta p {
+    margin: 2px 0;
+    text-align: center;
+    line-height: 1.25;
+}
+
+.digital-access-card {
+    position: static;
+    width: 100%;
+    max-width: 220px;
+    border: 3px double var(--wood-dark);
+    border-radius: 8px;
+    background: #fff8ee;
+    padding: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    margin: 8px auto 0;
+}
+
+.digital-access-title {
+    font-family: 'Special Elite', cursive;
+    font-size: 0.66rem;
+    font-weight: bold;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+}
+
+.digital-access-card p {
+    margin: 0 0 2px;
+    font-size: 0.62rem;
+    line-height: 1.15;
+    text-align: left;
+}
+
+.digital-access-card a {
+    display: inline-block;
+    margin-bottom: 3px;
+    font-size: 0.56rem;
+    line-height: 1.12;
+    color: #4b2c20;
+    font-weight: bold;
+    text-decoration: underline;
+    word-break: break-word;
+}
+
+.digital-access-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid #d9c8b8;
+    border-radius: 4px;
+    background: #fff;
+}
+
+@media (max-width: 860px) {
+    .digital-access-card {
+        position: static;
+        width: 100%;
+        max-width: 220px;
+        margin: 8px auto 0;
+    }
+}
+
+@media print {
+    @page {
+        size: A4 landscape;
+        margin: 5mm;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    html,
+    body {
+        width: 100%;
+        height: auto;
+    }
+
+    body.menu-print-page {
+        background: #faedcd;
+        padding: 0;
+        font-size: 10px;
+        line-height: 1.1;
+        color: #1d130d;
+    }
+
+    .menu-print-page .container {
+        max-width: none;
+        margin: 0;
+        width: auto;
+        box-sizing: border-box;
+        min-height: 200mm;
+        padding: 1.6mm 2mm 2.2mm;
+        border: 4px solid var(--wood-dark);
+        background: var(--paper);
+        box-shadow: none;
+    }
+
+    .menu-print-page .header-decor {
+        display: flex !important;
+        justify-content: space-around;
+        margin: 0 0 1.2mm 0;
+        padding: 0;
+    }
+
+    .menu-print-page .flag {
+        width: 18px;
+        height: 23px;
+    }
+
+    .menu-print-page header {
+        margin: 0 0 2px;
+        padding: 0;
+    }
+
+    .menu-print-page .menu-header {
+        display: block;
+        margin-bottom: 1mm;
+        text-align: center;
+    }
+
+    .menu-print-page .menu-crest-wrap {
+        margin: 0 0 1px;
+    }
+
+    .menu-print-page .menu-crest-img {
+        max-width: 34px;
+    }
+
+    .menu-print-page .menu-header-main h1 {
+        font-size: 0.98rem;
+    }
+
+    .menu-print-page .menu-header-main h2 {
+        font-size: 1.06rem;
+    }
+
+    .menu-print-page .menu-header-main h3 {
+        font-size: 0.64rem;
+    }
+
+    .menu-print-page .menu-meta p {
+        margin: 0;
+        font-size: 0.62rem;
+        text-align: center;
+        line-height: 1.06;
+    }
+
+    .menu-print-page .print-actions,
+    .menu-print-page .stamp {
+        display: none !important;
+    }
+
+    .menu-print-page .digital-access-card {
+        position: absolute;
+        right: 2mm;
+        bottom: 2mm;
+        width: 18mm;
+        max-width: 18mm;
+        border-width: 1.2px;
+        border-radius: 3px;
+        padding: 0.9mm;
+        box-shadow: none;
+        background: #fff8ee;
+        margin: 0;
+    }
+
+    .menu-print-page .digital-access-title {
+        margin: 0 0 0.6mm;
+        font-size: 0.38rem;
+        text-align: center;
+    }
+
+    .menu-print-page .digital-access-card p {
+        display: none;
+    }
+
+    .menu-print-page .digital-access-card a {
+        display: none;
+    }
+
+    .menu-print-page .digital-access-card img {
+        border-width: 0.8px;
+        border-radius: 2px;
+    }
+
+    .menu-print-page main,
+    .menu-print-page .clause {
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu-print-page main {
+        padding-bottom: 5mm;
+    }
+
+    .menu-print-page .clause h3 {
+        margin: 0 0 2px;
+        padding: 0 0 1px;
+        font-size: 0.74rem;
+        border-bottom: 1px solid #d8c7b8;
+    }
+
+    .menu-print-page .menu-intro {
+        display: none;
+    }
+
+    .menu-print-page .menu-nota {
+        position: absolute;
+        left: 2mm;
+        right: 22mm;
+        bottom: 2mm;
+        margin: 0;
+        font-size: 0.42rem;
+        line-height: 1.1;
+        text-align: left;
+        color: #5a3c2d;
+    }
+
+    .menu-print-page .menu-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 2px;
+        margin-top: 0;
+    }
+
+    .menu-print-page .menu-barraca-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        border: 1px solid #ccb6a3;
+        border-radius: 2px;
+        padding: 2px;
+        background: #fff;
+        box-shadow: none;
+    }
+
+    .menu-print-page .menu-barraca-card h4 {
+        margin: 0 0 1px;
+        padding: 0 0 1px;
+        font-size: 0.58rem;
+        line-height: 1.1;
+        border-bottom: 1px dashed #d8c7b8;
+    }
+
+    .menu-print-page .menu-items {
+        gap: 0;
+    }
+
+    .menu-print-page .menu-items li {
+        gap: 3px;
+        padding-bottom: 0;
+        border-bottom: 0;
+        line-height: 1.02;
+    }
+
+    .menu-print-page .menu-item-nome {
+        font-size: 0.5rem;
+    }
+
+    .menu-print-page .menu-item-preco {
+        font-size: 0.5rem;
+        white-space: nowrap;
+        color: #31170f;
+    }
+
+    .menu-print-page .clause,
+    .menu-print-page header {
+        break-inside: auto;
+        page-break-inside: auto;
+    }
+}
