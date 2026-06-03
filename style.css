@@ -1341,8 +1341,8 @@ footer {
 .bingo-row-letter {
     border: 2px solid var(--wood-dark);
     border-radius: 10px;
-    background: #fff;
-    color: #6f4518;
+    background: #f4a261;
+    color: #2f2018;
     font-family: 'Special Elite', cursive;
     font-size: clamp(1.2rem, 2.9vh, 2rem);
     display: flex;

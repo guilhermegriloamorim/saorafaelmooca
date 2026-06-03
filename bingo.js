@@ -242,6 +242,15 @@
     }
 
     function resetRound() {
+        const hasRoundData = state.history.length > 0 || state.markedNumbers.length > 0 || Number.isInteger(state.currentNumber);
+        if (hasRoundData) {
+            const confirmed = window.confirm('Tem certeza que deseja limpar a rodada? Esta ação não pode ser desfeita.');
+            if (!confirmed) {
+                setStatus('Limpeza cancelada.', false);
+                return;
+            }
+        }
+
         state.history = [];
         state.currentNumber = null;
         state.markedNumbers = [];
