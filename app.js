@@ -503,8 +503,8 @@ tabButtons.forEach((button) => {
         button.classList.add('active');
         if (painelAtivo) {
             painelAtivo.classList.add('active');
+            painelAtivo.scrollIntoView({ behavior: 'smooth', block: 'start' });
             if (tabName === 'calculadora') {
-                painelAtivo.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
         if (footerEl) {
