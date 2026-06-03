@@ -1032,7 +1032,6 @@ p.aviso {
 
 footer {
     text-align: center;
-    margin-top: auto;
     font-family: 'Special Elite', cursive;
     border-top: 2px dashed var(--wood-dark);
     padding-top: 15px;
@@ -1102,13 +1101,42 @@ footer {
 }
 
 /* Pagina de Bingo para operacao em TV grande. */
+.bingo-page {
+    padding: 0;
+    overflow: hidden;
+}
+
 .bingo-page .container {
     max-width: 1500px;
-    padding: 34px 18px;
+    height: 100vh;
+    min-height: 100vh;
+    margin: 5px auto;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: auto auto minmax(0, 1fr) auto;
+    gap: 6px;
+    overflow: hidden;
+}
+
+.bingo-page .header-decor {
+    margin: 0;
+    overflow: hidden;
+}
+
+.bingo-page .flag {
+    width: 26px;
+    height: 34px;
+}
+
+.bingo-page .header-bingo h1 {
+    margin: 35px 0 2px;
+    font-size: clamp(3.2rem, 3vh, 3rem);
+    text-align: center;
 }
 
 .bingo-page header h1 {
-    font-size: 2.1rem;
+    font-size: 5.1rem;
 }
 
 .bingo-page header h2 {
@@ -1124,32 +1152,47 @@ footer {
 }
 
 .bingo-layout {
-    display: grid;
+    display: block;
     grid-template-columns: 1fr;
-    gap: 5px;
+    grid-template-rows: auto auto auto;
+    gap: 6px;
+    min-height: 0;
+    overflow: hidden;
     align-items: start;
 }
 
 .bingo-call-panel,
 .bingo-board-panel {
-    min-height: 100%;
+    min-height: 0;
+    margin-bottom: 0;
+    padding: 10px;
+}
+
+.bingo-board-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.bingo-board-panel h3 {
+    margin-bottom: 6px;
+    font-size: clamp(0.95rem, 1.8vh, 1.15rem);
 }
 
 .bingo-ball-stage {
-    margin: 8px 0 16px;
+    margin: 0;
     border: 4px solid var(--wood-dark);
     border-radius: 20px;
     background: linear-gradient(145deg, #f8d9b2, #f4a261);
-    padding: 18px;
+    padding: 8px;
     display: grid;
     grid-template-columns: max-content minmax(0, 1fr);
-    gap: 18px;
+    gap: 12px;
     align-items: center;
 }
 
 .bingo-current-letter {
-    width: 120px;
-    height: 120px;
+    width: clamp(70px, 12vh, 120px);
+    height: clamp(70px, 12vh, 120px);
     border: 4px solid var(--wood-dark);
     border-radius: 999px;
     background: #fff;
@@ -1157,14 +1200,14 @@ footer {
     align-items: center;
     justify-content: center;
     font-family: 'Special Elite', cursive;
-    font-size: 3rem;
+    font-size: clamp(1.8rem, 4.2vh, 3rem);
     color: #6f4518;
 }
 
 .bingo-current-ball {
-    min-height: 120px;
+    min-height: clamp(70px, 12vh, 120px);
     min-width: 0;
-    padding: 0 14px;
+    padding: 0 12px;
     border: 4px solid var(--wood-dark);
     border-radius: 24px;
     background: #fffdf8;
@@ -1172,27 +1215,27 @@ footer {
     align-items: center;
     justify-content: center;
     font-family: 'Special Elite', cursive;
-    font-size: 4.6rem;
+    font-size: clamp(2.2rem, 6vh, 4.6rem);
     line-height: 1;
     color: #2f2018;
 }
 
 .bingo-controls label {
     display: block;
-    margin-bottom: 6px;
-    font-size: 1.2rem;
+    margin-bottom: 4px;
+    font-size: clamp(0.9rem, 1.8vh, 1.1rem);
     font-weight: bold;
 }
 
 .bingo-controls-row {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
-    gap: 10px;
+    gap: 8px;
     align-items: stretch;
 }
 
 .bingo-actions-row {
-    margin-top: 10px;
+    margin-top: 8px;
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
@@ -1201,23 +1244,23 @@ footer {
     box-sizing: border-box;
     border: 2px solid var(--wood-dark);
     border-radius: 8px;
-    padding: 10px 12px;
+    padding: 8px 10px;
     font-family: 'Patrick Hand', cursive;
-    font-size: 1.45rem;
+    font-size: clamp(1rem, 2.3vh, 1.35rem);
     font-weight: bold;
     background: #fff;
     color: #2f2018;
 }
 
 .bingo-controls .btn {
-    font-size: 1rem;
-    min-height: 52px;
+    font-size: clamp(0.82rem, 1.6vh, 1rem);
+    min-height: clamp(36px, 5vh, 48px);
 }
 
 .bingo-status {
-    min-height: 24px;
-    margin: 10px 0 0;
-    font-size: 1rem;
+    min-height: 18px;
+    margin: 6px 0 0;
+    font-size: clamp(0.8rem, 1.4vh, 0.95rem);
     font-weight: bold;
     color: #1f6f3d;
 }
@@ -1227,25 +1270,27 @@ footer {
 }
 
 .bingo-history-wrap {
-    margin-top: 14px;
+    margin-top: 8px;
     background: #fff;
     border: 2px dashed var(--wood-dark);
     border-radius: 10px;
-    padding: 10px;
+    padding: 8px;
 }
 
 .bingo-history-wrap h4 {
     margin: 0 0 8px;
     font-family: 'Special Elite', cursive;
     color: #6f4518;
-    font-size: 1rem;
+    font-size: clamp(0.85rem, 1.5vh, 0.95rem);
 }
 
 .bingo-history-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    min-height: 42px;
+    gap: 6px;
+    min-height: 20px;
+    max-height: 7vh;
+    overflow: hidden;
 }
 
 .bingo-history-item {
@@ -1254,10 +1299,10 @@ footer {
     justify-content: center;
     border: 2px solid var(--wood-dark);
     border-radius: 999px;
-    padding: 6px 10px;
+    padding: 4px 8px;
     background: #fff7ea;
     font-family: 'Special Elite', cursive;
-    font-size: 0.95rem;
+    font-size: clamp(0.72rem, 1.3vh, 0.88rem);
 }
 
 .bingo-history-empty {
@@ -1268,13 +1313,15 @@ footer {
 .bingo-board-grid {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
+    flex: 0 1 auto;
+    min-height: 0;
 }
 
 .bingo-board-row {
     display: grid;
-    grid-template-columns: 64px minmax(0, 1fr);
-    gap: 8px;
+    grid-template-columns: clamp(42px, 5.2vh, 64px) minmax(0, 1fr);
+    gap: 6px;
     align-items: stretch;
 }
 
@@ -1284,7 +1331,7 @@ footer {
     background: #fff;
     color: #6f4518;
     font-family: 'Special Elite', cursive;
-    font-size: 2.2rem;
+    font-size: clamp(1.2rem, 2.9vh, 2rem);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1293,17 +1340,17 @@ footer {
 .bingo-row-numbers {
     display: grid;
     grid-template-columns: repeat(15, minmax(0, 1fr));
-    gap: 8px;
+    gap: 6px;
 }
 
 .bingo-number {
-    min-height: 62px;
+    min-height: clamp(28px, 5.8vh, 62px);
     border: 2px solid var(--wood-dark);
     border-radius: 10px;
     background: #ffffff;
     color: #2a1a12;
     font-family: 'Special Elite', cursive;
-    font-size: 2.75rem;
+    font-size: clamp(0.95rem, 2.8vh, 2rem);
     cursor: default;
     font-style: normal;
     font-weight: bold;
@@ -1316,16 +1363,28 @@ footer {
 }
 
 .bingo-card-tip {
-    margin: 10px 0 0;
+    margin: 6px 0 0;
     text-align: center;
     font-style: italic;
     color: #6f4b3a;
+    font-size: clamp(0.72rem, 1.2vh, 0.86rem);
+}
+
+.bingo-page footer {
+    margin-top: 0;
+    padding-top: 4px;
+    font-size: clamp(0.62rem, 1vh, 0.78rem);
+    line-height: 1.1;
+}
+
+.bingo-page .stamp {
+    display: none;
 }
 
 @media (min-width: 1600px) {
     .bingo-page .container {
         max-width: 1780px;
-        padding: 38px 24px;
+        padding: 10px 14px;
         border-width: 14px;
         box-shadow: 26px 26px 0 rgba(75, 44, 32, 0.2);
     }
@@ -1338,40 +1397,31 @@ footer {
         font-size: 3.05rem;
     }
 
-    .bingo-ball-stage {
-        grid-template-columns: max-content minmax(0, 1fr);
-        gap: 24px;
-    }
-
     .bingo-current-letter {
-        width: 150px;
-        height: 150px;
-        font-size: 3.7rem;
+        width: clamp(80px, 10.5vh, 132px);
+        height: clamp(80px, 10.5vh, 132px);
+        font-size: clamp(2rem, 3.8vh, 3.2rem);
     }
 
     .bingo-current-ball {
-        min-height: 150px;
-        padding: 0 18px;
-        font-size: 6rem;
-    }
-
-    .bingo-board-row {
-        grid-template-columns: 78px minmax(0, 1fr);
+        min-height: clamp(80px, 10.5vh, 132px);
+        padding: 0 14px;
+        font-size: clamp(2.5rem, 5.2vh, 4.9rem);
     }
 
     .bingo-row-letter {
-        font-size: 2.6rem;
+        font-size: clamp(1.5rem, 2.8vh, 2.4rem);
         font-style: normal;
         font-weight: bold;
     }
 
     .bingo-row-numbers {
-        gap: 10px;
+        gap: 7px;
     }
 
     .bingo-number {
-        min-height: 78px;
-        font-size: 2.75rem;
+        min-height: clamp(32px, 5.4vh, 68px);
+        font-size: clamp(1rem, 2.6vh, 2rem);
         cursor: default;
         font-style: normal;
         font-weight: bold;
