@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo | Paróquia São Rafael Mooca</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="img/brasao_paroquia.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bingo-page">
+    <div class="container">
+        <ul class="header-decor" aria-hidden="true">
+            <li class="flag f1"></li>
+            <li class="flag f2"></li>
+            <li class="flag f3"></li>
+            <li class="flag f4"></li>
+            <li class="flag f1"></li>
+            <li class="flag f2"></li>
+            <li class="flag f3"></li>
+            <li class="flag f4"></li>
+            <li class="flag f1"></li>
+            <li class="flag f2"></li>
+            <li class="flag f3"></li>
+            <li class="flag f4"></li>
+        </ul>
+
+        <div class="header-bingo">
+            <h1>BINGO DA PARÓQUIA SÃO RAFAEL 2026</h1>
+        </div>
+        <main class="bingo-layout" aria-label="Painel do bingo">
+           <section class="clause bingo-call-panel" aria-label="Painel da pedra e controles">
+               <div class="bingo-ball-stage" aria-live="polite" aria-atomic="true">
+                    <div id="bingoCurrentLetter" class="bingo-current-letter">-</div>
+                    <div id="bingoCurrentNumber" class="bingo-current-ball">--</div>
+                </div>
+            </section>
+            <section class="clause bingo-board-panel" aria-label="Painel de números do bingo">
+                <h3>PAINEL DE NÚMEROS SORTEADOS</h3>
+                <div id="bingoBoardGrid" class="bingo-board-grid" role="grid" aria-label="Painel de números do Bingo"></div>
+                <p class="bingo-card-tip">Os números são marcados automaticamente quando a pedra é chamada.</p>
+            </section>
+            <section class="clause bingo-call-panel" aria-label="Painel da pedra e controles">
+                <h3>CANTADOR DE PEDRA</h3>
+                 <form id="bingoCallForm" class="bingo-controls" novalidate>
+                    <label for="bingoNumberInput">Digite a pedra (1 a 75)</label>
+                    <div class="bingo-controls-row">
+                        <input id="bingoNumberInput" type="number" min="1" max="75" step="1" inputmode="numeric"
+                            autocomplete="off" placeholder="Ex.: 27" aria-label="Número da pedra">
+                        <button id="btnCallNumber" class="btn" type="submit">Chamar pedra</button>
+                    </div>
+                    <div class="bingo-controls-row bingo-actions-row">
+                        <button id="btnUndoNumber" class="btn btn-secondary" type="button">Desfazer</button>
+                        <button id="btnResetRound" class="btn btn-danger" type="button">Limpar rodada</button>
+                        <button id="btnFullscreen" class="btn" type="button">Tela cheia</button>
+                    </div>
+                    <p id="bingoStatus" class="bingo-status" role="status" aria-live="polite"></p>
+                </form>
+                <div class="bingo-history-wrap" aria-label="Histórico de pedras chamadas">
+                    <h4>Histórico</h4>
+                    <div id="bingoHistory" class="bingo-history-list"></div>
+                </div>
+            </section>
+        </main>
+        <br>
+        <footer>
+            <p>Paróquia São Rafael - Mooca<br>Viva São Rafael!</p>
+            <p><strong>#arraiasaorafaelmooca</strong></p>
+        </footer>
+
+        <div class="stamp">BINGO<br>MOOCA</div>
+    </div>
+
+    <script src="bingo.js"></script>
+</body>
+
+</html>
