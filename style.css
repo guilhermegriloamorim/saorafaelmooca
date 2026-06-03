@@ -1092,11 +1092,10 @@ footer {
 .bingo-page .container {
     max-width: 1500px;
     height: auto;
-    min-height: 100vh;
+    min-height: 99vh;
     margin: 5px auto;
     padding: 10px 12px;
     box-sizing: border-box;
-    display: grid;
     grid-template-rows: auto auto minmax(0, 1fr) auto;
     gap: 6px;
     overflow: visible;
@@ -1123,20 +1122,38 @@ footer {
 }
 
 .bingo-layout {
-    display: block;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
+    display: grid;
+    grid-template-columns: minmax(240px, 2fr) minmax(0, 10fr);
+    grid-template-areas:
+        'stage board'
+        'controls controls';
     gap: 6px;
     min-height: 0;
     overflow: visible;
-    align-items: start;
+    align-items: center;
+}
+
+.bingo-stage-panel {
+    grid-area: stage;
+}
+
+.bingo-board-panel {
+    grid-area: board;
+}
+
+.bingo-controls-panel {
+    grid-area: controls;
 }
 
 .bingo-call-panel,
 .bingo-board-panel {
     min-height: 0;
     margin-bottom: 0;
-    padding: 10px;
+    padding: 8px;
+}
+
+.bingo-controls-panel {
+    margin-top: -2px;
 }
 
 .bingo-board-panel {
@@ -1155,9 +1172,9 @@ footer {
     border-radius: 20px;
     background: linear-gradient(145deg, #f8d9b2, #f4a261);
     padding: 18px;
-    display: grid;
-    grid-template-columns: max-content minmax(0, 1fr);
-    gap: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     align-items: center;
 }
 
@@ -1171,6 +1188,7 @@ footer {
 .bingo-current-number-wrap {
     min-width: 0;
     width: 100%;
+    max-width: 220px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1187,7 +1205,7 @@ footer {
     align-items: center;
     justify-content: center;
     font-family: 'Special Elite', cursive;
-    font-size: clamp(2.2rem, 4.8vh, 3.6rem);
+    font-size: clamp(2.8rem, 7vh, 5.8rem);
     font-weight: bold;
     color: #6f4518;
 }
@@ -1237,7 +1255,7 @@ footer {
     font-size: clamp(2.8rem, 7vh, 5.8rem);
     font-weight: bold;
     line-height: 1;
-    color: #2f2018;
+   color: #6f4518;
 }
 
 .bingo-current-ball.is-flashing {
@@ -1291,7 +1309,7 @@ footer {
 .bingo-controls-main-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
 }
 
 .bingo-controls-main-row #bingoNumberInput {
@@ -1329,6 +1347,10 @@ footer {
 
 #btnFullscreen::before {
     content: '\26F6';
+}
+
+#btnToggleLayout::before {
+    content: '\21C4';
 }
 
 #btnBingoCelebrate::before {
@@ -1387,7 +1409,7 @@ footer {
 }
 
 .bingo-history-wrap {
-    margin-top: 8px;
+    margin-top: 6px;
     background: #fff;
     border: 2px dashed var(--wood-dark);
     border-radius: 10px;
@@ -1502,6 +1524,24 @@ footer {
 
 .bingo-page .stamp {
     display: none;
+}
+
+.bingo-page.layout-classic .bingo-layout {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        'stage'
+        'board'
+        'controls';
+}
+
+.bingo-page.layout-classic .bingo-ball-stage {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 22px;
+}
+
+.bingo-page.layout-classic .bingo-current-number-wrap {
+    max-width: none;
 }
 
 .bingo-celebration {
@@ -1627,7 +1667,7 @@ footer {
     .bingo-current-letter {
         width: clamp(92px, 11vh, 150px);
         height: clamp(92px, 11vh, 150px);
-        font-size: clamp(2.3rem, 4.2vh, 3.8rem);
+        font-size: clamp(3rem, 5.8vh, 6.2rem);
     }
 
     .bingo-current-ball {
@@ -1656,8 +1696,16 @@ footer {
 }
 
 @media (max-width: 1100px) {
+    .bingo-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            'stage'
+            'board'
+            'controls';
+    }
+
     .bingo-ball-stage {
-        grid-template-columns: 100px 1fr;
+        padding: 14px;
     }
 
     .bingo-board-row {
@@ -1675,7 +1723,7 @@ footer {
     .bingo-current-letter {
         width: 110px;
         height: 110px;
-        font-size: 2.9rem;
+       font-size: 4.7rem;
     }
 
     .bingo-current-ball {

@@ -1,5 +1,6 @@
 (function () {
     const STORAGE_KEY = 'sao_rafael_bingo_state_v1';
+    const LAYOUT_STORAGE_KEY = 'sao_rafael_bingo_layout_v1';
     const MIN_NUMBER = 1;
     const MAX_NUMBER = 75;
     const LETTER_ROWS = [
@@ -22,7 +23,8 @@
         btnBingoCelebrate: document.getElementById('btnBingoCelebrate'),
         btnUndo: document.getElementById('btnUndoNumber'),
         btnReset: document.getElementById('btnResetRound'),
-        btnFullscreen: document.getElementById('btnFullscreen')
+        btnFullscreen: document.getElementById('btnFullscreen'),
+        btnToggleLayout: document.getElementById('btnToggleLayout')
     };
 
     if (!elements.callForm || !elements.numberInput || !elements.boardGrid) {
@@ -295,6 +297,46 @@
         elements.btnFullscreen.textContent = document.fullscreenElement ? 'Sair da tela cheia' : 'Tela cheia';
     }
 
+    function isClassicLayout() {
+        return document.body.classList.contains('layout-classic');
+    }
+
+    function updateLayoutButton() {
+        if (!elements.btnToggleLayout) {
+            return;
+        }
+
+        elements.btnToggleLayout.textContent = isClassicLayout() ? 'Layout Atual' : 'Layout Anterior';
+    }
+
+    function loadLayoutPreference() {
+        try {
+            const savedLayout = localStorage.getItem(LAYOUT_STORAGE_KEY);
+            if (savedLayout === 'classic') {
+                document.body.classList.add('layout-classic');
+            }
+        } catch (_) {
+            // Ignore storage errors and keep default layout.
+        }
+
+        updateLayoutButton();
+    }
+
+    function saveLayoutPreference() {
+        try {
+            localStorage.setItem(LAYOUT_STORAGE_KEY, isClassicLayout() ? 'classic' : 'modern');
+        } catch (_) {
+            // Ignore storage errors and keep UI functional.
+        }
+    }
+
+    function toggleLayout() {
+        document.body.classList.toggle('layout-classic');
+        updateLayoutButton();
+        saveLayoutPreference();
+        setStatus(isClassicLayout() ? 'Layout anterior ativado.' : 'Layout atual ativado.', false);
+    }
+
     async function toggleFullscreen() {
         try {
             if (!document.fullscreenElement) {
@@ -428,6 +470,9 @@
         if (elements.btnBingoCelebrate) {
             elements.btnBingoCelebrate.addEventListener('click', triggerBingoCelebration);
         }
+        if (elements.btnToggleLayout) {
+            elements.btnToggleLayout.addEventListener('click', toggleLayout);
+        }
         elements.btnUndo.addEventListener('click', undoLastCall);
         elements.btnReset.addEventListener('click', resetRound);
         elements.btnFullscreen.addEventListener('click', toggleFullscreen);
@@ -436,6 +481,7 @@
 
     function bootstrap() {
         loadState();
+        loadLayoutPreference();
 
         bindEvents();
         refreshUi();

@@ -29,8 +29,8 @@
         <div class="header-bingo">
             <h1>BINGO DA PARÓQUIA SÃO RAFAEL</h1>
         </div>
-        <main class="bingo-layout" aria-label="Painel do bingo">
-           <section class="clause bingo-call-panel" aria-label="Painel da pedra e controles">
+          <main class="bingo-layout" aria-label="Painel do bingo">
+              <section class="clause bingo-call-panel bingo-stage-panel" aria-label="Painel da pedra e controles">
                <div class="bingo-ball-stage" aria-live="polite" aria-atomic="true">
                     <div class="bingo-current-letter-wrap">
                         <div id="bingoCurrentLetter" class="bingo-current-letter">-</div>
@@ -46,7 +46,7 @@
                 <h3>PAINEL DE NÚMEROS SORTEADOS</h3>
                 <div id="bingoBoardGrid" class="bingo-board-grid" role="grid" aria-label="Painel de números do Bingo"></div>
             </section>
-            <section class="clause bingo-call-panel" aria-label="Painel da pedra e controles">
+            <section class="clause bingo-call-panel bingo-controls-panel" aria-label="Painel da pedra e controles">
                  <form id="bingoCallForm" class="bingo-controls" novalidate>
                     <div class="bingo-controls-row bingo-controls-main-row">
                         <input id="bingoNumberInput" type="number" min="1" max="75" step="1" inputmode="numeric"
@@ -55,6 +55,7 @@
                         <button id="btnUndoNumber" class="btn btn-secondary" type="button">Desfazer</button>
                         <button id="btnResetRound" class="btn btn-danger" type="button">Limpar Rodada</button>
                         <button id="btnFullscreen" class="btn" type="button">Tela Cheia</button>
+                        <button id="btnToggleLayout" class="btn" type="button">Layout Anterior</button>
                         <button id="btnBingoCelebrate" class="btn btn-bingo" type="button">BINGO</button>
                     </div>
                     <p id="bingoStatus" class="bingo-status" role="status" aria-live="polite"></p>
