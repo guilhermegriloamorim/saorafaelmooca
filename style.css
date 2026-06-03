@@ -1239,6 +1239,53 @@ footer {
     grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.bingo-controls-main-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.bingo-controls-main-row #bingoNumberInput {
+    flex: 1 1 180px;
+    min-width: 0;
+}
+
+.bingo-controls-main-row .btn {
+    flex: 0 0 132px;
+    width: 132px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.bingo-controls-main-row .btn::before {
+    font-size: 0.95em;
+    line-height: 1;
+}
+
+#btnCallNumber::before {
+    content: '\25B6';
+}
+
+#btnUndoNumber::before {
+    content: '\21BA';
+}
+
+#btnResetRound::before {
+    content: '\2716';
+}
+
+#btnFullscreen::before {
+    content: '\26F6';
+}
+
+#btnBingoCelebrate::before {
+    content: '\2605';
+}
+
 .btn-bingo {
     background: linear-gradient(135deg, #ffd60a, #ff9f1c);
     color: #2a1a12;
@@ -1588,12 +1635,14 @@ footer {
         max-width: 800px;
     }
 
-    .bingo-actions-row {
+    .bingo-controls-main-row {
+        display: grid;
         grid-template-columns: 1fr;
     }
 
-    .bingo-controls-row {
-        grid-template-columns: 1fr;
+    .bingo-controls-main-row .btn {
+        width: 100%;
+        flex: 1 1 auto;
     }
 
     .bingo-current-ball {
