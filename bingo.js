@@ -18,6 +18,8 @@
         status: document.getElementById('bingoStatus'),
         history: document.getElementById('bingoHistory'),
         boardGrid: document.getElementById('bingoBoardGrid'),
+        bingoCelebration: document.getElementById('bingoCelebration'),
+        btnBingoCelebrate: document.getElementById('btnBingoCelebrate'),
         btnUndo: document.getElementById('btnUndoNumber'),
         btnReset: document.getElementById('btnResetRound'),
         btnFullscreen: document.getElementById('btnFullscreen')
@@ -145,8 +147,10 @@
         button.className = 'bingo-number';
         button.dataset.number = String(number);
         button.textContent = getDisplayNumber(number);
-        button.setAttribute('aria-label', `Número ${number} chamado ${getLetterFromNumber(number)}`);
-        button.disabled = true;
+        button.setAttribute('aria-label', `Chamar pedra ${getLetterFromNumber(number)}-${getDisplayNumber(number)}`);
+        button.addEventListener('click', () => {
+            callNumber(number);
+        });
 
         const isMarked = state.markedNumbers.includes(number);
         button.classList.toggle('is-marked', isMarked);
@@ -268,12 +272,38 @@
         updateFullscreenButton();
     }
 
+    let celebrationTimeout = null;
+    const CELEBRATION_DURATION_MS = 5000;
+
+    function triggerBingoCelebration() {
+        if (!elements.bingoCelebration) {
+            return;
+        }
+
+        elements.bingoCelebration.classList.remove('is-active');
+        void elements.bingoCelebration.offsetWidth;
+        elements.bingoCelebration.classList.add('is-active');
+
+        if (celebrationTimeout) {
+            clearTimeout(celebrationTimeout);
+        }
+
+        celebrationTimeout = setTimeout(() => {
+            elements.bingoCelebration.classList.remove('is-active');
+        }, CELEBRATION_DURATION_MS + 50);
+
+        setStatus('BINGO! Celebração exibida.', false);
+    }
+
     function bindEvents() {
         elements.callForm.addEventListener('submit', (event) => {
             event.preventDefault();
             callNumber(elements.numberInput.value.trim());
         });
 
+        if (elements.btnBingoCelebrate) {
+            elements.btnBingoCelebrate.addEventListener('click', triggerBingoCelebration);
+        }
         elements.btnUndo.addEventListener('click', undoLastCall);
         elements.btnReset.addEventListener('click', resetRound);
         elements.btnFullscreen.addEventListener('click', toggleFullscreen);

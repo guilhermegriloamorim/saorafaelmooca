@@ -1103,12 +1103,12 @@ footer {
 /* Pagina de Bingo para operacao em TV grande. */
 .bingo-page {
     padding: 0;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .bingo-page .container {
     max-width: 1500px;
-    height: 100vh;
+    height: auto;
     min-height: 100vh;
     margin: 5px auto;
     padding: 10px 12px;
@@ -1116,7 +1116,7 @@ footer {
     display: grid;
     grid-template-rows: auto auto minmax(0, 1fr) auto;
     gap: 6px;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .bingo-page .header-decor {
@@ -1157,7 +1157,7 @@ footer {
     grid-template-rows: auto auto auto;
     gap: 6px;
     min-height: 0;
-    overflow: hidden;
+    overflow: visible;
     align-items: start;
 }
 
@@ -1236,7 +1236,18 @@ footer {
 
 .bingo-actions-row {
     margin-top: 8px;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.btn-bingo {
+    background: linear-gradient(135deg, #ffd60a, #ff9f1c);
+    color: #2a1a12;
+    font-weight: bold;
+    border-color: #8c5a00;
+}
+
+.btn-bingo:hover {
+    filter: brightness(1.03);
 }
 
 .bingo-controls input {
@@ -1289,8 +1300,10 @@ footer {
     flex-wrap: wrap;
     gap: 6px;
     min-height: 20px;
-    max-height: 7vh;
-    overflow: hidden;
+    max-height: 22vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 4px;
 }
 
 .bingo-history-item {
@@ -1351,9 +1364,13 @@ footer {
     color: #2a1a12;
     font-family: 'Special Elite', cursive;
     font-size: clamp(0.95rem, 2.8vh, 2rem);
-    cursor: default;
+    cursor: pointer;
     font-style: normal;
     font-weight: bold;
+}
+
+.bingo-number:hover {
+    filter: brightness(0.96);
 }
     
 .bingo-number.is-marked {
@@ -1379,6 +1396,110 @@ footer {
 
 .bingo-page .stamp {
     display: none;
+}
+
+.bingo-celebration {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at center, rgba(255, 227, 112, 0.22), rgba(227, 78, 39, 0.72));
+    z-index: 10000;
+}
+
+.bingo-celebration-text {
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(3rem, 14vw, 10rem);
+    color: #fff7da;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.32), 0 0 30px rgba(128, 25, 8, 0.44);
+    transform: scale(0.4) rotate(-7deg);
+    letter-spacing: 0.08em;
+}
+
+.bingo-celebration-stars {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 2px, transparent 3px), radial-gradient(circle, rgba(255, 214, 10, 0.95) 0 2px, transparent 3px), radial-gradient(circle, rgba(255, 159, 28, 0.95) 0 2px, transparent 3px);
+    background-size: 90px 90px, 130px 130px, 160px 160px;
+    background-position: 0 0, 25px 20px, 50px 60px;
+    opacity: 0;
+}
+
+.bingo-celebration.is-active {
+    animation: bingoOverlayPop 4000ms ease forwards;
+}
+
+.bingo-celebration.is-active .bingo-celebration-text {
+    animation: bingoTextPop 4000ms cubic-bezier(.19, .9, .25, 1) forwards;
+}
+
+.bingo-celebration.is-active .bingo-celebration-stars {
+    animation: bingoStarsFlash 4000ms ease forwards;
+}
+
+@keyframes bingoOverlayPop {
+    0% {
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    88% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes bingoTextPop {
+    0% {
+        transform: scale(0.4) rotate(-7deg);
+        opacity: 0;
+    }
+
+    22% {
+        transform: scale(1.18) rotate(0deg);
+        opacity: 1;
+    }
+
+    88% {
+        transform: scale(1.02) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.96) rotate(0deg);
+        opacity: 0;
+    }
+}
+
+@keyframes bingoStarsFlash {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+
+    20% {
+        opacity: 0.95;
+        transform: scale(1.05);
+    }
+
+    88% {
+        opacity: 0.75;
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.12);
+    }
 }
 
 @media (min-width: 1600px) {

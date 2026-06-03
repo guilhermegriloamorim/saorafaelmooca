@@ -39,18 +39,17 @@
             <section class="clause bingo-board-panel" aria-label="Painel de números do bingo">
                 <h3>PAINEL DE NÚMEROS SORTEADOS</h3>
                 <div id="bingoBoardGrid" class="bingo-board-grid" role="grid" aria-label="Painel de números do Bingo"></div>
-                <p class="bingo-card-tip">Os números são marcados automaticamente quando a pedra é chamada.</p>
+                <p class="bingo-card-tip">Clique em um número para chamar a pedra. Os chamados ficam marcados automaticamente.</p>
             </section>
             <section class="clause bingo-call-panel" aria-label="Painel da pedra e controles">
-                <h3>CANTADOR DE PEDRA</h3>
                  <form id="bingoCallForm" class="bingo-controls" novalidate>
-                    <label for="bingoNumberInput">Digite a pedra (1 a 75)</label>
                     <div class="bingo-controls-row">
                         <input id="bingoNumberInput" type="number" min="1" max="75" step="1" inputmode="numeric"
                             autocomplete="off" placeholder="Ex.: 27" aria-label="Número da pedra">
-                        <button id="btnCallNumber" class="btn" type="submit">Chamar pedra</button>
+                        <button id="btnCallNumber" class="btn" type="submit">Chamar pedra</button>   
                     </div>
                     <div class="bingo-controls-row bingo-actions-row">
+                        <button id="btnBingoCelebrate" class="btn btn-bingo" type="button">BINGO</button>
                         <button id="btnUndoNumber" class="btn btn-secondary" type="button">Desfazer</button>
                         <button id="btnResetRound" class="btn btn-danger" type="button">Limpar rodada</button>
                         <button id="btnFullscreen" class="btn" type="button">Tela cheia</button>
@@ -63,16 +62,12 @@
                 </div>
             </section>
         </main>
-        <br>
-        <footer>
-            <p>Paróquia São Rafael - Mooca<br>Viva São Rafael!</p>
-            <p><strong>#arraiasaorafaelmooca</strong></p>
-        </footer>
 
-        <div class="stamp">BINGO<br>MOOCA</div>
+        <div id="bingoCelebration" class="bingo-celebration" aria-hidden="true">
+            <div class="bingo-celebration-stars" aria-hidden="true"></div>
+            <div class="bingo-celebration-text">BINGO!</div>
+        </div>
     </div>
-
     <script src="bingo.js"></script>
 </body>
-
 </html>
