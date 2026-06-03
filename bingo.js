@@ -195,6 +195,12 @@
         saveState();
     }
 
+    let resetRoundConfirmUntil = 0;
+
+    function clearResetRoundConfirmation() {
+        resetRoundConfirmUntil = 0;
+    }
+
     function callNumber(rawValue) {
         const parsed = Number(rawValue);
 
@@ -221,6 +227,7 @@
             state.markedNumbers.push(parsed);
         }
 
+        clearResetRoundConfirmation();
         setStatus(`Pedra chamada: ${getLetterFromNumber(parsed)}-${getDisplayNumber(parsed)}.`, false);
         elements.numberInput.value = '';
         elements.numberInput.focus();
@@ -237,6 +244,7 @@
         state.history = previous.history;
         state.currentNumber = previous.currentNumber;
         state.markedNumbers = previous.markedNumbers;
+        clearResetRoundConfirmation();
         setStatus('Última chamada desfeita.', false);
         refreshUi();
     }
@@ -244,9 +252,11 @@
     function resetRound() {
         const hasRoundData = state.history.length > 0 || state.markedNumbers.length > 0 || Number.isInteger(state.currentNumber);
         if (hasRoundData) {
-            const confirmed = window.confirm('Tem certeza que deseja limpar a rodada? Esta ação não pode ser desfeita.');
-            if (!confirmed) {
-                setStatus('Limpeza cancelada.', false);
+            const now = Date.now();
+            if (now > resetRoundConfirmUntil) {
+                // Avoid native confirm so fullscreen mode is preserved.
+                resetRoundConfirmUntil = now + 5000;
+                setStatus('Clique em "Limpar Rodada" novamente em até 5 segundos para confirmar.', true);
                 return;
             }
         }
@@ -255,6 +265,7 @@
         state.currentNumber = null;
         state.markedNumbers = [];
         state.undoStack = [];
+        clearResetRoundConfirmation();
         setStatus('Rodada reiniciada. O painel foi limpo.', false);
         refreshUi();
     }

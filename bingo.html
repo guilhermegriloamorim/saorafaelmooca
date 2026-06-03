@@ -32,8 +32,14 @@
         <main class="bingo-layout" aria-label="Painel do bingo">
            <section class="clause bingo-call-panel" aria-label="Painel da pedra e controles">
                <div class="bingo-ball-stage" aria-live="polite" aria-atomic="true">
-                    <div id="bingoCurrentLetter" class="bingo-current-letter">-</div>
-                    <div id="bingoCurrentNumber" class="bingo-current-ball">--</div>
+                    <div class="bingo-current-letter-wrap">
+                        <div id="bingoCurrentLetter" class="bingo-current-letter">-</div>
+                        <div class="bingo-current-letter-label">LETRA</div>
+                    </div>
+                    <div class="bingo-current-number-wrap">
+                        <div id="bingoCurrentNumber" class="bingo-current-ball">--</div>
+                        <div class="bingo-current-number-label">NUMERO</div>
+                    </div>
                 </div>
             </section>
             <section class="clause bingo-board-panel" aria-label="Painel de números do bingo">
