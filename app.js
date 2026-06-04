@@ -97,7 +97,7 @@ const patrocinadores = [
     { nome: 'Prevent Senior', arquivo: 'patrocinadores/prevent-senior-min.png' },
     { nome: 'Mercadão', arquivo: 'patrocinadores/mercadao.png' },
     { nome: 'Unival Valvulas e Conexões', arquivo: 'patrocinadores/logo-unival.svg' },
-    { nome: 'Quintal da Mooca', arquivo: 'patrocinadores/barquintaldamooca.jpg' },
+    { nome: 'Bar Quintal da Mooca', arquivo: 'patrocinadores/barquintaldamooca.jpg' },
     { nome: 'HCI Group', arquivo: 'patrocinadores/hcigroup-logo.svg' },
     { nome: 'Padaria Monte Libano', arquivo: 'patrocinadores/padaria-monte-libano.avif' },
     { nome: 'Padaria Estoril', arquivo: 'patrocinadores/padaria-estoril.avif' },
