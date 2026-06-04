@@ -90,14 +90,34 @@ let gtagInicializado = false;
 
 const itens = [];
 const patrocinadores = [
+    { nome: 'Luga Brindes Promocionais', arquivo: 'patrocinadores/logotipo-luga.png' },
+    { nome: 'Mencarini Carnes', arquivo: 'patrocinadores/mencarini-carnes.png' },
+    { nome: 'Pieroni Ambiental', arquivo: 'patrocinadores/pieroni-ambiental.png' },
+    { nome: 'Christino é Filhos Ltda', arquivo: 'patrocinadores/cristiano-filhos-logo.png' },
+    { nome: 'Prevent Senior', arquivo: 'patrocinadores/prevent-senior-min.png' },
+    { nome: 'Mercadão', arquivo: 'patrocinadores/mercadao.png' },
+    { nome: 'Unival Valvulas e Conexões', arquivo: 'patrocinadores/logo-unival.svg' },
+    { nome: 'Quintal da Mooca', arquivo: 'patrocinadores/barquintaldamooca.jpg' },
+    { nome: 'HCI Group', arquivo: 'patrocinadores/hcigroup-logo.svg' },
+    { nome: 'Padaria Monte Libano', arquivo: 'patrocinadores/padaria-monte-libano.avif' },
+    { nome: 'Padaria Estoril', arquivo: 'patrocinadores/padaria-estoril.avif' },
+    { nome: 'Grupo MG Sucatas Siderugica', arquivo: 'patrocinadores/grupo-mg-sucatas.jpg' },
+    { nome: 'Rony Queijos', arquivo: 'patrocinadores/roniqueijos.jpg' },
+    { nome: 'Lorsa Jeans', arquivo: 'patrocinadores/logo_lorsa.avif' },
+    { nome: 'Mané Burguer', arquivo: 'patrocinadores/logo-topo-mane-burger.png.webp' },
+    { nome: '', arquivo: 'patrocinadores/' },
+
+    { nome: 'KNGK SERVICOS LOGISTICA', arquivo: 'patrocinadores/' },
+    { nome: 'Clinica Satus Nutrição e Estetica', arquivo: 'patrocinadores/' },
+    { nome: 'Bar do Verdadeiro ', arquivo: 'patrocinadores/' },
     { nome: 'anuncie sua marca aqui', arquivo: 'patrocinadores/anuncie_aqui.png' },
-       { nome: 'anuncie sua marca aqui', arquivo: 'patrocinadores/anuncie_aqui.png' },
 ];
 
 const apoiadores = [
     { nome: 'Padres Barnabitas', arquivo: 'apoio/barnabitas.png' },
     { nome: 'Policia Militar', arquivo: 'apoio/policialmilitar.png' },
-    { nome: 'Prefeitura de Sao Paulo', arquivo: 'apoio/prefeiturasaopaulo.png' }
+    { nome: 'Prefeitura de Sao Paulo', arquivo: 'apoio/prefeiturasaopaulo.png' },
+
 ];
 
 function formatarBRL(valor) {
