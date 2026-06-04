@@ -105,11 +105,9 @@ const patrocinadores = [
     { nome: 'Rony Queijos', arquivo: 'patrocinadores/roniqueijos.jpg' },
     { nome: 'Lorsa Jeans', arquivo: 'patrocinadores/logo_lorsa.avif' },
     { nome: 'Mané Burguer', arquivo: 'patrocinadores/logo-topo-mane-burger.png.webp' },
-    { nome: '', arquivo: 'patrocinadores/' },
-
-    { nome: 'KNGK SERVICOS LOGISTICA', arquivo: 'patrocinadores/' },
-    { nome: 'Clinica Satus Nutrição e Estetica', arquivo: 'patrocinadores/' },
-    { nome: 'Bar do Verdadeiro ', arquivo: 'patrocinadores/' },
+    { nome: 'KNGK SERVICOS LOGISTICA', arquivo: '' },
+    { nome: 'Clinica Satus Nutrição e Estetica', arquivo: '' },
+    { nome: 'Bar do Verdadeiro ', arquivo: '' },
     { nome: 'anuncie sua marca aqui', arquivo: 'patrocinadores/anuncie_aqui.png' },
 ];
 
