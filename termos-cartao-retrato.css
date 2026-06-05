@@ -1,0 +1,162 @@
+.termos-print-page .container {
+    max-width: 840px;
+}
+
+.termos-print-page .menu-header {
+    margin-bottom: 8px;
+}
+
+.termos-print-page .menu-crest-img {
+    max-width: 56px;
+}
+
+.termos-print-page #titulo-termos-cartao-retrato {
+    margin: 0 0 10px;
+    padding-bottom: 6px;
+    font-family: 'Special Elite', cursive;
+    font-size: 1.65rem;
+    line-height: 1.2;
+    color: #bc6c25;
+    border-bottom: 1px solid #d8c7b8;
+    text-transform: uppercase;
+}
+
+.termos-print-page .clause h3 {
+    margin: 12px 0 6px;
+    font-size: 1.08rem;
+    color: #6f4518;
+}
+
+.termos-print-page .clause h4 {
+    margin: 8px 0 6px;
+    font-family: 'Special Elite', cursive;
+    font-size: 0.98rem;
+}
+
+.termos-print-page .clause p,
+.termos-print-page .clause li {
+    font-size: 1rem;
+    line-height: 1.28;
+    text-align: left;
+    margin: 4px 0;
+}
+
+.termos-print-page .list-items {
+    margin: 4px 0 8px 18px;
+    padding: 0;
+}
+
+.cards-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 8px 0;
+}
+
+.cards-row img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    justify-self: center;
+    border: 2px solid #d8c7b8;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.termos-alerta {
+    margin-top: 8px;
+}
+
+@media (max-width: 760px) {
+    .cards-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media print {
+    @page {
+        size: 210mm 297mm;
+        margin: 6mm;
+    }
+
+    .termos-print-page .container {
+        max-width: none;
+        margin: 0;
+        min-height: 285mm;
+        padding: 2mm 2mm 2.5mm;
+        border-width: 3px;
+        box-sizing: border-box;
+        box-shadow: none;
+    }
+
+    .termos-print-page .menu-header {
+        margin-bottom: 1.2mm;
+    }
+
+    .termos-print-page .menu-crest-img {
+        max-width: 10mm;
+    }
+
+    .termos-print-page .menu-header-main h1 {
+        font-size: 12pt;
+        line-height: 1.1;
+    }
+
+    .termos-print-page .menu-header-main h3 {
+        font-size: 8pt;
+        line-height: 1.1;
+    }
+
+    .termos-print-page #titulo-termos-cartao-retrato {
+        font-size: 12pt;
+        margin: 0 0 1.2mm;
+        padding-bottom: 1mm;
+    }
+
+    .termos-print-page .clause {
+        padding: 1mm;
+    }
+
+    .termos-print-page .clause h3 {
+        font-size: 8.8pt;
+        margin: 1.2mm 0 0.6mm;
+        padding-bottom: 0.4mm;
+    }
+
+    .termos-print-page .clause h4 {
+        font-size: 8.2pt;
+        margin: 1mm 0 0.5mm;
+    }
+
+    .termos-print-page .clause p,
+    .termos-print-page .clause li {
+        font-size: 7.2pt;
+        line-height: 1.2;
+        margin: 0.5mm 0;
+    }
+
+    .termos-print-page .list-items {
+        margin: 0.5mm 0 1mm 3.6mm;
+    }
+
+    .termos-print-page .cards-row {
+        gap: 1.4mm;
+        margin: 0.9mm 0;
+    }
+
+    .termos-print-page .cards-row img {
+        max-width: 46mm;
+        border-width: 1px;
+        border-radius: 2px;
+    }
+
+    .termos-print-page .termos-alerta {
+        margin-top: 0.8mm;
+        padding: 1.2mm;
+    }
+
+    .termos-print-page .print-actions,
+    .termos-print-page .stamp {
+        display: none !important;
+    }
+}
