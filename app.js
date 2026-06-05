@@ -91,6 +91,7 @@ let gtagInicializado = false;
 const itens = [];
 const patrocinadores = [
     { nome: 'Luga Brindes Promocionais', arquivo: 'patrocinadores/logotipo-luga.png' },
+    { nome: 'Roni Queijos', arquivo: 'patrocinadores/roniqueijos.jpg' },
     { nome: 'Mencarini Carnes', arquivo: 'patrocinadores/mencarini-carnes.png' },
     { nome: 'Pieroni Ambiental', arquivo: 'patrocinadores/pieroni-ambiental.png' },
     { nome: 'Christino é Filhos Ltda', arquivo: 'patrocinadores/cristiano-filhos-logo.png' },
@@ -102,12 +103,11 @@ const patrocinadores = [
     { nome: 'Padaria Monte Libano', arquivo: 'patrocinadores/padaria-monte-libano.avif' },
     { nome: 'Padaria Estoril', arquivo: 'patrocinadores/padaria-estoril.avif' },
     { nome: 'Grupo MG Sucatas Siderugica', arquivo: 'patrocinadores/grupo-mg-sucatas.jpg' },
-    { nome: 'Rony Queijos', arquivo: 'patrocinadores/roniqueijos.jpg' },
     { nome: 'Lorsa Jeans', arquivo: 'patrocinadores/logo_lorsa.avif' },
     { nome: 'Mané Burguer', arquivo: 'patrocinadores/logo-topo-mane-burger.png.webp' },
-    { nome: 'KNGK SERVICOS LOGISTICA', arquivo: '' },
-    { nome: 'Clinica Satus Nutrição e Estetica', arquivo: '' },
-    { nome: 'Bar do Verdadeiro ', arquivo: '' },
+    { nome: 'KNGK SERVICOS LOGISTICA', arquivo: 'patrocinadores/kngk-log-logo.jpg' },
+    { nome: 'Clinica Satus Nutrição e Estetica', arquivo: 'patrocinadores/status-saude.jpeg' },
+    { nome: 'Bar do Verdadeiro ', arquivo: 'patrocinadores/bar-do-verdadeiro-logo.png' },
     { nome: 'anuncie sua marca aqui', arquivo: 'patrocinadores/anuncie_aqui.png' },
 ];
 
@@ -115,7 +115,6 @@ const apoiadores = [
     { nome: 'Padres Barnabitas', arquivo: 'apoio/barnabitas.png' },
     { nome: 'Policia Militar', arquivo: 'apoio/policialmilitar.png' },
     { nome: 'Prefeitura de Sao Paulo', arquivo: 'apoio/prefeiturasaopaulo.png' },
-
 ];
 
 function formatarBRL(valor) {
@@ -238,7 +237,18 @@ function registrarNavegacaoSecao(tabName, rotuloAba) {
     });
 }
 
-function renderizarPatrocinadores(destino) {
+function embaralharArray(lista) {
+    const copia = [...lista];
+
+    for (let i = copia.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copia[i], copia[j]] = [copia[j], copia[i]];
+    }
+
+    return copia;
+}
+
+function renderizarPatrocinadores(destino, listaPatrocinadores = patrocinadores) {
 
     if (!destino) {
         return;
@@ -246,7 +256,7 @@ function renderizarPatrocinadores(destino) {
 
     destino.innerHTML = '';
     const secaoPatrocinadores = destino.id === 'patrocinadoresRodape' ? 'patrocinadores_rodape' : 'patrocinadores';
-    patrocinadores.forEach((patrocinador) => {
+    listaPatrocinadores.forEach((patrocinador) => {
         const card = document.createElement('div');
         card.className = 'sponsor-card';
         card.setAttribute('data-track-section', secaoPatrocinadores);
@@ -706,10 +716,12 @@ document.addEventListener('keydown', (event) => {
 montarProdutos();
 inicializarConsentimentoCookies();
 atualizarIndicadoresScrollProdutos();
-renderizarPatrocinadores(patrocinadoresAbaEl);
-renderizarPatrocinadores(patrocinadoresRodapeEl);
 renderizarApoio(apoioRodapeEl);
 renderizarMenuPorBarraca();
+
+const patrocinadoresEmbaralhados = embaralharArray(patrocinadores);
+renderizarPatrocinadores(patrocinadoresAbaEl, patrocinadoresEmbaralhados);
+renderizarPatrocinadores(patrocinadoresRodapeEl, patrocinadoresEmbaralhados);
 
 
 filtrarProdutos();
