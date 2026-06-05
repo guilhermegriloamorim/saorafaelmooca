@@ -1,0 +1,155 @@
+.qrcode-print-page .container {
+    max-width: 820px;
+}
+
+.qrcode-print-page .menu-header {
+    margin-bottom: 10px;
+}
+
+.qrcode-print-page .menu-crest-img {
+    max-width: 64px;
+}
+
+.qrcode-print-page .menu-header-main h1 {
+    font-size: 1.85rem;
+    line-height: 1.15;
+}
+
+.qrcode-print-page .menu-header-main h3 {
+    font-size: 1.12rem;
+    line-height: 1.2;
+    margin-top: 4px;
+}
+
+.qrcode-print-page .menu-meta p {
+    font-size: 1rem;
+    line-height: 1.2;
+    margin: 3px 0;
+}
+
+.qrcode-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 16px;
+    min-height: calc(100vh - 260px);
+    padding: 8px 10px 14px;
+}
+
+.qrcode-highlight {
+    margin: 0;
+    max-width: 700px;
+    font-family: 'Special Elite', cursive;
+    font-size: clamp(1.35rem, 4vw, 2rem);
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: #7a3516;
+    background: #fff2d9;
+    border: 2px solid #bc6c25;
+    border-radius: 8px;
+    padding: 10px 14px;
+    box-shadow: 0 6px 0 rgba(188, 108, 37, 0.24);
+}
+
+.qrcode-focus-card {
+    background: #ffffff;
+    border: 6px double var(--wood-dark);
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.qrcode-focus-card img {
+    width: min(65vw, 420px);
+    height: auto;
+    display: block;
+}
+
+.qrcode-url {
+    margin: 0;
+    font-family: 'Special Elite', cursive;
+    font-size: 1.05rem;
+    color: #4b2c20;
+    letter-spacing: 0.04em;
+}
+
+@media (max-width: 640px) {
+    .qrcode-main {
+        min-height: auto;
+    }
+
+    .qrcode-focus-card {
+        padding: 10px;
+        border-width: 4px;
+    }
+
+    .qrcode-focus-card img {
+        width: min(78vw, 360px);
+    }
+}
+
+@media print {
+    .qrcode-print-page .container {
+        min-height: 283mm;
+        padding: 1.6mm 1.8mm 1.8mm;
+    }
+
+    .qrcode-print-page .menu-header {
+        margin-bottom: 1.6mm;
+    }
+
+    .qrcode-print-page .menu-crest-img {
+        max-width: 12mm;
+    }
+
+    .qrcode-print-page .menu-header-main h1 {
+        font-size: 20pt;
+        line-height: 1.06;
+    }
+
+    .qrcode-print-page .menu-header-main h3 {
+        font-size: 11pt;
+        line-height: 1.12;
+        margin-top: 0.8mm;
+    }
+
+    .qrcode-print-page .menu-meta p {
+        font-size: 9.2pt;
+        line-height: 1.1;
+        margin: 0.45mm 0;
+    }
+
+    .qrcode-print-page .qrcode-main {
+        min-height: auto;
+        justify-content: flex-start;
+        gap: 2.4mm;
+        padding: 0.6mm 2.4mm 0;
+    }
+
+    .qrcode-print-page .qrcode-highlight {
+        max-width: 170mm;
+        font-size: 15.5pt;
+        line-height: 1.15;
+        border-width: 1.6px;
+        border-radius: 3mm;
+        padding: 1.8mm 2.2mm;
+        box-shadow: none;
+    }
+
+    .qrcode-print-page .qrcode-focus-card {
+        border-width: 2px;
+        border-radius: 2.8mm;
+        padding: 2.1mm;
+        box-shadow: none;
+    }
+
+    .qrcode-print-page .qrcode-focus-card img {
+        width: 102mm;
+    }
+
+    .qrcode-print-page .qrcode-url {
+        font-size: 10.5pt;
+    }
+}
