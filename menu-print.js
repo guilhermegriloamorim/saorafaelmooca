@@ -20,7 +20,7 @@ const produtosMenu = [
     { nome: 'Milho', barraca: 'Mineira', preco: 13.00 },
     { nome: 'Pamonha', barraca: 'Mineira', preco: 16.00 },
     { nome: 'Lanche de Pernil no Pão Francês', barraca: 'Mineira', preco: 24.00 },
-    { nome: 'Fogazza Queijo ou Calabresa', barraca: 'Fogazza', preco: 23.00 },
+    { nome: 'Fogazza Queijo ou Calabresa', barraca: 'Fogazza', preco: 24.00 },
     { nome: 'Pizza Queijo ou Calabresa', barraca: 'Pizza', preco: 17.00 },
     { nome: 'Água Mineral c/ gás', barraca: 'Bar', preco: 7.00 },
     { nome: 'Água Mineral s/ gás', barraca: 'Bar', preco: 6.00 },
@@ -28,7 +28,7 @@ const produtosMenu = [
     { nome: 'Cerveja Amstel (lata)', barraca: 'Bar', preco: 8.00 },
     { nome: 'H2O', barraca: 'Bar', preco: 10.00 },
     { nome: 'Refrigerante (lata)', barraca: 'Bar', preco: 8.00 },
-    { nome: 'Suco (lata)', barraca: 'Bar', preco: 10.00 },
+    { nome: 'Suco (lata)', barraca: 'Bar', preco: 8.00 },
     { nome: 'Bomba, Canolli', barraca: 'Doces', preco: 22.00 },
     { nome: 'Torta Limão e Morango', barraca: 'Doces', preco: 20.00 },
     { nome: 'Brigadeiro/Pão de Mel/Brownie', barraca: 'Doces', preco: 13.00 },
@@ -55,7 +55,6 @@ const produtosMenu = [
     { nome: 'Bingo (1 cartela)', barraca: 'Bingo', preco: 12.00 },
     { nome: 'Bingo (2 cartela)', barraca: 'Bingo', preco: 22.00 }
 ];
-
 const menuPorBarracaPrintEl = document.getElementById('menuPorBarracaPrint');
 const btnImprimirMenu = document.getElementById('btnImprimirMenu');
 
