@@ -1,4 +1,4 @@
-const produtosMenu = [
+const produtosMenu = (typeof produtos !== 'undefined' ? produtos : [
     { nome: 'Arroz doce', barraca: 'Caipira', preco: 12.00 },
     { nome: 'Bolo Caipira', barraca: 'Caipira', preco: 10.00 },
     { nome: 'Canjica', barraca: 'Caipira', preco: 16.00 },
@@ -61,7 +61,7 @@ const produtosMenu = [
     { nome: 'Pescaria', barraca: 'Brincadeira', preco: 10.00 },
     { nome: 'Bingo (1 cartela)', barraca: 'Bingo', preco: 12.00 },
     { nome: 'Bingo (2 cartela)', barraca: 'Bingo', preco: 22.00 }
-];
+]);
 const menuPorBarracaPrintEl = document.getElementById('menuPorBarracaPrint');
 const btnImprimirMenu = document.getElementById('btnImprimirMenu');
 

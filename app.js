@@ -114,14 +114,16 @@ const patrocinadores = [
     { nome: 'Mané Burguer', arquivo: 'patrocinadores/logo-topo-mane-burger.png.webp' },
     { nome: 'KNGK SERVICOS LOGISTICA', arquivo: 'patrocinadores/kngk-log-logo.jpg' },
     { nome: 'Clinica Satus Nutrição e Estetica', arquivo: 'patrocinadores/status-saude.jpeg' },
-    { nome: 'Bar do Verdadeiro ', arquivo: 'patrocinadores/bar-do-verdadeiro-logo.png' },
-    { nome: 'anuncie sua marca aqui', arquivo: 'patrocinadores/anuncie_aqui.png' },
+    { nome: 'Bar do Verdadeiro ', arquivo: 'patrocinadores/bar-do-verdadeiro-logo.png' }, 
 ];
 
 const apoiadores = [
     { nome: 'Padres Barnabitas', arquivo: 'apoio/barnabitas.png' },
     { nome: 'Policia Militar', arquivo: 'apoio/policialmilitar.png' },
     { nome: 'Prefeitura de Sao Paulo', arquivo: 'apoio/prefeiturasaopaulo.png' },
+    { nome: 'Comunidade e Pastorais da Paroquia São Rafael Mooca', arquivo: 'apoio/pastorais.png' },
+
+
 ];
 
 function formatarBRL(valor) {
