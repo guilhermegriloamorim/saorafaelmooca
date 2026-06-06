@@ -122,6 +122,8 @@ const apoiadores = [
     { nome: 'Policia Militar', arquivo: 'apoio/policialmilitar.png' },
     { nome: 'Prefeitura de Sao Paulo', arquivo: 'apoio/prefeiturasaopaulo.png' },
     { nome: 'Comunidade e Pastorais da Paroquia São Rafael Mooca', arquivo: 'apoio/pastorais.png' },
+    { nome: 'Jornal da Mooca', arquivo: 'apoio/jornal-da-mooca.png' },
+
 
 
 ];
