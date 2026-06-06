@@ -248,7 +248,7 @@
         clearResetRoundConfirmation();
         setStatus(`Pedra chamada: ${getLetterFromNumber(parsed)}-${getDisplayNumber(parsed)}.`, false);
         elements.numberInput.value = '';
-        elements.numberInput.focus();
+        
         refreshUi();
         flashCurrentNumber();
     }
