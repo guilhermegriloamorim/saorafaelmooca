@@ -34,6 +34,7 @@ const produtos = [
     { nome: 'H2O', barraca: 'Bar', preco: 10.00 },
     { nome: 'Refrigerante (lata)', barraca: 'Bar', preco: 8.00 },
     { nome: 'Suco (lata)', barraca: 'Bar', preco: 8.00 },
+    { nome: 'Vinho (garrafa)', barraca: 'Bar', preco: 52.00 },
     { nome: 'Bomba, Canolli', barraca: 'Doces', preco: 22.00 },
     { nome: 'Torta Limão e Morango', barraca: 'Doces', preco: 20.00 },
     { nome: 'Brigadeiro/Pão de Mel/Brownie', barraca: 'Doces', preco: 13.00 },
@@ -46,6 +47,7 @@ const produtos = [
     { nome: 'Linguiça no Pão c/ Vinagrete', barraca: 'Churrasco', preco: 16.00 },
     { nome: 'Embalagem p/ Viagem', barraca: 'Churrasco', preco: 2.00 },
     { nome: 'Choco Fruit', barraca: 'Frutas', preco: 20.00 },
+    { nome: 'Morango no Espeto c/ Chocolate', barraca: 'Frutas', preco: 20.00 },
     { nome: 'Maçã do Amor', barraca: 'Frutas', preco: 12.00 },
     { nome: 'Salada de frutas', barraca: 'Frutas', preco: 9.00 },
     { nome: 'Suco de frutas', barraca: 'Frutas', preco: 12.00 },
@@ -58,7 +60,6 @@ const produtos = [
     { nome: 'Macarrão Molho Sugo', barraca: 'Cantina', preco: 23.00 },
     { nome: 'Macarrão Molho Pesto', barraca: 'Cantina', preco: 28.00 },
     { nome: 'Porção de Queijo Ralado', barraca: 'Cantina', preco: 3.00 },
-    { nome: 'Vinho (garrafa)', barraca: 'Cantina', preco: 52.00 },
     { nome: 'Embalagem p/ Viagem', barraca: 'Cantina', preco: 2.00 },
     { nome: 'Pescaria', barraca: 'Brincadeira', preco: 10.00 },
     { nome: 'Bingo (1 cartela)', barraca: 'Bingo', preco: 12.00 },
@@ -123,9 +124,6 @@ const apoiadores = [
     { nome: 'Prefeitura de Sao Paulo', arquivo: 'apoio/prefeiturasaopaulo.png' },
     { nome: 'Comunidade e Pastorais da Paroquia São Rafael Mooca', arquivo: 'apoio/pastorais.png' },
     { nome: 'Jornal da Mooca', arquivo: 'apoio/jornal-da-mooca.png' },
-
-
-
 ];
 
 function formatarBRL(valor) {
@@ -376,7 +374,11 @@ function renderizarMenuPorBarraca() {
 }
 
 function montarProdutos() {
-    produtos.forEach((produto, index) => {
+    const produtosOrdenados = produtos
+        .map((produto, index) => ({ produto, index }))
+        .sort((a, b) => a.produto.nome.localeCompare(b.produto.nome, 'pt-BR', { sensitivity: 'base' }));
+
+    produtosOrdenados.forEach(({ produto, index }) => {
         const card = document.createElement('article');
         card.className = 'product-card';
         card.setAttribute('data-nome', normalizarTexto(`${produto.nome} ${produto.barraca}`));
