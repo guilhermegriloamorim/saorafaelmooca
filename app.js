@@ -95,6 +95,7 @@ let ultimoTermoBuscaEnviado = '';
 let ultimaListaProdutosEnviada = '';
 let analyticsPermitido = false;
 let gtagInicializado = false;
+let pendingGAEvents = [];
 
 const itens = [];
 const patrocinadores = [
@@ -158,6 +159,14 @@ function inicializarGoogleAnalyticsSeNecessario() {
     });
 
     gtagInicializado = true;
+
+    // Flush any events queued while gtag wasn't available
+    if (pendingGAEvents.length > 0 && typeof window.gtag === 'function') {
+        pendingGAEvents.forEach((ev) => {
+            window.gtag('event', ev.nomeEvento, ev.parametrosEvento);
+        });
+        pendingGAEvents = [];
+    }
 }
 
 function atualizarConsentimentoCookies(status) {
@@ -202,14 +211,20 @@ function inicializarConsentimentoCookies() {
 }
 
 function enviarEventoGA(nomeEvento, parametros) {
-    if (!analyticsPermitido || typeof window.gtag !== 'function') {
+    if (!analyticsPermitido) {
         return;
     }
 
     const parametrosEvento = { ...parametros };
 
+    if (window.console && typeof window.console.debug === 'function') {
+        console.debug('GA event queued/sent:', nomeEvento, parametrosEvento);
+    }
+
     const dispararEvento = () => {
         if (typeof window.gtag !== 'function') {
+            // Enfileira o evento para envio posterior quando gtag estiver disponível
+            pendingGAEvents.push({ nomeEvento, parametrosEvento });
             return;
         }
 
@@ -569,7 +584,15 @@ produtosGrid.addEventListener('click', (event) => {
             section_name: 'calculadora',
             item_name: produtos[indice].nome,
             action: 'adicionar_carrinho',
-            quantity: quantidadeAtual
+            quantity: quantidadeAtual,
+            items: [
+                {
+                    item_name: produtos[indice].nome,
+                    item_category: produtos[indice].barraca,
+                    price: produtos[indice].preco,
+                    quantity: quantidadeAtual
+                }
+            ]
         });
 
         enviarEventoGA('add_to_cart', {
@@ -645,12 +668,21 @@ if (calculadoraBtn) {
 }
 
 btnLimpar.addEventListener('click', () => {
+    const snapshotItems = itens.map((it) => ({
+        item_name: it.nome,
+        item_category: it.barraca,
+        price: it.preco,
+        quantity: it.quantidade
+    }));
+
     itens.length = 0;
     renderizar();
+
     enviarEventoGA('item_click', {
         section_name: 'calculadora',
         item_name: 'carrinho',
-        action: 'limpar_tudo'
+        action: 'limpar_tudo',
+        items: snapshotItems
     });
 });
 
@@ -661,13 +693,23 @@ tabelaItens.addEventListener('click', (event) => {
     }
 
     const indice = Number(botao.getAttribute('data-remove'));
-    const nomeItem = itens[indice]?.nome || 'item';
+    const removed = itens[indice];
+    const nomeItem = removed?.nome || 'item';
+    const removedSnapshot = removed ? [{
+        item_name: removed.nome,
+        item_category: removed.barraca,
+        price: removed.preco,
+        quantity: removed.quantidade
+    }] : [];
+
     itens.splice(indice, 1);
     renderizar();
+
     enviarEventoGA('item_click', {
         section_name: 'calculadora',
         item_name: nomeItem,
-        action: 'remover_item'
+        action: 'remover_item',
+        items: removedSnapshot
     });
 });
 
