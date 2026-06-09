@@ -38,7 +38,7 @@ const produtos = [
     { nome: 'Bomba, Canolli', barraca: 'Doces', preco: 22.00 },
     { nome: 'Torta Limão e Morango', barraca: 'Doces', preco: 20.00 },
     { nome: 'Brigadeiro/Pão de Mel/Brownie', barraca: 'Doces', preco: 13.00 },
-    { nome: 'Trufa e Alfajor', barraca: 'Doces', preco: 8.00 },
+    { nome: 'Trufa', barraca: 'Doces', preco: 8.00 },
     { nome: 'Bolo de Pote e de Abacaxi (pedaço)', barraca: 'Doces', preco: 18.00 },
     { nome: 'Embalagem p/ Viagem', barraca: 'Doces', preco: 2.00 },
     { nome: 'Churrasco no Espeto', barraca: 'Churrasco', preco: 13.00 },
