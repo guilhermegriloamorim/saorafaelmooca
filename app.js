@@ -580,6 +580,8 @@ produtosGrid.addEventListener('click', (event) => {
         buscaProdutoEl.value = '';
         filtrarProdutos();
         ultimoTermoBuscaEnviado = '';
+
+        // evento de interação (compatível com relatórios existentes)
         enviarEventoGA('item_click', {
             section_name: 'calculadora',
             item_name: produtos[indice].nome,
@@ -595,6 +597,7 @@ produtosGrid.addEventListener('click', (event) => {
             ]
         });
 
+        // evento GA4 padrão para adicionar ao carrinho
         enviarEventoGA('add_to_cart', {
             currency: 'BRL',
             value: produtos[indice].preco * quantidadeAtual,
@@ -678,11 +681,20 @@ btnLimpar.addEventListener('click', () => {
     itens.length = 0;
     renderizar();
 
+    // evento existente para compatibilidade
     enviarEventoGA('item_click', {
         section_name: 'calculadora',
         item_name: 'carrinho',
         action: 'limpar_tudo',
         items: snapshotItems
+    });
+
+    // evento personalizado para rastrear limpeza do carrinho na calculadora
+    enviarEventoGA('clear_cart_calculator', {
+        section_name: 'calculadora',
+        action: 'limpar_tudo',
+        items: snapshotItems,
+        items_count: snapshotItems.length
     });
 });
 
@@ -693,6 +705,8 @@ tabelaItens.addEventListener('click', (event) => {
     }
 
     const indice = Number(botao.getAttribute('data-remove'));
+
+    // capture os dados antes de remover
     const removed = itens[indice];
     const nomeItem = removed?.nome || 'item';
     const removedSnapshot = removed ? [{
@@ -705,7 +719,16 @@ tabelaItens.addEventListener('click', (event) => {
     itens.splice(indice, 1);
     renderizar();
 
+    // evento existente/legacy
     enviarEventoGA('item_click', {
+        section_name: 'calculadora',
+        item_name: nomeItem,
+        action: 'remover_item',
+        items: removedSnapshot
+    });
+
+    // evento personalizado para remoção específica na calculadora
+    enviarEventoGA('remove_from_cart_calculator', {
         section_name: 'calculadora',
         item_name: nomeItem,
         action: 'remover_item',

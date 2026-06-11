@@ -1,0 +1,12 @@
+# Dependências Node
+node_modules/
+
+# Logs de ferramentas JS
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
