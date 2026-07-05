@@ -61,7 +61,7 @@ const produtos = [
     { nome: 'Macarrão Molho Pesto', barraca: 'Cantina', preco: 28.00 },
     { nome: 'Porção de Queijo Ralado', barraca: 'Cantina', preco: 3.00 },
     { nome: 'Embalagem p/ Viagem', barraca: 'Cantina', preco: 2.00 },
-    { nome: 'Pescaria', barraca: 'Brincadeira', preco: 10.00 },
+    { nome: 'Pescaria', barraca: 'Brincadeira', preco: 10.00 }
     //{ nome: 'Bingo (1 cartela)', barraca: 'Bingo', preco: 12.00 },
     //{ nome: 'Bingo (2 cartela)', barraca: 'Bingo', preco: 22.00 }
 ];
