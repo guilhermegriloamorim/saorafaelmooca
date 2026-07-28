@@ -585,10 +585,13 @@ body {
 @media (max-width: 860px) {
   .header-inner {
     justify-content: flex-start;
+    position: relative;
   }
 
   .site-nav {
     margin-left: 0;
+    width: 0;
+    flex: 0 0 0;
   }
 
   .logo-mark {
@@ -642,6 +645,7 @@ body {
   .nav-toggle {
     display: inline-block;
     margin-left: auto;
+    flex: 0 0 auto;
   }
 
   .nav-menu {
@@ -714,7 +718,16 @@ body {
   }
 
   .social-links-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
+  }
+
+  .social-link-btn {
+    min-height: 74px;
+    padding: 10px;
+  }
+
+  .social-link-text small {
+    white-space: normal;
   }
 }
 
