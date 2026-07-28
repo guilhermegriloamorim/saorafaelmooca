@@ -173,12 +173,6 @@ body {
 
 .section {
   padding: 108px 0 72px;
-  min-height: 100vh;
-}
-
-.section:not(.hero) {
-  display: grid;
-  align-content: center;
 }
 
 #historia {
@@ -670,7 +664,6 @@ body {
 
   .section {
     padding-top: 96px;
-    min-height: 100vh;
   }
 
   .hero::after {
@@ -736,7 +729,6 @@ body {
 
   .section {
     padding-top: 114px;
-    min-height: 100vh;
   }
 
   .hero-content {
@@ -770,7 +762,7 @@ body {
   }
 
   .section {
-    min-height: 100vh;
+    min-height: auto;
   }
 
   .social-links-grid {
@@ -792,10 +784,6 @@ body {
 }
 
 @supports (height: 100dvh) {
-  .section {
-    min-height: 100dvh;
-  }
-
   .hero {
     min-height: 100dvh;
   }
