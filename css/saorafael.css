@@ -1,0 +1,84 @@
+/* Importação das fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
+
+:root {
+  /* Paleta de Cores */
+  --color-primary-green: #003d32;   /* Verde escuro sacerdotal */
+  --color-gold-accent: #b28330;     /* Dourado metálico/sacro */
+  --color-gold-light: #d6a858;      /* Dourado suave */
+  --color-bg-beige: #ead8bd;        /* Bege do fundo */
+  --color-bg-halo: #f3e0a3;         /* Bege claro/dourado do halo */
+  --color-white: #ffffff;           /* Branco */
+  
+  /* Tipografia */
+  --font-heading-main: 'Cinzel', serif;              /* Para o título principal */
+  --font-heading-sub: 'Playfair Display', serif;     /* Para subtítulos elegância */
+  --font-body: 'Montserrat', sans-serif;             /* Para rodapés e textos de apoio */
+}
+
+/* Exemplo de aplicação global de fundo e texto */
+body {
+  background-color: var(--color-bg-beige);
+  color: var(--color-primary-green);
+  font-family: var(--font-body);
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilo para Título Secundário / Introdução (ex: "Solenidade de") */
+.subtitle-intro {
+  font-family: var(--font-heading-sub);
+  color: var(--color-gold-accent);
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+/* Estilo para o Título Principal (ex: "Santo Antônio Maria Zaccaria") */
+.title-main {
+  font-family: var(--font-heading-main);
+  color: var(--color-primary-green);
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.1;
+  text-transform: none;
+  margin: 0;
+}
+
+/* Estilo para Subtítulo / Cargo (ex: "Presbítero e Fundador.") */
+.subtitle-badge {
+  font-family: var(--font-heading-sub);
+  color: var(--color-gold-accent);
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Divisor elegante em dourado */
+.gold-divider {
+  width: 150px;
+  height: 2px;
+  background-color: var(--color-gold-accent);
+  margin: 1.5rem auto;
+  border: none;
+}
+
+/* Estilo para a Barra de Rodapé Institucional */
+.footer-bar {
+  background-color: var(--color-primary-green);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-bar a {
+  color: var(--color-white);
+  text-decoration: none;
+}

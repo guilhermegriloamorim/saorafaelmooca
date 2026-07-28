@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paróquia São Rafael Mooca</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="img/brasao_paroquia.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <ul class="header-decor">
+            <li class="flag f1"></li>
+            <li class="flag f2"></li>
+            <li class="flag f3"></li>
+            <li class="flag f4"></li>
+            <li class="flag f1"></li>
+            <li class="flag f2"></li>
+            <li class="flag f3"></li>
+            <li class="flag f4"></li>
+            <li class="flag f1"></li>
+            <li class="flag f2"></li>
+            <li class="flag f3"></li>
+            <li class="flag f4"></li>
+        </ul>
+
+        <header>
+            <div class="crest-wrap" style="text-align:center;margin:10px 0;">
+                <img src="img/brasao_paroquia.png" alt="Brasão da Paróquia São Rafael Mooca"
+                    style="max-width:80px;height:auto;display:inline-block;" loading="lazy">
+            </div>
+            <h1>ARRAIÁ 2026</h1>
+            <h2>SÃO RAFAEL</h2>
+            <h3>gente que ama 🖤 festa junina</h3>
+            <div style="font-weight: bold;">
+                <p><strong>Nos Dias:</strong> 6 e 7 de junho, 13 e 14 de junho, 20 e 21 de junho,<br> 27 e 28 de junho 4
+                    e 5 de
+                    julho.</p>
+                <p><strong>Horários:</strong> Aos sábados e aos domingos das 18h às 22h</p>
+            </div>
+            <div style="font-weight: bold;"> 🔥 🏮 🌽 </div>
+
+        </header>
+
+        <!-- Navegação por abas -->
+        <nav class="tabs-nav" aria-label="Navegação por abas">
+            <button class="tab-btn active" type="button" data-tab="calculadora">Calculadora de Preços</button>
+            <button class="tab-btn" type="button" data-tab="barracas">Barracas / Cardápio</button>
+            <button class="tab-btn" type="button" data-tab="mapa">Mapa da Festa</button>
+            <button class="tab-btn" type="button" data-tab="termos">Termos de Uso do Cartão</button>
+            <button class="tab-btn" type="button" data-tab="sobre">Sobre a Festa</button>
+            <button class="tab-btn" type="button" data-tab="patrocinadores">Patrocinadores</button>
+        </nav>
+
+        <!-- Calculadora de preços para ajudar os visitantes a planejarem seus gastos durante a festa.  -->
+        <section id="tab-calculadora" class="tab-panel active" role="tabpanel">
+            <div class="clause calculator">
+                <h3>CALCULADORA DE PREÇOS</h3>
+                <p>Recomenda-se ao consumidor adquirir apenas a quantidade de créditos que pretende utilizar no evento.</p>
+                <div class="search-wrap">
+                    <input id="buscaProduto" type="text" placeholder="Digite o nome do produto ou barraca..."
+                        autocomplete="off">
+                </div>
+                <p>Selecione o produto na lista abaixo, ajuste a quantidade e clique em "Adicionar"</p>
+                <div id="produtosScrollWrapper" class="products-scroll-wrapper">
+                    <div id="produtosScrollBox" class="products-scroll-box" aria-label="Lista de produtos com rolagem">
+                        <div id="produtosGrid" class="products-grid" aria-label="Lista de produtos"></div>
+                    </div>
+                    <p id="produtosScrollHint" class="products-scroll-hint" aria-live="polite"></p>
+                </div>
+                <p id="semResultadoBusca" class="search-empty">Nenhum produto encontrado para essa pesquisa.</p>
+                <div class="cart-table-wrap">
+                    <table class="cart-table" aria-label="Itens selecionados">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="itensCarrinho">
+                            <tr>
+                                <td class="cart-empty" colspan="2">Nenhum item adicionado.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="total-box">Total: <span id="total">R$ 0,00</span></div>
+                <div class="calc-actions">
+                    <button id="btnLimpar" class="btn btn-danger" type="button">Limpar tudo</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Termo de Uso do Cartão de Consumo - Festa Junina 2026 -->
+        <section id="tab-termos" class="tab-panel" role="tabpanel">
+            <div class="clause">
+                <h3>CLÁUSULA PRIMEIRA – DO OBJETO</h3>
+                <p>1.1. O presente termo estabelece as normas para aquisição, utilização e validade do sistema de
+                    cartões de aproximação (RFID) para o consumo de produtos e serviços nas barracas oficiais da Festa
+                    Junina 2026.</p>
+                <h4>Cartões Oficiais da Festa</h4>
+                <div style="text-align:center;margin:10px 0;">
+                    <img src="img/cartao_antigo.jpeg" alt="Cartão da Festa"
+                        style="max-width:320px;height:auto;display:inline-block;" loading="lazy">
+                </div>
+                <div style="text-align:center;margin:10px 0;">
+                    <img src="img/cartao_novo.png" alt="Cartão da Festa"
+                        style="max-width:320px;height:auto;display:inline-block;" loading="lazy">
+                </div>
+
+                <div class="info-card">
+                    <p><strong>Atenção:</strong> Os cartões da edição anterior da festa poderão ser recolhidos e
+                        substituídos
+                        sem necessidade de pagamento da taxa de ativação. Conforme a disponibilidade.</p>
+                </div>
+
+            </div>
+
+            <div class="clause">
+                <h3>CLÁUSULA SEGUNDA – DA AQUISIÇÃO E CUSTO DE ATIVAÇÃO</h3>
+                <p>2.1. O usuário deverá adquirir o cartão físico mediante o pagamento da taxa de ativação no valor de
+                    R$ 6,00 (seis reais).</p>
+                <p>2.2. As recargas poderão ser realizadas por meio de dinheiro, cartão de crédito e débito, conforme
+                    disponibilidade nos pontos oficiais do evento.</p>
+                <p>2.3. DA TROCA FINAL: Ao término do evento ou após o consumo total dos créditos, a devolução do cartão
+                    físico íntegro, sem danos que impeçam sua reutilização, nos caixas autorizados dará ao portador o
+                    direito à troca por 01 (uma) garrafa de água mineral, não havendo devolução do valor de ativação em
+                    moeda corrente.</p>
+                <p>2.4. O saldo de créditos pode ser consultado a qualquer momento nos caixas centrais.</p>
+                <p>2.5. Ao adquirir créditos, o consumidor declara estar ciente e de acordo com este regulamento.</p>
+            </div>
+
+            <div class="clause">
+                <h3>CLÁUSULA TERCEIRA – DA VALIDADE DOS CRÉDITOS</h3>
+                <p>3.1. Os créditos inseridos no cartão são válidos exclusivamente para o período de realização da Festa
+                    Junina 2026.</p>
+                <p>3.2. O uso dos créditos é permitido até o horário oficial de encerramento das atividades das
+                    barracas.</p>
+                <p>3.3. DA EXPIRAÇÃO: Saldos remanescentes expiram automaticamente ao encerramento da festividade do ano
+                    vigente, não
+                    sendo permitida a transferência ou acumulação de valores para edições futuras ou outros eventos.</p>
+                <p>3.4. A validade do cartão e dos créditos é restrita ao presente exercício, não sendo possível utilizar
+                    créditos ou saldos de anos anteriores.</p>
+            </div>
+
+            <div class="clause">
+                <h3>CLÁUSULA QUARTA – DA POLÍTICA DE NÃO REEMBOLSO</h3>
+                <p>4.1. CONVERSÃO EM CONSUMO: Ao carregar o cartão, o usuário converte o valor em créditos para uso
+                    exclusivo na festa. Por essa razão, não haverá devolução de valores, estorno ou reembolso de saldos
+                    não utilizados.</p>
+                <p>4.2.<strong>Recomendamos que o carregamento seja feito de acordo com a intenção de consumo, uma vez
+                        que a
+                        carga é definitiva e o saldo remanescente não é restituível.</strong></p>
+            </div>
+
+            <div class="clause">
+                <h3>CLÁUSULA QUINTA – DA RESPONSABILIDADE E PRIVACIDADE</h3>
+                <p>5.1. DO ANONIMATO: O cartão de consumo é ao portador e não armazena dados pessoais, tais como CPF,
+                    nome ou correio eletrônico.</p>
+                <p>5.2. DA GUARDA E POSSE: A responsabilidade pela segurança e conservação do cartão é inteiramente do
+                    usuário.</p>
+                <p>5.3. DA PERDA OU ROUBO: Por ser um cartão sem identificação nominal:</p>
+                <ul class="list-items">
+                    <li>Não é possível realizar o bloqueio do dispositivo;</li>
+                    <li>Não haverá recuperação de saldo ou emissão de segunda via;</li>
+                    <li>O crédito contido no cartão será de livre uso de quem o detiver.</li>
+                </ul>
+                <p>5.4. A utilização indevida, tentativa de fraude ou adulteração do cartão poderá resultar em seu
+                    bloqueio,
+                    sem prejuízo da adoção das medidas legais cabíveis junto às autoridades competentes.</p>
+            </div>
+
+            <div class="clause">
+                <h3>CLÁUSULA SEXTA – DAS REGRAS DE UTILIZAÇÃO</h3>
+                <p>6.1. O cartão é a única forma de pagamento aceita nas barracas oficiais identificadas.</p>
+                <p>6.2. É de responsabilidade do usuário conferir o saldo e os valores debitados no ato de cada recarga
+                    e consumo nas barracas, não sendo aceitas contestações posteriores.</p>
+                <p>6.3. Cartões danificados (dobrados, perfurados ou molhados) que impeçam a leitura do chip não serão
+                    substituídos ou reembolsados.</p>
+                <p>6.4. Em caso de indisponibilidade temporária do sistema, as operações poderão ser pausadas até a
+                    normalização, sendo retomadas assim que possível.</p>
+            </div>
+
+            <div class="clause">
+                <h3>CLÁUSULA SÉTIMA – DAS DISPOSIÇÕES GERAIS</h3>
+                <p>7.1. A aquisição e o carregamento do cartão implicam na aceitação automática e integral deste
+                    regulamento.</p>
+                <p>7.2. Eventuais casos omissos serão resolvidos pela Comissão Organizadora no local do evento.</p>
+            </div>
+        </section>
+
+        <!-- Sobre a Festa -->
+        <section id="tab-sobre" class="tab-panel" role="tabpanel">
+            <div class="clause">
+                <h3>SOBRE A FESTA</h3>
+                <div class="info-card">
+                    <p><strong>História</strong></p>
+                    <p>A Festa Junina da Paróquia São Rafael Mooca é um evento familiar com comidas típicas, música,
+                        brincadeiras e ações comunitárias.<strong> O trabalho é realizado por voluntários da
+                            paróquia</strong>, com o objetivo de celebrar a cultura junina e apoiar as iniciativas
+                        pastorais e sociais da comunidade.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <p><strong>Voluntariado</strong></p>
+                    <p>O sucesso da festa depende do trabalho dedicado de voluntários. Se você deseja contribuir nessa
+                        edição ou em futuras edições, inscreva-se para fazer parte da equipe de voluntários da paróquia
+                        São Rafael Mooca.</p>
+                    <div style="font-weight: bold;">
+                        <p class="volunteer-cta">
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLScPEe1v1xjMTd4sCJIMFFruDPJEm-FZjcQMO2quNcdljfJCpw/viewform"
+                                target="_blank" rel="noopener noreferrer">Inscrições para trabalho voluntário clique
+                                aqui!</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <p><strong>Programação</strong></p>
+                    <p><strong>Horários:</strong> Aos sábados das 18h às 22h e aos domingos das 18h às 22h.</p>
+                    <p><strong>Dias:</strong> 6 e 7 de junho, 13 e 14 de junho, 20 e 21 de junho, 27 e 28 de junho, 4 e
+                        5 de julho.</p>
+                </div>
+                <div class="info-card">
+                    <p><strong>Meios de pagamento aceitos</strong></p>
+                    <ul class="payment-list">
+                        <li class="payment-item">
+                            Cartão de Crédito e Débito (bandeiras Visa, Master e Elo)
+                        </li>
+                        <li class="payment-item">
+                            Pix
+                        </li>
+                        <li class="payment-item">
+                            Dinheiro
+                        </li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <p><strong>Como chegar</strong></p>
+                    <p>A Paróquia São Rafael Arcanjo na Mooca está localizada no Largo São Rafael, s/nº - Mooca, São
+                        Paulo - SP.</p>
+                    <div class="location-cta">
+                        <iframe class="location-map"
+                            src="https://www.google.com/maps?q=Par%C3%B3quia%20S%C3%A3o%20Rafael%20Arcanjo%20Mooca%2C%20Largo%20S%C3%A3o%20Rafael%2C%20s%2Fn%20-%20Mooca%2C%20S%C3%A3o%20Paulo%20-%20SP&output=embed"
+                            style="border:0;" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+                            title="Mapa da Paróquia São Rafael Arcanjo"></iframe>
+                        <a id="btnComoChegar" class="btn"
+                            href="https://www.google.com/maps/search/?api=1&query=Par%C3%B3quia%20S%C3%A3o%20Rafael%20Arcanjo%20Mooca%2C%20Largo%20S%C3%A3o%20Rafael%2C%20s%2Fn%20-%20Mooca%2C%20S%C3%A3o%20Paulo%20-%20SP"
+                            target="_blank" rel="noopener noreferrer" data-track-section="sobre"
+                            data-track-item="Como chegar"
+                            aria-label="Abrir rota para a Paróquia São Rafael Arcanjo no aplicativo de mapas">Abrir no
+                            app de mapas</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mapa da Festa -->
+        <section id="tab-mapa" class="tab-panel" role="tabpanel">
+            <div class="clause">
+                <h3>MAPA DA FESTA</h3>
+                <p>Mapa simplificado para orientação rápida dos visitantes.</p>
+                <div class="map-wrap">
+                    <button id="btnAbrirMapa" class="map-preview-btn" type="button"
+                        aria-label="Abrir mapa da festa em tela cheia">
+                        <img class="map-preview" src="mapa/mapadafaesta.png" alt="Mapa da Festa Junina" loading="lazy">
+                    </button>
+                    <p class="map-hint">Toque na imagem para abrir em tela cheia e ampliar os detalhes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Barracas -->
+        <section id="tab-barracas" class="tab-panel" role="tabpanel">
+            <div class="clause">
+                <div style="margin-top:20px;">
+                    <h3>BARRACAS E CARDÁPIO</h3>
+                    <p>Use a calculadora para saber o valor total para efetuar sua recarga.</p>
+                    <div id="menuPorBarraca" class="menu-grid" aria-label="Menu de produtos por barraca"></div>
+                    <button id="calculadoraBtn" class="btn btn-danger" type="button" style="margin-top: 10px;">Calculadora de Preços</button>
+                </div>
+                <div style="margin-top:20px;">
+                    <h3>EQUIPES DE APOIO</h3>
+                    <div class="info-card">
+                        <p>Equipes operacionais, de apoio e organização da festa:</p>
+                        <ul class="list-items">
+                            <li>Caixas</li>
+                            <li>Compras</li>
+                            <li>Montagem</li>
+                            <li>Almoxarifado</li>
+                            <li>Comissão de Festa</li>
+                            <li>Comunicação e Som</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Patrocinadores -->
+        <section id="tab-patrocinadores" class="tab-panel" role="tabpanel">
+            <div class="clause">
+                <h3>PATROCINADORES</h3>
+                <p><strong>Caso seja de interesse em patrocinar a festa, entre em contato com a Secretaria
+                        Paroquial.</strong></p>
+                <p>O nosso agradecimento às empresas e Apoiadores que colaboram com a realização da <strong>53º Arraia São Rafael Mooca</strong>.</p>
+                <div id="patrocinadoresAba" class="sponsors-grid" aria-label="Logos de patrocinadores">
+                </div>
+            </div>
+        </section>
+
+        <!-- Rodapé -->
+        <footer>
+            <div class="footer-sponsors-title">Patrocinadores</div>
+            <div id="patrocinadoresRodape" class="sponsors-grid" aria-label="Logos dos patrocinadores no rodapé"></div>
+            <div class="footer-sponsors-title">Apoio</div>
+            <div id="apoioRodape" class="sponsors-grid" aria-label="Logos dos apoiadores no rodapé"></div>
+            <div class="footer-sponsors">
+                <p>Paróquia São Rafael - Mooca<br>Viva São Rafael!</p>
+                <div class="social-cta" data-track-section="rodape" data-track-item="Instagram Festa">
+                    <div class="social-line">
+                        <a class="social-link" href="https://www.instagram.com/paroquiasaorafaelmoocasp/"
+                            target="_blank" rel="noopener noreferrer"
+                            aria-label="Abrir Instagram da Paróquia São Rafael Mooca">
+                            <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path fill="currentColor"
+                                    d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 1.8A3.7 3.7 0 0 0 3.8 7.5v9A3.7 3.7 0 0 0 7.5 20.2h9a3.7 3.7 0 0 0 3.7-3.7v-9a3.7 3.7 0 0 0-3.7-3.7h-9Zm9.6 1.3a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Z" />
+                            </svg>@paroquiasaorafaelmoocasp</a>
+                    </div>
+                </div>
+                <p><strong>#arraiasaorafaelmooca</strong></p>
+            </div>
+        </footer>
+        <div class="stamp">ORIGINAL<br>MOOCA</div>
+    </div>
+
+    <!-- Modal para exibição do mapa em tela cheia, proporcionando uma visualização detalhada para os visitantes. -->
+    <div id="mapModal" class="map-modal" aria-hidden="true">
+        <div class="map-modal-content" role="dialog" aria-modal="true" aria-label="Mapa da festa ampliado">
+            <button id="btnFecharMapa" class="map-modal-close" type="button"
+                aria-label="Fechar mapa ampliado">×</button>
+            <div class="map-modal-image-wrap">
+                <img id="mapModalImage" class="map-modal-image" src="mapa/mapadafaesta.png"
+                    alt="Mapa da Festa Junina ampliado">
+            </div>
+            <p class="map-modal-tip">Clique na imagem para alternar entre zoom e tamanho original.</p>
+        </div>
+    </div>
+
+    <!-- Banner de consentimento de cookies para análise, garantindo transparência e conformidade com as melhores práticas de privacidade. -->
+    <div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Preferências de cookies">
+        <p>
+            Utilizamos cookies de análise para entender a navegação e melhorar sua experiência. Não coletamos dados
+            pessoais de identificação direta (como nome, CPF e e-mail) neste site.
+        </p>
+        <div class="cookie-actions">
+            <button id="btnRecusarCookies" class="btn btn-secondary" type="button">Recusar analíticos</button>
+            <button id="btnAceitarCookies" class="btn" type="button">Aceitar analíticos</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
