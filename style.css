@@ -183,6 +183,12 @@ body {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(243, 224, 163, 0.42));
 }
 
+.historia-soft {
+  background:
+    radial-gradient(circle at 14% 16%, rgba(243, 224, 163, 0.32), transparent 34%),
+    linear-gradient(180deg, rgba(234, 216, 189, 0.75), rgba(255, 255, 255, 0.7));
+}
+
 .section-dark {
   background:
     radial-gradient(circle at 18% 12%, rgba(178, 131, 48, 0.15), transparent 30%),
@@ -377,6 +383,16 @@ body {
   color: var(--color-gold-accent);
 }
 
+.card a {
+  color: var(--color-primary-green);
+  font-weight: 600;
+}
+
+.card a:hover,
+.card a:focus-visible {
+  color: #0a5447;
+}
+
 .card-highlight {
   border-width: 2px;
 }
@@ -384,6 +400,26 @@ body {
 .info-list {
   margin: 0;
   padding-left: 18px;
+}
+
+.inline-note {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(243, 224, 163, 0.45);
+  border-left: 3px solid var(--color-gold-accent);
+}
+
+.special-highlight {
+  margin-top: 18px;
+  border: 2px solid rgba(178, 131, 48, 0.65);
+  background:
+    radial-gradient(circle at 100% 0, rgba(243, 224, 163, 0.45), transparent 55%),
+    var(--color-white);
+}
+
+.special-highlight h3 {
+  color: #8f6112;
 }
 
 .address-card {
