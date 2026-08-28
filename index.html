@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Landing page oficial da Paróquia São Rafael Mooca, Arquidiocese de São Paulo. Horários, sacramentos, pastorais e contato.">
+  <meta name="description"
+    content="Landing page oficial da Paróquia São Rafael Mooca, Arquidiocese de São Paulo. Horários, sacramentos, pastorais e contato.">
   <title>Paróquia São Rafael - Mooca</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="css/saorafael.css">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
 
   <header class="site-header" id="topo">
     <div class="container header-inner">
       <a class="logo-text" href="#home" aria-label="Ir para o início">
-        <img class="logo-mark" src="img/brasao_paroquia.png" alt="Brasão da Paróquia São Rafael Mooca" aria-hidden="true">
+        <img class="logo-mark" src="img/brasao_paroquia.png" alt="Brasão da Paróquia São Rafael Mooca"
+          aria-hidden="true">
         <span>Paróquia São Rafael Mooca</span>
       </a>
 
-      <button
-        id="navToggle"
-        class="nav-toggle"
-        type="button"
-        aria-expanded="false"
-        aria-controls="navMenu"
-        aria-label="Abrir menu de navegação"
-      >
+      <button id="navToggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu"
+        aria-label="Abrir menu de navegação">
         <span></span>
         <span></span>
         <span></span>
@@ -48,7 +46,7 @@
       </nav>
     </div>
   </header>
-  
+
   <main id="main-content">
     <section id="home" class="section hero" aria-labelledby="hero-title">
       <div class="container hero-content">
@@ -59,17 +57,16 @@
           <p class="subtitle-badge hero-meta">Região Episcopal Belém</p>
         </div>
         <div class="hero-actions">
-            <a class="btn" href="#horarios">Horários de Missa</a>
-            <a
-            class="btn"
+          <a class="btn" href="#horarios">Horários de Missa</a>
+          <a class="btn" href="#confissoes">Confissões</a>
+          <a class="btn"
             href="https://www.google.com/maps/search/?api=1&query=Largo+Sao+Rafael%2C+s%2Fn+-+Mooca%2C+Sao+Paulo+-+SP"
-            target="_blank"
-            rel="noopener noreferrer"
-          >Como Chegar</a>
+            target="_blank" rel="noopener noreferrer">Como Chegar</a>
           <a class="btn btn-hero-link" href="#secretaria">Secretaria</a>
           <a class="btn btn-hero-link" href="#contato">Contato</a>
           <a class="btn btn-hero-link" href="#pastorais">Pastorais</a>
           <a class="btn btn-hero-link" href="#barnabitas">Barnabitas</a>
+          <a class="btn btn-hero-link" href="#dizimo">Oferta</a>
           <a class="btn btn-hero-link" href="#dizimo">Dízimo</a>
           <a class="btn btn-hero-link" href="#sacramentos">Sacramentos</a>
           <a class="btn btn-hero-link" href="#padroeiro">Padroeiro</a>
@@ -78,56 +75,87 @@
         </div>
       </div>
     </section>
-    
-    <section id="horarios" class="section section-alt" aria-labelledby="horarios-title">
+
+    <section id="horarios" class="section section-alt section-horarios" aria-labelledby="horarios-title">
       <div class="container">
-        <h2 id="horarios-title" class="section-title">Horários e Localização</h2>
+        <h2 id="horarios-title" class="section-title">Horários de Missas</h2>
+        <p class="section-lead">Confira os horários e venha celebrar conosco. Sua presença é muito bem-vinda em nossa comunidade.</p>
         <hr class="gold-divider">
-        <div class="card-grid card-grid-3">
-          <article class="card">
-            <h3>Missas Semanais</h3>
-            <ul class="info-list">
-              <li><strong>Sábados:</strong> 16h00</li>
-              <li><strong>Domingos:</strong> 07h30 | 09h00 | 11h00 | 18h00</li>
-              <li><strong>Segundas-feiras:</strong> 16h00 | 19h00</li>
-              <li><strong>Terça a Sexta-feira:</strong> 19h00</li>
-            </ul>
-            <p class="inline-note"><strong>Observação:</strong> após a missa de sábado, reza do terço (Cenáculo).</p>
+
+        <div class="card-grid card-grid-3 horarios-grid">
+          <article class="card schedule-card-clean" aria-label="Missas da semana">
+            <h3>Missas da Semana</h3>
+            <div class="schedule-block-clean">
+              <p class="schedule-day-clean">Domingos</p>
+              <p class="schedule-times-clean times-list">
+                <span>07h30</span><span>09h00</span><span>11h00</span><span>18h00</span></p>
+            </div>
+            <div class="schedule-block-clean">
+              <p class="schedule-day-clean">Segunda-feira</p>
+              <p class="schedule-times-clean times-list"><span>16h00</span><span>19h00</span></p>
+            </div>
+            <div class="schedule-block-clean">
+              <p class="schedule-day-clean">Terça-feira a Sexta-feira</p>
+              <p class="schedule-times-clean">19h00</p>
+            </div>
+            <div class="schedule-block-clean">
+              <p class="schedule-day-clean">Sábados</p>
+              <span class="schedule-times-clean"><span class="times-strong">16h00<span
+                    class="notice-mark">*</span></span></span>
+              <p class="schedule-hint-clean">* Após a missa: reza do terço (Cenáculo).</p>
+            </div>
           </article>
-          <article class="card">
-            <h3>Missas Especiais</h3>
-            <ul class="info-list">
-              <li><strong>1ª Terça-feira do mês:</strong> 19h00 | 20h00</li>
-              <li><strong>1ª Sexta-feira do mês:</strong> 16h00 | 19h00</li>
-              <li><strong>1º Sábado do mês:</strong> 07h30 | 16h00</li>
-            </ul>
-            <p class="inline-note">Na 1ª terça-feira do mês, às 20h00, celebra-se a <strong>Missa de Cura e Libertação</strong>.</p>
+
+          <article class="card schedule-card-clean" aria-label="Celebrações do mês">
+            <h3>Celebrações do Mês</h3>
+            <div class="schedule-block-clean">
+              <p class="schedule-day-clean">1ª Terça-feira do mês</p>
+              <p class="schedule-times-clean times-list"><span>19h00</span><span class="times-strong">20h00<span
+                    class="notice-mark">*</span></span></p>
+              <p class="schedule-hint-clean">* Às 20h00: Missa de Cura e Libertação.</p>
+            </div>
+            <div class="schedule-block-clean">
+              <p class="schedule-day-clean">1ª Sexta-feira do mês</p>
+              <p class="schedule-times-clean times-list"><span>16h00</span><span>19h00</span></p>
+            </div>
+            <div class="schedule-block-clean">
+              <p class="schedule-day-clean">1º Sábado do mês</p>
+              <p class="schedule-times-clean times-list"><span>07h30</span><span>16h00</span></p>
+            </div>
+            <div class="schedule-block-clean">
+              <p class="schedule-day-clean">Missa de São Rafael</p>
+              <div class="schedule-block-clean schedule-block-highlight-clean">
+                <p class="schedule-times-clean">Bênção da Saúde e Unção</p>
+                <p class="schedule-hint-clean">Dia 29 do mês. Exceto em dias úteis sem solenidades, sábados e domingos.
+                </p>
+              </div>
+            </div>
           </article>
-          <article class="card">
+
+          <article id="confissoes" class="card schedule-card-clean" aria-label="Confissões">
             <h3>Confissões</h3>
-            <ul class="info-list">
-              <li><strong>Quintas-feiras:</strong> das 16h00 às 18h00</li>
-            </ul>
+            <div class="schedule-block-clean">
+              <p class="schedule-day-clean">Quintas-feiras</p>
+              <p class="schedule-times-clean times-range"><span>16h00</span><span
+                  class="times-connector">às</span><span>18h00</span></p>
+            </div>
           </article>
+          <p class="section-footnote"><span class="notice-mark">*</span> Horários com observações importantes.</p>
         </div>
-  
-        <article class="card card-highlight special-highlight" aria-label="Destaque da Missa de São Rafael">
-          <h3>Missa Especial de São Rafael</h3>
-          <p>
-            Bênção da Saúde e Unção no <strong>dia 29 de cada mês</strong>.
-            <strong>Exceto</strong> em dias úteis sem solenidades, sábados e domingos.
-          </p>
-        </article>
-  
-        <article class="card address-card">
-          <h3>Endereço</h3>
-          <p>Largo São Rafael, s/n - Mooca, SP</p>
-          <a
-            class="btn"
-            href="https://www.google.com/maps/search/?api=1&query=Largo+Sao+Rafael%2C+s%2Fn+-+Mooca%2C+Sao+Paulo+-+SP"
-            target="_blank"
-            rel="noopener noreferrer"
-          >Abrir no Google Maps</a>
+
+        <article class="card schedule-card-clean horarios-address" aria-label="Como chegar na paróquia">
+          <h3>Como Chegar</h3>
+          <div class="schedule-block-clean">
+            <p class="schedule-times-clean">Endereço: Largo São Rafael, s/n - Mooca, SP</p>
+          </div>
+          <div class="map-actions" aria-label="Opções de navegação">
+            <a class="btn"
+              href="https://www.google.com/maps/search/?api=1&query=Largo+Sao+Rafael%2C+s%2Fn+-+Mooca%2C+Sao+Paulo+-+SP"
+              target="_blank" rel="noopener noreferrer">Google Maps</a>
+            <a class="btn"
+              href="https://waze.com/ul?q=Largo%20Sao%20Rafael%2C%20Mooca%2C%20Sao%20Paulo&navigate=yes"
+              target="_blank" rel="noopener noreferrer">Waze</a>
+          </div>
         </article>
       </div>
     </section>
@@ -173,7 +201,8 @@
             <p><strong>Segunda a Sexta:</strong> 08h00 às 19h30</p>
             <p><strong>Sábado:</strong> 08h00 às 17h00</p>
             <p><strong>Telefone:</strong> <a href="tel:+551122924528">(11) 2292-4528</a></p>
-            <p><strong>WhatsApp:</strong> <a href="https://wa.me/5511989606943" target="_blank" rel="noopener noreferrer">(11) 98960-6943</a></p>
+            <p><strong>WhatsApp:</strong> <a href="https://wa.me/5511989606943" target="_blank"
+                rel="noopener noreferrer">(11) 98960-6943</a></p>
           </article>
         </div>
       </div>
@@ -188,15 +217,18 @@
             <strong>Telefone da Secretaria</strong>
             <small>(11) 2292-4528</small>
           </a>
-          <a class="contact-direct-btn" href="https://wa.me/5511989606943" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp da secretaria da paróquia">
+          <a class="contact-direct-btn" href="https://wa.me/5511989606943" target="_blank" rel="noopener noreferrer"
+            aria-label="Abrir WhatsApp da secretaria da paróquia">
             <strong>WhatsApp / Celular</strong>
             <small>(11) 98960-6943</small>
           </a>
-          <a class="contact-direct-btn" href="mailto:paroquiasaorafael@yahoo.com.br" aria-label="Enviar e-mail para a secretaria da paróquia">
+          <a class="contact-direct-btn" href="mailto:paroquiasaorafael@yahoo.com.br"
+            aria-label="Enviar e-mail para a secretaria da paróquia">
             <strong>E-mail da Secretaria</strong>
             <small>paroquiasaorafael@yahoo.com.br</small>
           </a>
-          <a class="contact-direct-btn" href="https://www.instagram.com/paroquiasaorafaelmoocasp/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram oficial da paróquia">
+          <a class="contact-direct-btn" href="https://www.instagram.com/paroquiasaorafaelmoocasp/" target="_blank"
+            rel="noopener noreferrer" aria-label="Abrir Instagram oficial da paróquia">
             <strong>Instagram</strong>
             <small>@paroquiasaorafaelmoocasp</small>
           </a>
@@ -212,7 +244,8 @@
         <div class="social-panel" aria-label="Redes sociais da paróquia">
           <h3>Redes Sociais</h3>
           <div class="social-links-grid" role="list" aria-label="Redes sociais da paróquia">
-            <a class="social-link-btn" role="listitem" href="https://www.facebook.com/paroquiasaorafaelmooca/" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Paróquia São Rafael Mooca">
+            <a class="social-link-btn" role="listitem" href="https://www.facebook.com/paroquiasaorafaelmooca/"
+              target="_blank" rel="noopener noreferrer" aria-label="Facebook da Paróquia São Rafael Mooca">
               <span class="social-icon" aria-hidden="true">
                 <img src="https://cdn.simpleicons.org/facebook/ffffff" alt="">
               </span>
@@ -222,7 +255,8 @@
               </span>
             </a>
 
-            <a class="social-link-btn" role="listitem" href="https://www.instagram.com/paroquiasaorafaelmoocasp/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Paróquia São Rafael Mooca">
+            <a class="social-link-btn" role="listitem" href="https://www.instagram.com/paroquiasaorafaelmoocasp/"
+              target="_blank" rel="noopener noreferrer" aria-label="Instagram da Paróquia São Rafael Mooca">
               <span class="social-icon" aria-hidden="true">
                 <img src="https://cdn.simpleicons.org/instagram/ffffff" alt="">
               </span>
@@ -392,23 +426,22 @@
     </section>
   </main>
 
-  <a
-    class="whatsapp-float"
-    href="https://wa.me/5511989606943"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Falar no WhatsApp da Secretaria"
-  >WhatsApp</a>
+  <a class="whatsapp-float" href="https://wa.me/5511989606943" target="_blank" rel="noopener noreferrer"
+    aria-label="Falar no WhatsApp da Secretaria">WhatsApp</a>
 
   <footer class="site-footer">
     <div class="container footer-content">
       <p><strong>Paróquia São Rafael - Mooca</strong></p>
       <p>Largo São Rafael, s/n - Mooca, SP</p>
-      <p>Contato geral: <a href="tel:+551122924528">(11) 2292-4528</a> | <a href="https://wa.me/5511989606943" target="_blank" rel="noopener noreferrer">(11) 98960-6943</a> | <a href="mailto:paroquiasaorafael@yahoo.com.br">paroquiasaorafael@yahoo.com.br</a></p>
+      <p>Contato geral: <a href="tel:+551122924528">(11) 2292-4528</a> | <a href="https://wa.me/5511989606943"
+          target="_blank" rel="noopener noreferrer">(11) 98960-6943</a> | <a
+          href="mailto:paroquiasaorafael@yahoo.com.br">paroquiasaorafael@yahoo.com.br</a></p>
       <p>
         Redes sociais:
-        <a href="https://www.facebook.com/paroquiasaorafaelmooca/" target="_blank" rel="noopener noreferrer">Facebook (@paroquiasaorafaelmooca)</a> |
-        <a href="https://www.instagram.com/paroquiasaorafaelmoocasp/" target="_blank" rel="noopener noreferrer">Instagram (@paroquiasaorafaelmoocasp)</a>
+        <a href="https://www.facebook.com/paroquiasaorafaelmooca/" target="_blank" rel="noopener noreferrer">Facebook
+          (@paroquiasaorafaelmooca)</a> |
+        <a href="https://www.instagram.com/paroquiasaorafaelmoocasp/" target="_blank"
+          rel="noopener noreferrer">Instagram (@paroquiasaorafaelmoocasp)</a>
       </p>
       <p>© 2026 Paróquia São Rafael - Mooca. Todos os direitos reservados.</p>
       <p>Região Episcopal Belém | Arquidiocese de São Paulo</p>
@@ -417,4 +450,5 @@
 
   <script src="main.js"></script>
 </body>
+
 </html>
