@@ -199,10 +199,6 @@ body {
   color: var(--color-white);
 }
 
-.section-dark .gold-divider {
-  background: linear-gradient(90deg, transparent, var(--color-gold-accent), transparent);
-}
-
 .hero {
   position: relative;
   padding: 112px 0 96px;
@@ -338,7 +334,7 @@ body {
   margin: 0;
   text-align: center;
   font-family: var(--font-heading-main);
-  color: var(--color-primary-green);
+  color: #5f4110;
   font-size: clamp(1.65rem, 2.1vw, 2.35rem);
 }
 
@@ -433,7 +429,6 @@ body {
 }
 
 .section-horarios .section-title {
-  color: #5f4110;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
   text-transform: none;
   letter-spacing: normal;

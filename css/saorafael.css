@@ -61,7 +61,7 @@ body {
 .gold-divider {
   width: 150px;
   height: 2px;
-  background-color: var(--color-gold-accent);
+  background: linear-gradient(90deg, transparent, var(--color-gold-accent), transparent);
   margin: 1.5rem auto;
   border: none;
 }
