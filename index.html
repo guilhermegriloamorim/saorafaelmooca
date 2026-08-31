@@ -8,7 +8,6 @@
     content="Landing page oficial da Paróquia São Rafael Mooca, Arquidiocese de São Paulo. Horários, sacramentos, pastorais e contato.">
   <title>Paróquia São Rafael - Mooca</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="css/saorafael.css">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -32,6 +31,7 @@
 
       <nav class="site-nav" aria-label="Navegação principal">
         <ul id="navMenu" class="nav-menu">
+          <li><a class="btn btn-nav" href="#horarios">Horários de Missa</a></li>
           <li><a href="#secretaria">Secretaria</a></li>
           <li><a href="#contato">Contato</a></li>
           <li><a href="#pastorais">Pastorais</a></li>
@@ -40,14 +40,13 @@
           <li><a href="#historia">História</a></li>
           <li><a href="#barnabitas">Barnabitas</a></li>
           <li><a href="#padroeiro">Padroeiro</a></li>
-          <li><a class="btn btn-nav" href="#horarios">Horários de Missa</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main-content">
-    <section id="home" class="section hero" aria-labelledby="hero-title">
+    <section id="home" class="section hero" aria-labelledby="hero-title" data-analytics-section="home">
       <div class="container hero-content">
         <img class="hero-mark" src="img/brasao_paroquia.png" alt="Brasão da Paróquia São Rafael Mooca">
         <h1 id="hero-title" class="title-main">Paróquia São Rafael Mooca</h1>
@@ -75,7 +74,7 @@
       </div>
     </section>
 
-    <section id="horarios" class="section section-horarios" aria-labelledby="horarios-title">
+    <section id="horarios" class="section section-horarios" aria-labelledby="horarios-title" data-analytics-section="horarios">
       <div class="container">
         <h2 id="horarios-title" class="section-title">Horários de Missas</h2>
         <p class="section-lead">Confira os horários e venha celebrar conosco. Sua presença é muito bem-vinda em nossa comunidade.</p>
@@ -189,7 +188,7 @@
       </div>
     </section> -->
 
-    <section id="secretaria" class="section section-alt" aria-labelledby="secretaria-title">
+    <section id="secretaria" class="section section-alt" aria-labelledby="secretaria-title" data-analytics-section="secretaria">
       <div class="container">
         <h2 id="secretaria-title" class="section-title">Secretaria</h2>
         <hr class="gold-divider">
@@ -206,7 +205,7 @@
       </div>
     </section>
 
-    <section id="contato" class="section section-alt" aria-labelledby="contato-title">
+    <section id="contato" class="section section-alt" aria-labelledby="contato-title" data-analytics-section="contato">
       <div class="container">
         <h2 id="contato-title" class="section-title">Contato</h2>
         <hr class="gold-divider">
@@ -268,7 +267,7 @@
       </div>
     </section>
 
-    <section id="pastorais" class="section section-dark" aria-labelledby="pastorais-title">
+    <section id="pastorais" class="section section-dark" aria-labelledby="pastorais-title" data-analytics-section="pastorais">
       <div class="container">
         <h2 id="pastorais-title" class="section-title">Pastorais e Movimentos</h2>
         <hr class="gold-divider">
@@ -301,7 +300,7 @@
       </div>
     </section>
 
-    <section id="sacramentos" class="section section-alt" aria-labelledby="sacramentos-title">
+    <section id="sacramentos" class="section section-alt" aria-labelledby="sacramentos-title" data-analytics-section="sacramentos">
       <div class="container">
         <h2 id="sacramentos-title" class="section-title">Sacramentos</h2>
         <hr class="gold-divider">
@@ -334,7 +333,7 @@
       </div>
     </section>
 
-    <section id="dizimo" class="section section-dark" aria-labelledby="dizimo-title">
+    <section id="dizimo" class="section section-dark" aria-labelledby="dizimo-title" data-analytics-section="dizimo">
       <div class="container">
         <h2 id="dizimo-title" class="section-title">Dizimo e Oferta</h2>
         <hr class="gold-divider">
@@ -358,7 +357,7 @@
       </div>
     </section>
 
-    <section id="historia" class="section section-soft" aria-labelledby="historia-title">
+    <section id="historia" class="section section-soft" aria-labelledby="historia-title" data-analytics-section="historia">
       <div class="container">
         <h2 id="historia-title" class="section-title">Nossa Historia</h2>
         <hr class="gold-divider">
@@ -378,7 +377,7 @@
       </div>
     </section>
 
-    <section id="barnabitas" class="section section-dark" aria-labelledby="barnabitas-title">
+    <section id="barnabitas" class="section section-dark" aria-labelledby="barnabitas-title" data-analytics-section="barnabitas">
       <div class="container">
         <h2 id="barnabitas-title" class="section-title">Padres Barnabitas</h2>
         <img class="barnabitas-mark" src="img/barnabitas.png" alt="Logo dos Padres Barnabitas">
@@ -398,7 +397,7 @@
       </div>
     </section>
     
-    <section id="padroeiro" class="section section-alt" aria-labelledby="padroeiro-title">
+    <section id="padroeiro" class="section section-alt" aria-labelledby="padroeiro-title" data-analytics-section="padroeiro">
       <div class="container">
         <h2 id="padroeiro-title" class="section-title">Padroeiro Arcanjo Sao Rafael</h2>
         <hr class="gold-divider">
@@ -444,8 +443,47 @@
       </p>
       <p>© 2026 Paróquia São Rafael - Mooca. Todos os direitos reservados.</p>
       <p>Região Episcopal Belém | Arquidiocese de São Paulo</p>
+      <p>
+        <button id="btnManageCookies" class="footer-link-btn" type="button">Gerenciar Cookies</button>
+      </p>
     </div>
   </footer>
+
+  <aside id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies" hidden>
+    <div class="cookie-banner-content">
+      <p>
+        Utilizamos cookies de analise para entender o uso do site e melhorar sua experiencia.
+        Voce pode aceitar ou recusar esses cookies. Saiba mais em
+        <button id="btnOpenPolicyBanner" class="cookie-link-btn" type="button">Politica de Coleta de Dados</button>.
+      </p>
+      <div class="cookie-banner-actions">
+        <button id="btnCookieReject" class="btn btn-secondary" type="button">Recusar</button>
+        <button id="btnCookieAccept" class="btn" type="button">Aceitar</button>
+      </div>
+    </div>
+  </aside>
+
+  <aside id="policyModal" class="policy-modal" role="dialog" aria-modal="true" aria-labelledby="policyModalTitle" hidden>
+    <div class="policy-modal-backdrop" data-close-policy="true"></div>
+    <div class="policy-modal-content" role="document">
+      <button id="btnClosePolicy" class="policy-close-btn" type="button" aria-label="Fechar politica de coleta de dados">Fechar</button>
+      <h2 id="policyModalTitle">Politica de Coleta de Dados</h2>
+      <p>
+        Este site coleta apenas dados de navegacao para compreender o uso das secoes e melhorar a experiencia dos visitantes.
+        Nao realizamos venda de dados pessoais.
+      </p>
+      <p>
+        Quando voce aceita cookies de analise, podemos registrar eventos anonimizados, como visualizacao de secoes
+        e cliques em elementos da pagina. O IP e anonimizado no Google Analytics.
+      </p>
+      <p>
+        Voce pode aceitar ou recusar cookies de analise no banner exibido ao acessar o site e pode alterar sua escolha a qualquer momento.
+      </p>
+      <p>
+        Base legal aplicavel conforme a LGPD: consentimento do titular para cookies nao essenciais.
+      </p>
+    </div>
+  </aside>
 
   <script src="main.js"></script>
 </body>
