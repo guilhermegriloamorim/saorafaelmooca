@@ -32,6 +32,7 @@
       <nav class="site-nav" aria-label="Navegação principal">
         <ul id="navMenu" class="nav-menu">
           <li><a class="btn btn-nav" href="#horarios">Horários de Missa</a></li>
+          <li><a href="#avisos">Avisos</a></li>
           <li><a href="#secretaria">Secretaria</a></li>
           <li><a href="#contato">Contato</a></li>
           <li><a href="#pastorais">Pastorais</a></li>
@@ -57,11 +58,12 @@
         <div class="hero-actions">
           <a class="btn" href="#horarios">Horários de Missa</a>
           <a class="btn" href="#confissoes">Confissões</a>
+          <a class="btn btn-hero-link" href="#secretaria">Secretaria</a>
+          <a class="btn btn-hero-link" href="#avisos">Avisos</a>
           <a class="btn"
             href="https://www.google.com/maps/search/?api=1&query=Largo+Sao+Rafael%2C+s%2Fn+-+Mooca%2C+Sao+Paulo+-+SP"
             target="_blank" rel="noopener noreferrer">Como Chegar</a>
-          <a class="btn btn-hero-link" href="#secretaria">Secretaria</a>
-          <a class="btn btn-hero-link" href="#contato">Contato</a>
+         <a class="btn btn-hero-link" href="#contato">Contato</a>
           <a class="btn btn-hero-link" href="#pastorais">Pastorais</a>
           <a class="btn btn-hero-link" href="#barnabitas">Barnabitas</a>
           <a class="btn btn-hero-link" href="#dizimo">Oferta</a>
@@ -69,15 +71,16 @@
           <a class="btn btn-hero-link" href="#sacramentos">Sacramentos</a>
           <a class="btn btn-hero-link" href="#padroeiro">Padroeiro</a>
           <a class="btn btn-hero-link" href="#historia">História</a>
-          <a class="btn btn-hero-link" href="#avisos">Avisos</a>
         </div>
       </div>
     </section>
 
-    <section id="horarios" class="section section-horarios" aria-labelledby="horarios-title" data-analytics-section="horarios">
+    <section id="horarios" class="section section-horarios" aria-labelledby="horarios-title"
+      data-analytics-section="horarios">
       <div class="container">
         <h2 id="horarios-title" class="section-title">Horários de Missas</h2>
-        <p class="section-lead">Confira os horários e venha celebrar conosco. Sua presença é muito bem-vinda em nossa comunidade.</p>
+        <p class="section-lead">Confira os horários e venha celebrar conosco. Sua presença é muito bem-vinda em nossa
+          comunidade.</p>
         <hr class="gold-divider">
 
         <div class="card-grid card-grid-3 horarios-grid">
@@ -86,7 +89,8 @@
             <div class="schedule-block-clean">
               <p class="schedule-day-clean">Domingos</p>
               <p class="schedule-times-clean times-list">
-                <span>07h30</span><span>09h00</span><span>11h00</span><span>18h00</span></p>
+                <span>07h30</span><span>09h00</span><span>11h00</span><span>18h00</span>
+              </p>
             </div>
             <div class="schedule-block-clean">
               <p class="schedule-day-clean">Segunda-feira</p>
@@ -150,124 +154,163 @@
             <a class="btn"
               href="https://www.google.com/maps/search/?api=1&query=Largo+Sao+Rafael%2C+s%2Fn+-+Mooca%2C+Sao+Paulo+-+SP"
               target="_blank" rel="noopener noreferrer">Google Maps</a>
-            <a class="btn"
-              href="https://waze.com/ul?q=Largo%20Sao%20Rafael%2C%20Mooca%2C%20Sao%20Paulo&navigate=yes"
+            <a class="btn" href="https://waze.com/ul?q=Largo%20Sao%20Rafael%2C%20Mooca%2C%20Sao%20Paulo&navigate=yes"
               target="_blank" rel="noopener noreferrer">Waze</a>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- <section id="avisos" class="section section-dark" aria-labelledby="avisos-title">
+    <section id="avisos" class="section section-dark" aria-labelledby="avisos-title"
+      data-analytics-section="avisos">
       <div class="container">
         <h2 id="avisos-title" class="section-title">Avisos e Notícias</h2>
         <hr class="gold-divider">
-        <div class="card-grid card-grid-3">
-          <article class="card">
-            <h3>Notícias Paroquiais</h3>
-            <p>
-              Acompanhe os comunicados semanais da comunidade, atualizações da liturgia e orientações pastorais para
-              os próximos dias.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Festas Padroeiras</h3>
-            <p>
-              Em breve, divulgaremos a programação completa das celebrações em honra a São Rafael Arcanjo,
-              com missas, momentos de devoção e atividades comunitárias.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Eventos da Comunidade</h3>
-            <p>
-              Retiros, encontros de formação e ações solidárias estão em organização. Consulte esta seção para
-              atualizações e datas confirmadas.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section> -->
+        <div class="avisos-carousel" id="avisosCarousel" aria-roledescription="carrossel"
+          aria-label="Destaques da Festa de São Rafael">
+          <button class="carousel-control prev" type="button" data-carousel-prev aria-label="Slide anterior">
+            &#10094;
+          </button>
 
-    <section id="secretaria" class="section section-alt" aria-labelledby="secretaria-title" data-analytics-section="secretaria">
-      <div class="container">
-        <h2 id="secretaria-title" class="section-title">Secretaria</h2>
-        <hr class="gold-divider">
-        <div class="card-grid secretaria-top-grid">
-          <article class="card">
-            <h3>Atendimento</h3>
-            <p><strong>Segunda a Sexta:</strong> 08h00 às 19h30</p>
-            <p><strong>Sábado:</strong> 08h00 às 17h00</p>
-            <p><strong>Telefone:</strong> <a href="tel:+551122924528">(11) 2292-4528</a></p>
-            <p><strong>WhatsApp:</strong> <a href="https://wa.me/5511989606943" target="_blank"
-                rel="noopener noreferrer">(11) 98960-6943</a></p>
-          </article>
+          <div class="carousel-track" data-carousel-track>
+            <figure class="carousel-slide is-active" data-carousel-slide>
+              <img src="img/festa_saorafael_logo.jpeg" alt="Arte oficial da Festa de São Rafael Arcanjo"
+                loading="lazy">
+              <figcaption>
+                Festa de São Rafael Arcanjo, convite para toda a comunidade participar de 24 a 26 de Setembro de 2026. Confira a programação ao lado.
+              </figcaption>
+            </figure>
+
+            <figure class="carousel-slide" data-carousel-slide>
+              <img src="img/festa_programacao_saorfael.jpeg" alt="Programação da Festa de São Rafael Arcanjo"
+                loading="lazy">
+              <figcaption>
+                Programação oficial da Festa de São Rafael Arcanjo com celebrações, momentos de oração e atividades
+                comunitárias.
+              </figcaption>
+            </figure>
+
+            <figure class="carousel-slide" data-carousel-slide>
+              <img src="img/festa_saorafael_logo_barnabitas.jpeg"
+                alt="Arte da Festa de São Rafael Arcanjo com identidade Barnabita" loading="lazy">
+              <figcaption>
+                Versão especial da identidade da festa com destaque ao carisma Barnabita e ao convite à participação
+                da comunidade.
+              </figcaption>
+            </figure>
+          </div>
+
+          <button class="carousel-control next" type="button" data-carousel-next aria-label="Próximo slide">
+            &#10095;
+          </button>
+
+          <div class="carousel-dots" data-carousel-dots aria-label="Selecionar slide">
+            <button class="carousel-dot is-active" type="button" data-carousel-dot="0"
+              aria-label="Ir para slide 1"></button>
+            <button class="carousel-dot" type="button" data-carousel-dot="1" aria-label="Ir para slide 2"></button>
+            <button class="carousel-dot" type="button" data-carousel-dot="2" aria-label="Ir para slide 3"></button>
+          </div>
         </div>
+
+        <article class="festa-programacao-static" aria-labelledby="festa-programacao-title">
+          <div class="festa-programacao-media">
+            <img src="img/festa_saorafael_logo.jpeg" alt="Arte oficial da Festa de São Rafael Arcanjo" loading="lazy">
+          </div>
+
+          <div class="festa-programacao-content">
+            <h3 id="festa-programacao-title">Programação da Festa de São Rafael</h3>
+            <p class="festa-programacao-periodo"><strong>De 24 a 29 de setembro de 2026.</strong></p>
+
+            <div class="festa-dia-bloco">
+              <h4>DIA 24</h4>
+              <ul>
+                <li>18h - Tríduo</li>
+                <li>19h - Missa</li>
+              </ul>
+            </div>
+
+            <div class="festa-dia-bloco">
+              <h4>DIA 25</h4>
+              <ul>
+                <li>18h - Tríduo</li>
+                <li>19h - Missa</li>
+              </ul>
+            </div>
+
+            <div class="festa-dia-bloco">
+              <h4>DIA 26</h4>
+              <ul>
+                <li>15h - Tríduo</li>
+                <li>16h - Missa</li>
+                <li class="festa-tradicao-highlight">Após a Missa, Festa da Fogazza</li>
+              </ul>
+            </div>
+
+            <div class="festa-dia-bloco">
+              <h4>DIA 27</h4>
+              <ul>
+                <li>09h - Missa festiva de São Rafael</li>
+                <li>11h - Carreata de São Rafael</li>
+                <li>12h - Almoço de São Rafael</li>
+              </ul>
+            </div>
+
+            <div class="festa-dia-bloco">
+              <h4>DIA 28</h4>
+              <ul>
+                <li>19h - Missa pelos enfermos (Levar os enfermos para a missa)</li>
+              </ul>
+            </div>
+
+            <div class="festa-dia-bloco festa-dia-bloco-final">
+              <h4>DIA 29 - Solenidade de São Rafael</h4>
+              <ul>
+                <li>19h - Missa Solene</li>
+                <li>Após a Missa, Bolo de São Rafael e Cachorro Quente</li>
+              </ul>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section id="contato" class="section section-alt" aria-labelledby="contato-title" data-analytics-section="contato">
+    <section id="secretaria" class="section section-alt" aria-labelledby="secretaria-contato-title"
+      data-analytics-section="secretaria-contato">
       <div class="container">
-        <h2 id="contato-title" class="section-title">Contato</h2>
+        <span id="contato" aria-hidden="true"></span>
+        <h2 id="secretaria-contato-title" class="section-title">Secretaria e Contato</h2>
         <hr class="gold-divider">
-        <div class="contact-direct-grid" aria-label="Canais diretos da secretaria">
-          <a class="contact-direct-btn" href="tel:+551122924528" aria-label="Ligar para a secretaria da paróquia">
-            <strong>Telefone da Secretaria</strong>
-            <small>(11) 2292-4528</small>
-          </a>
-          <a class="contact-direct-btn" href="https://wa.me/5511989606943" target="_blank" rel="noopener noreferrer"
-            aria-label="Abrir WhatsApp da secretaria da paróquia">
-            <strong>WhatsApp / Celular</strong>
-            <small>(11) 98960-6943</small>
-          </a>
-          <a class="contact-direct-btn" href="mailto:paroquiasaorafael@yahoo.com.br"
-            aria-label="Enviar e-mail para a secretaria da paróquia">
-            <strong>E-mail da Secretaria</strong>
-            <small>paroquiasaorafael@yahoo.com.br</small>
-          </a>
-          <a class="contact-direct-btn" href="https://www.instagram.com/paroquiasaorafaelmoocasp/" target="_blank"
-            rel="noopener noreferrer" aria-label="Abrir Instagram oficial da paróquia">
-            <strong>Instagram</strong>
-            <small>@paroquiasaorafaelmoocasp</small>
-          </a>
-        </div>
+        <article class="card contato-texto" aria-label="Informações de contato da paróquia">
+          <h3>Secretaria Paroquial</h3>
+          <p><strong>Atendimento:</strong> Segunda a Sexta, das 08h00 às 19h30 | Sábado, das 08h00 às 17h00.</p>
 
-        <article class="card">
-          <h3>Localização e Referência</h3>
+          <h3>Canais de Contato</h3>
+          <ul class="contato-lista">
+            <li><strong>Telefone:</strong> <a href="tel:+551122924528">(11) 2292-4528</a></li>
+            <li><strong>WhatsApp:</strong> <a href="https://wa.me/5511989606943" target="_blank"
+                rel="noopener noreferrer">(11) 98960-6943</a></li>
+            <li><strong>E-mail:</strong> <a href="mailto:paroquiasaorafael@yahoo.com.br">paroquiasaorafael@yahoo.com.br</a>
+            </li>
+          </ul>
+
+          <h3>Localização</h3>
           <p><strong>Paróquia São Rafael</strong></p>
           <p><strong>Bairro/Cidade:</strong> Mooca - SP</p>
           <p><strong>Endereço:</strong> Largo São Rafael, s/n - Mooca</p>
-        </article>
 
-        <div class="social-panel" aria-label="Redes sociais da paróquia">
           <h3>Redes Sociais</h3>
-          <div class="social-links-grid" role="list" aria-label="Redes sociais da paróquia">
-            <a class="social-link-btn" role="listitem" href="https://www.facebook.com/paroquiasaorafaelmooca/"
-              target="_blank" rel="noopener noreferrer" aria-label="Facebook da Paróquia São Rafael Mooca">
-              <span class="social-icon" aria-hidden="true">
-                <img src="https://cdn.simpleicons.org/facebook/ffffff" alt="">
-              </span>
-              <span class="social-link-text">
-                <strong>Facebook</strong>
-                <small>@paroquiasaorafaelmooca</small>
-              </span>
-            </a>
-
-            <a class="social-link-btn" role="listitem" href="https://www.instagram.com/paroquiasaorafaelmoocasp/"
-              target="_blank" rel="noopener noreferrer" aria-label="Instagram da Paróquia São Rafael Mooca">
-              <span class="social-icon" aria-hidden="true">
-                <img src="https://cdn.simpleicons.org/instagram/ffffff" alt="">
-              </span>
-              <span class="social-link-text">
-                <strong>Instagram</strong>
-                <small>@paroquiasaorafaelmoocasp</small>
-              </span>
-            </a>
-          </div>
-        </div>
+          <ul class="contato-lista">
+            <li><strong>Facebook:</strong> <a href="https://www.facebook.com/paroquiasaorafaelmooca/" target="_blank"
+                rel="noopener noreferrer">@paroquiasaorafaelmooca</a></li>
+            <li><strong>Instagram:</strong> <a href="https://www.instagram.com/paroquiasaorafaelmoocasp/" target="_blank"
+                rel="noopener noreferrer">@paroquiasaorafaelmoocasp</a></li>
+          </ul>
+        </article>
       </div>
     </section>
 
-    <section id="pastorais" class="section section-dark" aria-labelledby="pastorais-title" data-analytics-section="pastorais">
+    <section id="pastorais" class="section section-dark" aria-labelledby="pastorais-title"
+      data-analytics-section="pastorais">
       <div class="container">
         <h2 id="pastorais-title" class="section-title">Pastorais e Movimentos</h2>
         <hr class="gold-divider">
@@ -300,7 +343,8 @@
       </div>
     </section>
 
-    <section id="sacramentos" class="section section-alt" aria-labelledby="sacramentos-title" data-analytics-section="sacramentos">
+    <section id="sacramentos" class="section section-alt" aria-labelledby="sacramentos-title"
+      data-analytics-section="sacramentos">
       <div class="container">
         <h2 id="sacramentos-title" class="section-title">Sacramentos</h2>
         <hr class="gold-divider">
@@ -321,6 +365,13 @@
             <summary>Crisma</summary>
             <p>
               Jovens e adultos interessados devem buscar a secretaria para datas de inscricao e cronograma formativo.
+            </p>
+          </details>
+          <details class="accordion-item">
+            <summary>Confissao</summary>
+            <p>
+              As confissoes acontecem as quintas-feiras, das 16h00 as 18h00. Em periodos especiais, consulte a
+              secretaria para horarios adicionais.
             </p>
           </details>
           <details class="accordion-item">
@@ -357,7 +408,8 @@
       </div>
     </section>
 
-    <section id="historia" class="section section-soft" aria-labelledby="historia-title" data-analytics-section="historia">
+    <section id="historia" class="section section-soft" aria-labelledby="historia-title"
+      data-analytics-section="historia">
       <div class="container">
         <h2 id="historia-title" class="section-title">Nossa Historia</h2>
         <hr class="gold-divider">
@@ -377,7 +429,8 @@
       </div>
     </section>
 
-    <section id="barnabitas" class="section section-dark" aria-labelledby="barnabitas-title" data-analytics-section="barnabitas">
+    <section id="barnabitas" class="section section-dark" aria-labelledby="barnabitas-title"
+      data-analytics-section="barnabitas">
       <div class="container">
         <h2 id="barnabitas-title" class="section-title">Padres Barnabitas</h2>
         <img class="barnabitas-mark" src="img/barnabitas.png" alt="Logo dos Padres Barnabitas">
@@ -396,8 +449,9 @@
         </article>
       </div>
     </section>
-    
-    <section id="padroeiro" class="section section-alt" aria-labelledby="padroeiro-title" data-analytics-section="padroeiro">
+
+    <section id="padroeiro" class="section section-alt" aria-labelledby="padroeiro-title"
+      data-analytics-section="padroeiro">
       <div class="container">
         <h2 id="padroeiro-title" class="section-title">Padroeiro Arcanjo Sao Rafael</h2>
         <hr class="gold-divider">
@@ -463,13 +517,16 @@
     </div>
   </aside>
 
-  <aside id="policyModal" class="policy-modal" role="dialog" aria-modal="true" aria-labelledby="policyModalTitle" hidden>
+  <aside id="policyModal" class="policy-modal" role="dialog" aria-modal="true" aria-labelledby="policyModalTitle"
+    hidden>
     <div class="policy-modal-backdrop" data-close-policy="true"></div>
     <div class="policy-modal-content" role="document">
-      <button id="btnClosePolicy" class="policy-close-btn" type="button" aria-label="Fechar politica de coleta de dados">Fechar</button>
+      <button id="btnClosePolicy" class="policy-close-btn" type="button"
+        aria-label="Fechar politica de coleta de dados">Fechar</button>
       <h2 id="policyModalTitle">Politica de Coleta de Dados</h2>
       <p>
-        Este site coleta apenas dados de navegacao para compreender o uso das secoes e melhorar a experiencia dos visitantes.
+        Este site coleta apenas dados de navegacao para compreender o uso das secoes e melhorar a experiencia dos
+        visitantes.
         Nao realizamos venda de dados pessoais.
       </p>
       <p>
@@ -477,7 +534,8 @@
         e cliques em elementos da pagina. O IP e anonimizado no Google Analytics.
       </p>
       <p>
-        Voce pode aceitar ou recusar cookies de analise no banner exibido ao acessar o site e pode alterar sua escolha a qualquer momento.
+        Voce pode aceitar ou recusar cookies de analise no banner exibido ao acessar o site e pode alterar sua escolha a
+        qualquer momento.
       </p>
       <p>
         Base legal aplicavel conforme a LGPD: consentimento do titular para cookies nao essenciais.
