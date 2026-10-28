@@ -3,8 +3,7 @@
   const COOKIE_CONSENT_KEY = 'consentimento_cookies_analytics';
   const COOKIE_CONSENT_ACCEPTED = 'aceito';
   const COOKIE_CONSENT_REJECTED = 'recusado';
-  const ANALYTICS_SESSION_KEY = 'sr_analytics_session_id';
-  const ANALYTICS_SESSION_STARTED_AT_KEY = 'sr_analytics_session_started_at';
+  const GA_DISABLE_FLAG = 'ga-disable-' + GA_MEASUREMENT_ID;
 
   const navToggle = document.getElementById('navToggle');
   const navMenu = document.getElementById('navMenu');
@@ -21,47 +20,23 @@
   const policyModal = document.getElementById('policyModal');
   const btnClosePolicy = document.getElementById('btnClosePolicy');
   const pageSections = Array.from(document.querySelectorAll('main section[id]'));
-  const avisosCarousel = document.getElementById('avisosCarousel');
-  const carouselSlides = avisosCarousel ? Array.from(avisosCarousel.querySelectorAll('[data-carousel-slide]')) : [];
-  const carouselDots = avisosCarousel ? Array.from(avisosCarousel.querySelectorAll('[data-carousel-dot]')) : [];
-  const btnCarouselPrev = avisosCarousel ? avisosCarousel.querySelector('[data-carousel-prev]') : null;
-  const btnCarouselNext = avisosCarousel ? avisosCarousel.querySelector('[data-carousel-next]') : null;
+  const avisosGrid = document.getElementById('avisosGrid');
+  const avisosFallback = document.getElementById('avisosFallback');
+  const AVISOS_URL = 'avisos.json';
+  const AVISOS_LEGENDA_MAX = 220;
 
   let analyticsEnabled = false;
   let gtagReady = false;
   let sectionObserverStarted = false;
   const queuedEvents = [];
   const seenSections = new Set();
-  const analyticsSession = getOrCreateAnalyticsSession();
 
-  function createSessionId() {
-    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
-      return window.crypto.randomUUID();
+  function readStoredConsent() {
+    try {
+      return localStorage.getItem(COOKIE_CONSENT_KEY);
+    } catch (error) {
+      return null;
     }
-
-    return 'sr-' + Date.now() + '-' + Math.random().toString(16).slice(2);
-  }
-
-  function getOrCreateAnalyticsSession() {
-    const storedId = sessionStorage.getItem(ANALYTICS_SESSION_KEY);
-    const storedStartedAt = sessionStorage.getItem(ANALYTICS_SESSION_STARTED_AT_KEY);
-
-    if (storedId && storedStartedAt) {
-      return {
-        id: storedId,
-        startedAt: storedStartedAt
-      };
-    }
-
-    const createdSession = {
-      id: createSessionId(),
-      startedAt: new Date().toISOString()
-    };
-
-    sessionStorage.setItem(ANALYTICS_SESSION_KEY, createdSession.id);
-    sessionStorage.setItem(ANALYTICS_SESSION_STARTED_AT_KEY, createdSession.startedAt);
-
-    return createdSession;
   }
 
   function getSectionNameFromId(rawId) {
@@ -81,13 +56,6 @@
     return (parentSection.getAttribute('data-analytics-section') || parentSection.id || 'global').trim().toLowerCase();
   }
 
-  function withSessionParams(params) {
-    return Object.assign({}, params, {
-      session_id: analyticsSession.id,
-      session_started_at: analyticsSession.startedAt
-    });
-  }
-
   function initGoogleAnalyticsIfNeeded() {
     if (!analyticsEnabled || gtagReady) {
       return;
@@ -103,9 +71,19 @@
     gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
     document.head.appendChild(gaScript);
 
+    // Consent Mode v2: somente análise é liberada; sinais de anúncios ficam sempre negados.
+    window.gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
     window.gtag('js', new Date());
+    // O page_view inicial é enviado automaticamente pelo config.
     window.gtag('config', GA_MEASUREMENT_ID, {
-      anonymize_ip: true
+      content_group: 'site',
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false
     });
 
     gtagReady = true;
@@ -117,12 +95,11 @@
   }
 
   function isAnalyticsAllowed() {
-    const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
-    return consent === COOKIE_CONSENT_ACCEPTED;
+    return readStoredConsent() === COOKIE_CONSENT_ACCEPTED;
   }
 
   function hasCookieChoice() {
-    const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
+    const consent = readStoredConsent();
     return consent === COOKIE_CONSENT_ACCEPTED || consent === COOKIE_CONSENT_REJECTED;
   }
 
@@ -143,7 +120,28 @@
   }
 
   function saveCookieConsent(value) {
-    localStorage.setItem(COOKIE_CONSENT_KEY, value);
+    try {
+      localStorage.setItem(COOKIE_CONSENT_KEY, value);
+    } catch (error) {
+      // Sem armazenamento disponível, a escolha vale apenas para esta visita.
+    }
+  }
+
+  function deleteAnalyticsCookies() {
+    const hostParts = window.location.hostname.split('.');
+    const domains = [''];
+    for (let i = 0; i < hostParts.length - 1; i += 1) {
+      domains.push('; domain=.' + hostParts.slice(i).join('.'));
+    }
+
+    document.cookie.split(';').forEach(function (cookie) {
+      const name = cookie.split('=')[0].trim();
+      if (name === '_ga' || name.indexOf('_ga_') === 0) {
+        domains.forEach(function (domain) {
+          document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' + domain;
+        });
+      }
+    });
   }
 
   function openPolicyModal() {
@@ -169,7 +167,7 @@
       return;
     }
 
-    const payload = withSessionParams(params || {});
+    const payload = params || {};
 
     if (!gtagReady || typeof window.gtag !== 'function') {
       queuedEvents.push({ name: name, params: payload });
@@ -177,15 +175,6 @@
     }
 
     window.gtag('event', name, payload);
-  }
-
-  function trackPageView() {
-    trackEvent('page_view', {
-      page_title: document.title,
-      page_location: window.location.href,
-      page_path: window.location.pathname + window.location.hash,
-      page_section: 'home'
-    });
   }
 
   function trackSectionView(sectionId) {
@@ -218,19 +207,65 @@
     });
   }
 
+  // Classifica links de contato, rota e redes sociais para virarem eventos-chave no GA4.
+  function classifyLink(href) {
+    if (!href) {
+      return null;
+    }
+
+    if (href.indexOf('tel:') === 0) {
+      return { event: 'contact_click', method: 'telefone' };
+    }
+    if (href.indexOf('mailto:') === 0) {
+      return { event: 'contact_click', method: 'email' };
+    }
+    if (href.indexOf('wa.me/') !== -1) {
+      return { event: 'contact_click', method: 'whatsapp' };
+    }
+    if (href.indexOf('google.com/maps') !== -1) {
+      return { event: 'directions_click', method: 'google_maps' };
+    }
+    if (href.indexOf('waze.com') !== -1) {
+      return { event: 'directions_click', method: 'waze' };
+    }
+    if (href.indexOf('facebook.com') !== -1) {
+      return { event: 'social_click', method: 'facebook' };
+    }
+    if (href.indexOf('instagram.com') !== -1) {
+      return { event: 'social_click', method: 'instagram' };
+    }
+
+    return null;
+  }
+
   function enableAnalytics() {
     if (analyticsEnabled) {
       return;
     }
 
     analyticsEnabled = true;
-    initGoogleAnalyticsIfNeeded();
-    trackPageView();
+    window[GA_DISABLE_FLAG] = false;
+
+    if (gtagReady) {
+      // Reativação na mesma visita: o config já foi enviado, basta liberar o consentimento.
+      window.gtag('consent', 'update', { analytics_storage: 'granted' });
+    } else {
+      initGoogleAnalyticsIfNeeded();
+    }
+
     setupSectionObserver();
   }
 
   function disableAnalytics() {
     analyticsEnabled = false;
+    queuedEvents.length = 0;
+
+    if (gtagReady && typeof window.gtag === 'function') {
+      window.gtag('consent', 'update', { analytics_storage: 'denied' });
+    }
+
+    window[GA_DISABLE_FLAG] = true;
+    deleteAnalyticsCookies();
   }
 
   function setupSectionObserver() {
@@ -241,6 +276,8 @@
     sectionObserverStarted = true;
 
     if ('IntersectionObserver' in window) {
+      // Conta a seção quando ela cruza a faixa central da tela. Um limiar por proporção (ex.: 45%)
+      // nunca dispara em seções mais altas que a tela, comuns no celular.
       const observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting && entry.target && entry.target.id) {
@@ -248,7 +285,8 @@
           }
         });
       }, {
-        threshold: 0.45
+        rootMargin: '-45% 0px -45% 0px',
+        threshold: 0
       });
 
       pageSections.forEach(function (section) {
@@ -264,89 +302,112 @@
     });
   }
 
-  function setupAvisosCarousel() {
-    if (!avisosCarousel || carouselSlides.length <= 1) {
+  function formatAvisoDate(isoDate) {
+    const date = isoDate ? new Date(isoDate) : null;
+    if (!date || isNaN(date.getTime())) {
+      return '';
+    }
+
+    return date.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+  }
+
+  function truncateText(text, maxLength) {
+    if (text.length <= maxLength) {
+      return text;
+    }
+
+    const cut = text.slice(0, maxLength);
+    const lastSpace = cut.lastIndexOf(' ');
+    return (lastSpace > maxLength * 0.6 ? cut.slice(0, lastSpace) : cut).trim() + '…';
+  }
+
+  function createAvisoCard(post) {
+    const card = document.createElement('article');
+    card.className = 'aviso-card';
+
+    const link = document.createElement('a');
+    link.className = 'aviso-media';
+    link.href = post.link;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.setAttribute('aria-label', 'Abrir publicação no Instagram');
+
+    const img = document.createElement('img');
+    img.src = post.imagem;
+    img.alt = post.legenda ? truncateText(post.legenda, 120) : 'Publicação da paróquia no Instagram';
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    link.appendChild(img);
+
+    if (post.tipo === 'VIDEO') {
+      const badge = document.createElement('span');
+      badge.className = 'aviso-badge';
+      badge.textContent = 'Vídeo';
+      link.appendChild(badge);
+    }
+
+    const body = document.createElement('div');
+    body.className = 'aviso-body';
+
+    const dateText = formatAvisoDate(post.data);
+    if (dateText) {
+      const time = document.createElement('time');
+      time.className = 'aviso-date';
+      time.dateTime = post.data;
+      time.textContent = dateText;
+      body.appendChild(time);
+    }
+
+    if (post.legenda) {
+      const caption = document.createElement('p');
+      caption.className = 'aviso-caption';
+      caption.textContent = truncateText(post.legenda, AVISOS_LEGENDA_MAX);
+      body.appendChild(caption);
+    }
+
+    const more = document.createElement('a');
+    more.className = 'aviso-link';
+    more.href = post.link;
+    more.target = '_blank';
+    more.rel = 'noopener noreferrer';
+    more.textContent = 'Ver no Instagram';
+    body.appendChild(more);
+
+    card.appendChild(link);
+    card.appendChild(body);
+    return card;
+  }
+
+  function setupAvisos() {
+    if (!avisosGrid || typeof window.fetch !== 'function') {
       return;
     }
 
-    let activeIndex = 0;
-    let autoplayTimer = null;
+    window.fetch(AVISOS_URL, { cache: 'no-cache' })
+      .then(function (response) {
+        return response.ok ? response.json() : null;
+      })
+      .then(function (data) {
+        const posts = data && Array.isArray(data.posts)
+          ? data.posts.filter(function (post) { return post && post.link && post.imagem; })
+          : [];
 
-    function renderSlide() {
-      carouselSlides.forEach(function (slide, index) {
-        const isActive = index === activeIndex;
-        slide.classList.toggle('is-active', isActive);
-        slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+        if (posts.length === 0) {
+          return;
+        }
+
+        posts.forEach(function (post) {
+          avisosGrid.appendChild(createAvisoCard(post));
+        });
+
+        avisosGrid.hidden = false;
+        if (avisosFallback) {
+          avisosFallback.hidden = true;
+        }
+      })
+      .catch(function () {
+        // Mantém o cartão com links para as redes sociais.
       });
-
-      carouselDots.forEach(function (dot, index) {
-        const isActive = index === activeIndex;
-        dot.classList.toggle('is-active', isActive);
-        dot.setAttribute('aria-current', isActive ? 'true' : 'false');
-      });
-    }
-
-    function goToSlide(index) {
-      activeIndex = (index + carouselSlides.length) % carouselSlides.length;
-      renderSlide();
-    }
-
-    function nextSlide() {
-      goToSlide(activeIndex + 1);
-    }
-
-    function prevSlide() {
-      goToSlide(activeIndex - 1);
-    }
-
-    function stopAutoplay() {
-      if (!autoplayTimer) {
-        return;
-      }
-
-      window.clearInterval(autoplayTimer);
-      autoplayTimer = null;
-    }
-
-    function startAutoplay() {
-      stopAutoplay();
-      autoplayTimer = window.setInterval(nextSlide, 5000);
-    }
-
-    if (btnCarouselNext) {
-      btnCarouselNext.addEventListener('click', function () {
-        nextSlide();
-        startAutoplay();
-      });
-    }
-
-    if (btnCarouselPrev) {
-      btnCarouselPrev.addEventListener('click', function () {
-        prevSlide();
-        startAutoplay();
-      });
-    }
-
-    carouselDots.forEach(function (dot) {
-      dot.addEventListener('click', function () {
-        const nextIndex = Number(dot.getAttribute('data-carousel-dot') || 0);
-        goToSlide(nextIndex);
-        startAutoplay();
-      });
-    });
-
-    avisosCarousel.addEventListener('mouseenter', stopAutoplay);
-    avisosCarousel.addEventListener('mouseleave', startAutoplay);
-    avisosCarousel.addEventListener('focusin', stopAutoplay);
-    avisosCarousel.addEventListener('focusout', function (event) {
-      if (event.relatedTarget && avisosCarousel.contains(event.relatedTarget)) {
-        return;
-      }
-      startAutoplay();
-    });
-
-    renderSlide();
-    startAutoplay();
   }
 
   function initializeCookieConsent() {
@@ -358,11 +419,7 @@
 
     if (!hasCookieChoice()) {
       showCookieBanner();
-      return;
     }
-
-    showCookieBanner();
-    disableAnalytics();
   }
 
   if (navToggle && navMenu) {
@@ -434,7 +491,7 @@
       const keyText = pixKey.textContent ? pixKey.textContent.trim() : '';
 
       if (!keyText || keyText.includes('[PREENCHER_')) {
-        pixFeedback.textContent = 'Atualize a chave PIX oficial para habilitar a copia.';
+        pixFeedback.textContent = 'Atualize a chave PIX oficial para habilitar a cópia.';
         trackEvent('pix_copy_attempt', {
           section_name: 'dizimo',
           action: 'chave_pix_placeholder'
@@ -459,7 +516,7 @@
           action: 'copiar_pix'
         });
       } catch (error) {
-        pixFeedback.textContent = 'Nao foi possivel copiar automaticamente. Copie manualmente.';
+        pixFeedback.textContent = 'Não foi possível copiar automaticamente. Copie manualmente.';
         trackEvent('pix_copy_error', {
           section_name: 'dizimo',
           action: 'erro_copiar_pix'
@@ -483,7 +540,22 @@
       return;
     }
 
-    const label = (clickable.textContent || clickable.getAttribute('aria-label') || '').trim();
+    if (clickable.closest('#cookieBanner') || clickable.closest('#policyModal')) {
+      return;
+    }
+
+    const label = (clickable.getAttribute('aria-label') || clickable.textContent || '').trim();
+    const linkType = classifyLink(clickable.getAttribute('href'));
+
+    if (linkType) {
+      trackEvent(linkType.event, {
+        method: linkType.method,
+        section_name: clickable.closest('.whatsapp-float') ? 'botao_flutuante' : resolveSectionNameFromElement(clickable),
+        link_text: label
+      });
+      return;
+    }
+
     if (!label) {
       return;
     }
@@ -548,6 +620,6 @@
     }
   });
 
-  setupAvisosCarousel();
+  setupAvisos();
   initializeCookieConsent();
 })();

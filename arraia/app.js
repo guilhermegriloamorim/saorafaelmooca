@@ -153,9 +153,19 @@ function inicializarGoogleAnalyticsSeNecessario() {
     scriptGA.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
     document.head.appendChild(scriptGA);
 
+    // Consent Mode v2: somente análise é liberada; sinais de anúncios ficam sempre negados.
+    window.gtag('consent', 'default', {
+        analytics_storage: 'granted',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+    });
     window.gtag('js', new Date());
+    // content_group separa as visitas do Arraiá das do site principal na mesma propriedade GA4.
     window.gtag('config', GA_MEASUREMENT_ID, {
-        anonymize_ip: true
+        content_group: 'arraia',
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false
     });
 
     gtagInicializado = true;
@@ -217,10 +227,6 @@ function enviarEventoGA(nomeEvento, parametros) {
 
     const parametrosEvento = { ...parametros };
 
-    if (window.console && typeof window.console.debug === 'function') {
-        console.debug('GA event queued/sent:', nomeEvento, parametrosEvento);
-    }
-
     const dispararEvento = () => {
         if (typeof window.gtag !== 'function') {
             // Enfileira o evento para envio posterior quando gtag estiver disponível
@@ -251,7 +257,8 @@ function registrarNavegacaoSecao(tabName, rotuloAba) {
     enviarEventoGA('page_view', {
         page_title: `${document.title} - ${rotuloAba}`,
         page_location: pageLocation,
-        page_path: pagePath
+        page_path: pagePath,
+        content_group: 'arraia'
     });
 
     enviarEventoGA('section_view', {

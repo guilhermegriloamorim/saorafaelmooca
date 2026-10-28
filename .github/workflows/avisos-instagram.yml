@@ -1,0 +1,66 @@
+name: Atualizar avisos do Instagram
+
+on:
+  schedule:
+    # A cada 3 horas (horário UTC).
+    - cron: '17 */3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: avisos-instagram
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    env:
+      TEM_GH_PAT: ${{ secrets.GH_PAT != '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Tokens de longa duração do Instagram valem 60 dias. Se o segredo GH_PAT existir,
+      # o token é renovado no dia 1 de cada mês e salvo de volta em IG_ACCESS_TOKEN.
+      # Não se aplica a tokens de Usuário do Sistema (graph.facebook.com), que não expiram.
+      - name: Renovar token do Instagram
+        if: ${{ env.TEM_GH_PAT == 'true' && vars.IG_API_BASE == '' }}
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          if [ "$(date -u +%d)" != "01" ] && [ "${{ github.event_name }}" != "workflow_dispatch" ]; then
+            echo "Renovação só no dia 1 do mês."
+            exit 0
+          fi
+          resposta=$(curl -fsS "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=${IG_ACCESS_TOKEN}")
+          novo=$(echo "$resposta" | jq -r '.access_token // empty')
+          if [ -n "$novo" ]; then
+            echo "::add-mask::$novo"
+            gh secret set IG_ACCESS_TOKEN --body "$novo" --repo "${{ github.repository }}"
+            echo "Token renovado."
+          fi
+
+      - name: Buscar postagens
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_API_BASE: ${{ vars.IG_API_BASE }}
+          IG_USER_ID: ${{ vars.IG_USER_ID }}
+        run: node scripts/atualizar-avisos.js
+
+      - name: Publicar alterações
+        run: |
+          git add avisos.json img/avisos
+          if git diff --cached --quiet; then
+            echo "Nada para publicar."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: atualizar avisos do Instagram"
+          git push

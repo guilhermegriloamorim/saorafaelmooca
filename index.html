@@ -5,10 +5,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Landing page oficial da Paróquia São Rafael Mooca, Arquidiocese de São Paulo. Horários, sacramentos, pastorais e contato.">
+    content="Site oficial da Paróquia São Rafael Mooca, Arquidiocese de São Paulo. Horários de missa, confissões, sacramentos, pastorais, dízimo e contato da secretaria.">
   <title>Paróquia São Rafael - Mooca</title>
+  <link rel="canonical" href="https://paroquiasaorafaelmooca.com.br/">
+  <meta name="theme-color" content="#003d32">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Paróquia São Rafael Mooca">
+  <meta property="og:title" content="Paróquia São Rafael - Mooca">
+  <meta property="og:description"
+    content="Horários de missa, confissões, sacramentos, pastorais e contato da Paróquia São Rafael Mooca.">
+  <meta property="og:url" content="https://paroquiasaorafaelmooca.com.br/">
+  <meta property="og:image" content="https://paroquiasaorafaelmooca.com.br/img/paroquia.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Church",
+      "name": "Paróquia São Rafael Mooca",
+      "url": "https://paroquiasaorafaelmooca.com.br/",
+      "logo": "https://paroquiasaorafaelmooca.com.br/img/brasao_paroquia-256.png",
+      "image": "https://paroquiasaorafaelmooca.com.br/img/paroquia.webp",
+      "telephone": "+55-11-2292-4528",
+      "email": "paroquiasaorafael@yahoo.com.br",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Largo São Rafael, s/n",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      },
+      "sameAs": [
+        "https://www.facebook.com/paroquiasaorafaelmooca/",
+        "https://www.instagram.com/paroquiasaorafaelmoocasp/"
+      ]
+    }
+  </script>
+
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="img/brasao_paroquia-256.png">
   <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
 </head>
 
 <body>
@@ -17,8 +56,7 @@
   <header class="site-header" id="topo">
     <div class="container header-inner">
       <a class="logo-text" href="#home" aria-label="Ir para o início">
-        <img class="logo-mark" src="img/brasao_paroquia.png" alt="Brasão da Paróquia São Rafael Mooca"
-          aria-hidden="true">
+        <img class="logo-mark" src="img/brasao_paroquia-256.png" alt="" aria-hidden="true">
         <span>Paróquia São Rafael Mooca</span>
       </a>
 
@@ -34,7 +72,6 @@
           <li><a class="btn btn-nav" href="#horarios">Horários de Missa</a></li>
           <li><a href="#avisos">Avisos</a></li>
           <li><a href="#secretaria">Secretaria</a></li>
-          <li><a href="#contato">Contato</a></li>
           <li><a href="#pastorais">Pastorais</a></li>
           <li><a href="#sacramentos">Sacramentos</a></li>
           <li><a href="#dizimo">Dízimo</a></li>
@@ -49,7 +86,8 @@
   <main id="main-content">
     <section id="home" class="section hero" aria-labelledby="hero-title" data-analytics-section="home">
       <div class="container hero-content">
-        <img class="hero-mark" src="img/brasao_paroquia.png" alt="Brasão da Paróquia São Rafael Mooca">
+        <img class="hero-mark" src="img/brasao_paroquia-256.png" alt="Brasão da Paróquia São Rafael Mooca"
+          fetchpriority="high">
         <h1 id="hero-title" class="title-main">Paróquia São Rafael Mooca</h1>
         <div class="hero-meta-row" aria-label="Vinculação arquidiocesana">
           <p class="subtitle-badge hero-meta">Arquidiocese de São Paulo</p>
@@ -58,12 +96,12 @@
         <div class="hero-actions">
           <a class="btn" href="#horarios">Horários de Missa</a>
           <a class="btn" href="#confissoes">Confissões</a>
-          <a class="btn btn-hero-link" href="#secretaria">Secretaria</a>
           <a class="btn btn-hero-link" href="#avisos">Avisos</a>
+          <a class="btn btn-hero-link" href="#secretaria">Secretaria</a>
           <a class="btn"
             href="https://www.google.com/maps/search/?api=1&query=Largo+Sao+Rafael%2C+s%2Fn+-+Mooca%2C+Sao+Paulo+-+SP"
             target="_blank" rel="noopener noreferrer">Como Chegar</a>
-         <a class="btn btn-hero-link" href="#contato">Contato</a>
+          <a class="btn btn-hero-link" href="#contato">Contato</a>
           <a class="btn btn-hero-link" href="#pastorais">Pastorais</a>
           <a class="btn btn-hero-link" href="#barnabitas">Barnabitas</a>
           <a class="btn btn-hero-link" href="#dizimo">Oferta</a>
@@ -166,116 +204,27 @@
       </div>
     </section>
 
-    <section id="avisos" class="section section-dark" aria-labelledby="avisos-title"
-      data-analytics-section="avisos">
+    <section id="avisos" class="section section-dark" aria-labelledby="avisos-title" data-analytics-section="avisos">
       <div class="container">
         <h2 id="avisos-title" class="section-title">Avisos e Notícias</h2>
+        <p class="section-lead avisos-lead">Últimas publicações da paróquia nas redes sociais.</p>
         <hr class="gold-divider">
-        <div class="avisos-carousel" id="avisosCarousel" aria-roledescription="carrossel"
-          aria-label="Destaques da Festa de São Rafael">
-          <button class="carousel-control prev" type="button" data-carousel-prev aria-label="Slide anterior">
-            &#10094;
-          </button>
 
-          <div class="carousel-track" data-carousel-track>
-            <figure class="carousel-slide is-active" data-carousel-slide>
-              <img src="img/festa_saorafael_logo.jpeg" alt="Arte oficial da Festa de São Rafael Arcanjo"
-                loading="lazy">
-              <figcaption>
-                Festa de São Rafael Arcanjo, convite para toda a comunidade participar de 24 a 26 de Setembro de 2026. Confira a programação ao lado.
-              </figcaption>
-            </figure>
+        <!-- Preenchido por main.js a partir de avisos.json (gerado pela GitHub Action avisos-instagram). -->
+        <div id="avisosGrid" class="avisos-grid" aria-live="polite" hidden></div>
 
-            <figure class="carousel-slide" data-carousel-slide>
-              <img src="img/festa_programacao_saorfael.jpeg" alt="Programação da Festa de São Rafael Arcanjo"
-                loading="lazy">
-              <figcaption>
-                Programação oficial da Festa de São Rafael Arcanjo com celebrações, momentos de oração e atividades
-                comunitárias.
-              </figcaption>
-            </figure>
-
-            <figure class="carousel-slide" data-carousel-slide>
-              <img src="img/festa_saorafael_logo_barnabitas.jpeg"
-                alt="Arte da Festa de São Rafael Arcanjo com identidade Barnabita" loading="lazy">
-              <figcaption>
-                Versão especial da identidade da festa com destaque ao carisma Barnabita e ao convite à participação
-                da comunidade.
-              </figcaption>
-            </figure>
-          </div>
-
-          <button class="carousel-control next" type="button" data-carousel-next aria-label="Próximo slide">
-            &#10095;
-          </button>
-
-          <div class="carousel-dots" data-carousel-dots aria-label="Selecionar slide">
-            <button class="carousel-dot is-active" type="button" data-carousel-dot="0"
-              aria-label="Ir para slide 1"></button>
-            <button class="carousel-dot" type="button" data-carousel-dot="1" aria-label="Ir para slide 2"></button>
-            <button class="carousel-dot" type="button" data-carousel-dot="2" aria-label="Ir para slide 3"></button>
-          </div>
-        </div>
-
-        <article class="festa-programacao-static" aria-labelledby="festa-programacao-title">
-          <div class="festa-programacao-media">
-            <img src="img/festa_saorafael_logo.jpeg" alt="Arte oficial da Festa de São Rafael Arcanjo" loading="lazy">
-          </div>
-
-          <div class="festa-programacao-content">
-            <h3 id="festa-programacao-title">Programação da Festa de São Rafael</h3>
-            <p class="festa-programacao-periodo"><strong>De 24 a 29 de setembro de 2026.</strong></p>
-
-            <div class="festa-dia-bloco">
-              <h4>DIA 24</h4>
-              <ul>
-                <li>18h - Tríduo</li>
-                <li>19h - Missa</li>
-              </ul>
-            </div>
-
-            <div class="festa-dia-bloco">
-              <h4>DIA 25</h4>
-              <ul>
-                <li>18h - Tríduo</li>
-                <li>19h - Missa</li>
-              </ul>
-            </div>
-
-            <div class="festa-dia-bloco">
-              <h4>DIA 26</h4>
-              <ul>
-                <li>15h - Tríduo</li>
-                <li>16h - Missa</li>
-                <li class="festa-tradicao-highlight">Após a Missa, Festa da Fogazza</li>
-              </ul>
-            </div>
-
-            <div class="festa-dia-bloco">
-              <h4>DIA 27</h4>
-              <ul>
-                <li>09h - Missa festiva de São Rafael</li>
-                <li>11h - Carreata de São Rafael</li>
-                <li>12h - Almoço de São Rafael</li>
-              </ul>
-            </div>
-
-            <div class="festa-dia-bloco">
-              <h4>DIA 28</h4>
-              <ul>
-                <li>19h - Missa pelos enfermos (Levar os enfermos para a missa)</li>
-              </ul>
-            </div>
-
-            <div class="festa-dia-bloco festa-dia-bloco-final">
-              <h4>DIA 29 - Solenidade de São Rafael</h4>
-              <ul>
-                <li>19h - Missa Solene</li>
-                <li>Após a Missa, Bolo de São Rafael e Cachorro Quente</li>
-              </ul>
-            </div>
-          </div>
+        <article id="avisosFallback" class="card avisos-fallback">
+          <h3>Acompanhe nossas redes</h3>
+          <p>Avisos, programações e fotos das celebrações são publicados primeiro no Instagram e no Facebook da
+            paróquia.</p>
         </article>
+
+        <div class="avisos-actions">
+          <a class="btn" href="https://www.instagram.com/paroquiasaorafaelmoocasp/" target="_blank"
+            rel="noopener noreferrer">Seguir no Instagram</a>
+          <a class="btn btn-secondary" href="https://www.facebook.com/paroquiasaorafaelmooca/" target="_blank"
+            rel="noopener noreferrer">Ver no Facebook</a>
+        </div>
       </div>
     </section>
 
@@ -438,7 +387,7 @@
       data-analytics-section="barnabitas">
       <div class="container">
         <h2 id="barnabitas-title" class="section-title">Padres Barnabitas</h2>
-        <img class="barnabitas-mark" src="img/barnabitas.png" alt="Logo dos Padres Barnabitas">
+        <img class="barnabitas-mark" src="img/barnabitas-256.png" alt="Logo dos Padres Barnabitas" loading="lazy">
         <hr class="gold-divider">
         <article class="card">
           <h3>Carisma Barnabita</h3>
@@ -535,12 +484,14 @@
         Não realizamos venda de dados pessoais.
       </p>
       <p>
-        Quando você aceita cookies de análise, podemos registrar eventos anonimizados, como visualização de seções
-        e cliques em elementos da página. O IP é anonimizado no Google Analytics.
+        Quando você aceita cookies de análise, usamos o Google Analytics 4 para registrar dados agregados de uso,
+        como visualização de seções e cliques em botões de contato. O Google Analytics 4 não armazena endereços IP,
+        e os sinais de publicidade e personalização de anúncios ficam desativados.
       </p>
       <p>
         Você pode aceitar ou recusar cookies de análise no banner exibido ao acessar o site e pode alterar sua escolha a
-        qualquer momento.
+        qualquer momento pelo link "Gerenciar Cookies" no rodapé. Ao recusar, os cookies do Google Analytics são
+        removidos deste navegador.
       </p>
       <p>
         Base legal aplicável conforme a LGPD: consentimento do titular para cookies não essenciais.
@@ -548,7 +499,6 @@
     </div>
   </aside>
 
-  <script src="main.js"></script>
 </body>
 
 </html>
